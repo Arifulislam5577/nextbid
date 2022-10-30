@@ -6,24 +6,28 @@ const productSchema = new Schema(
   {
     name: {
       type: String,
-      required: true,
+      required: [true, "Product name required"],
       maxLength: 100,
     },
     description: {
       type: String,
-      required: true,
+      required: [true, "Description required"],
+    },
+    coverPhoto: {
+      type: String,
+      required: [true, "Cover photo required"],
     },
     oldPrice: {
       type: Number,
-      required: true,
+      required: [true, "Old price required"],
     },
     newPrice: {
       type: Number,
-      required: true,
+      required: [true, "New price required"],
     },
     category: {
       type: String,
-      required: true,
+      required: [true, "Category name required"],
     },
     isFeatured: {
       type: Boolean,
@@ -33,12 +37,20 @@ const productSchema = new Schema(
       type: Boolean,
       default: false,
     },
-    sellerName: {
-      sellerName: { type: String, required: true },
-      sellerImg: { type: String, required: true },
-      sellerEmail: { type: String, required: true },
-      sellerCountry: { type: String, required: true },
-      required: true,
+    sellerInfo: {
+      sellerName: { type: String, required: [true, "Seller name required"] },
+      sellerImg: { type: String, required: [true, "Seller image required"] },
+      sellerEmail: { type: String, required: [true, "Seller email required"] },
+      sellerCountry: {
+        type: String,
+        required: [true, "Seller Category required"],
+      },
+    },
+    newBuyer: {
+      buyerName: { type: String, default: "" },
+      buyerImg: { type: String, default: "" },
+      buyerEmail: { type: String, default: "" },
+      buyerCountry: { type: String, default: "" },
     },
   },
   { timestamps: true }
