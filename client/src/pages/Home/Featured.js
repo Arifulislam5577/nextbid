@@ -20,11 +20,7 @@ const Featured = () => {
           </h1>
           <div className="flex mb-4">
             <span className="flex items-center">
-              <BiDiamond />
-              <BiDiamond />
-              <BiDiamond />
-              <BiDiamond />
-              <BiDiamond />
+              💎💎💎💎
               <span className="text-gray-600 ml-3">4 Bid</span>
             </span>
             <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-200 space-x-2s">

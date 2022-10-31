@@ -6,7 +6,7 @@ const Header = () => {
       <div className="container flex items-center justify-between">
         <div className="logo">
           <Link to="/" className=" font-bold text-3xl tracking-wider ">
-            Next<span className="text-red-600">Bid</span>
+            💎Next<span className="text-red-600">Bid</span>
           </Link>
         </div>
 
