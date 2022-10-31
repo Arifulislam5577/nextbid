@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Login = () => {
+const Signin = () => {
   return (
     <section className="py-5">
       <div className="w-full flex items-center justify-between lg:w-2/3 mx-auto  ">
@@ -10,10 +10,26 @@ const Login = () => {
             💎NextBid
           </h1>
           <p className="text-sm text-gray-600 text-center">
-            Login to your account
+            Create a new account
           </p>
 
           <form className="mt-4 lg:p-10 p-5">
+            <div className="mb-5">
+              <label
+                htmlFor="name"
+                className="mb-2 text-sm text-gray-600 block"
+              >
+                Name
+              </label>
+
+              <input
+                id="name"
+                type="text"
+                className="w-full py-2  px-5 focus:outline-none placeholder:text-sm placeholder:text-gray-400 bg-gray-200"
+                placeholder="enter your name"
+                required
+              />
+            </div>
             <div className="mb-5">
               <label
                 htmlFor="email"
@@ -38,12 +54,6 @@ const Login = () => {
                 >
                   Password
                 </label>
-                <Link
-                  className="text-sm hover:text-red-500 text-gray-600 block"
-                  to="/"
-                >
-                  Forgot Password?
-                </Link>
               </div>
 
               <input
@@ -55,14 +65,14 @@ const Login = () => {
             </div>
 
             <button className="w-full py-2.5 bg-red-600 text-white rounded text-sm">
-              Login
+              Signin
             </button>
 
             <div className="mt-2">
               <p className="text-sm text-gray-500 text-right">
-                Create a new account{" "}
-                <Link className="text-red-500" to="/signin">
-                  Signin
+                Already have an account?{" "}
+                <Link className="text-red-500" to="/login">
+                  Login
                 </Link>
               </p>
             </div>
@@ -71,7 +81,7 @@ const Login = () => {
           <div className="flex items-center px-10">
             <div className="flex-1 h-px sm:w-16 dark:bg-gray-300"></div>
             <p className="px-3 text-sm dark:text-gray-400">
-              Login with social accounts
+              Signin with social accounts
             </p>
             <div className="flex-1 h-px sm:w-16 dark:bg-gray-300"></div>
           </div>
@@ -111,4 +121,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signin;
