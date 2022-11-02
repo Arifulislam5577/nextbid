@@ -2,7 +2,7 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 const Header = () => {
   return (
-    <header className="py-5">
+    <header className="py-8">
       <div className="container flex items-center justify-between">
         <div className="logo">
           <Link to="/" className=" font-bold text-3xl tracking-wider ">

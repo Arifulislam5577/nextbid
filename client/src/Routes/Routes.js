@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "../components/Layout";
+import AllProducts from "../pages/AllProducts/AllProducts";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import NotFound from "../pages/NotFound/NotFound";
@@ -13,6 +14,7 @@ const RootRoutes = createBrowserRouter([
       { index: true, element: <Home /> },
       { path: "/login", element: <Login /> },
       { path: "/signin", element: <Signin /> },
+      { path: "/products", element: <AllProducts /> },
       { path: "*", element: <NotFound /> },
     ],
   },

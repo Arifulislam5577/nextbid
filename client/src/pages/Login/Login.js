@@ -1,19 +1,24 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import { motion } from "framer-motion";
 const Login = () => {
   return (
-    <section className="py-5">
+    <motion.section
+      className="py-5"
+      initial={{ y: "5%" }}
+      animate={{ y: "0%" }}
+      transition={{ duration: 0.75, ease: "easeOut" }}
+    >
       <div className="w-full flex items-center justify-between lg:w-2/3 mx-auto  ">
         <div className="lg:w-1/2 w-5/6 bg-gray-100 py-10 mx-auto">
-          <h1 className="text-2xl font-bold text-center tracking-wider">
-            💎NextBid
+          <h1 className="text-3xl font-bold text-center tracking-wider">
+            Next<span className="text-red-600">Bid</span>
           </h1>
           <p className="text-sm text-gray-600 text-center">
             Login to your account
           </p>
 
-          <form className="mt-4 lg:p-10 p-5">
+          <form className=" lg:p-10 p-5">
             <div className="mb-5">
               <label
                 htmlFor="email"
@@ -107,7 +112,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

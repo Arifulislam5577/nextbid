@@ -4,16 +4,22 @@ import Featured from "./Featured";
 import Hero from "./Hero";
 import Products from "./Products";
 
+import { motion } from "framer-motion";
 const Home = () => {
   return (
-    <section className="py-5">
+    <motion.section
+      className="py-5"
+      initial={{ y: "3%" }}
+      animate={{ y: "0%" }}
+      transition={{ duration: 0.75, ease: "easeOut" }}
+    >
       <div className="container">
         <Hero />
         <Featured />
         <Products />
         <CallToAction />
       </div>
-    </section>
+    </motion.section>
   );
 };
 
