@@ -4,6 +4,7 @@ import AllProducts from "../pages/AllProducts/AllProducts";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import NotFound from "../pages/NotFound/NotFound";
+import ProductDetails from "../pages/ProductDetails/ProductDetails";
 import Signin from "../pages/Signin/Signin";
 
 const RootRoutes = createBrowserRouter([
@@ -15,6 +16,7 @@ const RootRoutes = createBrowserRouter([
       { path: "/login", element: <Login /> },
       { path: "/signin", element: <Signin /> },
       { path: "/products", element: <AllProducts /> },
+      { path: "/product/:id", element: <ProductDetails /> },
       { path: "*", element: <NotFound /> },
     ],
   },
