@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "../components/Layout";
 import AllProducts from "../pages/AllProducts/AllProducts";
+import Dashboard from "../pages/Dashboard/Dashboard";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import NotFound from "../pages/NotFound/NotFound";
@@ -17,6 +18,7 @@ const RootRoutes = createBrowserRouter([
       { path: "/signin", element: <Signin /> },
       { path: "/products", element: <AllProducts /> },
       { path: "/product/:id", element: <ProductDetails /> },
+      { path: "/dashboard", element: <Dashboard /> },
       { path: "*", element: <NotFound /> },
     ],
   },

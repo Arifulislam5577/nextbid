@@ -4,13 +4,12 @@ import { motion } from "framer-motion";
 const Login = () => {
   return (
     <motion.section
-      className="py-5"
       initial={{ y: "5%" }}
       animate={{ y: "0%" }}
       transition={{ duration: 0.75, ease: "easeOut" }}
     >
       <div className="w-full flex items-center justify-between lg:w-2/3 mx-auto  ">
-        <div className="lg:w-1/2 w-5/6 bg-gray-100 py-10 mx-auto">
+        <div className="lg:w-1/2 md:w-1/2 w-5/6 bg-gray-100 py-10 mx-auto">
           <h1 className="text-3xl font-bold text-center tracking-wider">
             Next<span className="text-red-600">Bid</span>
           </h1>
@@ -18,7 +17,7 @@ const Login = () => {
             Login to your account
           </p>
 
-          <form className=" lg:p-10 p-5">
+          <form className=" lg:p-10 md:p-8 p-5">
             <div className="mb-5">
               <label
                 htmlFor="email"
