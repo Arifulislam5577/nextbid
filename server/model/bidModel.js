@@ -11,9 +11,9 @@ const biderSchema = new Schema(
       biderCountry: { type: String, required: true },
     },
     productInfo: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: mongoose.Types.ObjectId,
       required: true,
-      ref: "Product",
+      ref: "product",
     },
     bidAmount: { type: Number, required: true },
   },
