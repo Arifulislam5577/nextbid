@@ -1,8 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
+import { createNewUser } from "../../redux/features/auth/authSlice";
 
 const Signin = () => {
+  const { loading, error } = useSelector((state) => state.authReducers);
+  const { register, handleSubmit, reset } = useForm();
+  const dispatch = useDispatch();
+  const onSubmit = (data) => {
+    dispatch(createNewUser(data));
+    !error && reset();
+  };
   return (
     <motion.section
       initial={{ y: "5%" }}
@@ -10,7 +20,7 @@ const Signin = () => {
       transition={{ duration: 0.75, ease: "easeOut" }}
     >
       <div className="w-full flex items-center justify-between lg:w-2/3 mx-auto  ">
-        <div className="md:w-1/2 w-5/6 bg-gray-100 py-10 mx-auto">
+        <div className="md:w-1/2 w-5/6 bg-gray-100 py-10 mx-auto rounded">
           <h1 className="text-3xl font-bold text-center tracking-wider">
             Next<span className="text-red-600">Bid</span>
           </h1>
@@ -18,7 +28,15 @@ const Signin = () => {
             Create a new account
           </p>
 
-          <form className="lg:p-10 md:p-8 p-5">
+          <form
+            className="lg:p-10 md:p-8 p-5"
+            onSubmit={handleSubmit(onSubmit)}
+          >
+            {error && (
+              <p className="p-3 rounded capitalize bg-red-400 mb-4 text-white text-center">
+                {error}
+              </p>
+            )}
             <div className="mb-5">
               <label
                 htmlFor="name"
@@ -30,9 +48,9 @@ const Signin = () => {
               <input
                 id="name"
                 type="text"
-                className="w-full py-2  px-5 focus:outline-none placeholder:text-sm placeholder:text-gray-400 bg-gray-200"
+                className="w-full py-3  px-5 rounded focus:outline-none placeholder:text-sm placeholder:text-gray-400 bg-gray-200"
                 placeholder="enter your name"
-                required
+                {...register("name", { required: true, minLength: 4 })}
               />
             </div>
             <div className="mb-5">
@@ -46,9 +64,9 @@ const Signin = () => {
               <input
                 id="email"
                 type="email"
-                className="w-full py-2  px-5 focus:outline-none placeholder:text-sm placeholder:text-gray-400 bg-gray-200"
+                className="w-full py-3  px-5 rounded focus:outline-none placeholder:text-sm placeholder:text-gray-400 bg-gray-200"
                 placeholder="example@gmail.com"
-                required
+                {...register("email", { required: true, minLength: 6 })}
               />
             </div>
             <div className="mb-5">
@@ -63,15 +81,23 @@ const Signin = () => {
 
               <input
                 type="password"
-                className="w-full py-2  px-5 focus:outline-none placeholder:text-sm placeholder:text-gray-400 bg-gray-200"
+                className="w-full py-3  px-5 rounded focus:outline-none placeholder:text-sm placeholder:text-gray-400 bg-gray-200"
                 placeholder="enter your password"
-                required
+                {...register("password", { required: true })}
               />
             </div>
-
-            <button className="w-full py-2.5 bg-red-600 text-white rounded text-sm">
-              Signin
-            </button>
+            {loading ? (
+              <button className="w-full py-3 bg-red-400 text-white rounded text-sm cursor-wait">
+                Loading...
+              </button>
+            ) : (
+              <button
+                type="submit"
+                className="w-full py-3 bg-red-600 text-white rounded text-sm"
+              >
+                Signin
+              </button>
+            )}
 
             <div className="mt-2">
               <p className="text-sm text-gray-500 text-right">
