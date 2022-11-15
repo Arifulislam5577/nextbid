@@ -6,12 +6,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { createNewUser } from "../../redux/features/auth/authSlice";
 
 const Signin = () => {
-  const { loading, error } = useSelector((state) => state.authReducers);
+  const { loading, error, user } = useSelector((state) => state.authReducers);
   const { register, handleSubmit, reset } = useForm();
   const dispatch = useDispatch();
   const onSubmit = (data) => {
     dispatch(createNewUser(data));
-    !error && reset();
+    Object.keys(user).length && reset();
   };
   return (
     <motion.section
