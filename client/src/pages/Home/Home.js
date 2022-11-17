@@ -1,6 +1,6 @@
 import React from "react";
 import CallToAction from "./CallToAction";
-import Featured from "./Featured";
+import Mision from "./Mision";
 import Hero from "./Hero";
 import Products from "./Products";
 
@@ -15,7 +15,7 @@ const Home = () => {
     >
       <div className="container">
         <Hero />
-        <Featured />
+        <Mision />
         <Products />
         <CallToAction />
       </div>

@@ -1,24 +1,23 @@
 import React from "react";
-import { BiDiamond } from "react-icons/bi";
 import { MdCompareArrows } from "react-icons/md";
 import CountDown from "../../components/CountDown";
 const Featured = () => {
   return (
-    <div className="py-24 mx-auto">
-      <div className="lg:w-4/5 mx-auto flex flex-wrap">
-        <img
-          alt="ecommerce"
-          className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
-          src="https://images.unsplash.com/photo-1547054728-fcb8828cc832?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-        />
-        <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-          <h2 className="text-sm title-font text-gray-500 tracking-widest">
-            BRAND NAME
-          </h2>
+    <div className="py-10">
+      <div className="flex gap-5 items-center">
+        <div className="w-full lg:w-1/2 ">
+          <img
+            alt="ecommerce"
+            className="w-full"
+            src="https://images.unsplash.com/photo-1547054728-fcb8828cc832?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+          />
+        </div>
+        <div className="lg:w-1/2 w-full p-10 bg-gray-200">
+          <h2 className="text-sm text-gray-500 tracking-widest">BRAND NAME</h2>
           <h1 className="text-gray-900 text-3xl  mb-1">
             The Catcher in the Rye
           </h1>
-          <div className="flex mb-4">
+          <div className="flex">
             <span className="flex items-center">
               💎💎💎💎
               <span className="text-gray-600 ml-3">4 Bid</span>
@@ -62,13 +61,15 @@ const Featured = () => {
               </a>
             </span>
           </div>
-          <CountDown time="2022-10-31" />
-          <p className="text-gray-500">
+          <div className="my-3">
+            <CountDown time="2022-10-31" />
+          </div>
+          {/* <p className="text-gray-500">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit
             impedit inventore et assumenda beatae fugit porro perspiciatis velit
             perferendis illo temporibus incidunt delectus sequi, consequatur
             explicabo obcaecati sapiente quo architecto?
-          </p>
+          </p> */}
           <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5 gap-5">
             <h1 className=" text-gray-500">Last Highest Bid</h1>
             <h1 className="text-xl font-bold text-red-600">$200</h1>

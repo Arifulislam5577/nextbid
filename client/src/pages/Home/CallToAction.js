@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 
 const CallToAction = () => {
   return (
-    <div className="my-10 bg-red-100 p-10 rounded">
+    <div className="my-10 bg-gray-900 p-10 rounded">
       <div className="">
-        <h1 className="text-3xl">
+        <h1 className="text-3xl text-gray-100">
           Do you want to sell/buy products via nextBid?
         </h1>
-        <p className="text-sm text-gray-500  max-w-md mt-2">
+        <p className="text-sm text-gray-300  max-w-md mt-2">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus
           dolorum minus necessitatibus, dolorem culpa laborum.
         </p>
