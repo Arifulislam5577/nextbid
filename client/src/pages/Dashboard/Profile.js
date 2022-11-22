@@ -11,7 +11,7 @@ const Profile = () => {
         <input
           type="text"
           id="name"
-          className=" w-full px-3 py-4 focus:outline-none text-sm text-gray-600 bg-gray-100 placeholder:text-xs"
+          className=" w-full px-3 py-4 focus:outline-none text-sm text-gray-600 bg-gray-300 rounded placeholder:text-xs"
           placeholder="Enter Your Name"
         />
       </div>
@@ -21,7 +21,7 @@ const Profile = () => {
         </label>
         <input
           type="email"
-          className=" w-full px-3 py-4 focus:outline-none text-sm text-gray-600 bg-gray-100 placeholder:text-xs"
+          className=" w-full px-3 py-4 focus:outline-none text-sm text-gray-600 bg-gray-300 rounded placeholder:text-xs"
           placeholder="Enter Your Email"
         />
       </div>
@@ -33,7 +33,7 @@ const Profile = () => {
         <div className="flex justify-center items-center w-full">
           <label
             htmlFor="dropzone-file"
-            className="flex flex-col justify-center items-center w-full  bg-gray-100 cursor-pointer "
+            className="flex flex-col justify-center items-center w-full  bg-gray-300 rounded cursor-pointer "
           >
             <div className="flex gap-3 justify-center items-center py-5">
               <ImUpload />

@@ -24,7 +24,7 @@ const AllProducts = () => {
               <div className="my-4 border-b pb-3">
                 <h1 className="text-gray-600 font-bold text-sm">Search</h1>
                 <fieldset className="w-full space-y-1 dark:text-gray-100">
-                  <label for="Search" className="hidden">
+                  <label htmlFor="Search" className="hidden">
                     Search
                   </label>
                   <div className="relative">

@@ -6,15 +6,15 @@ import { Link } from "react-router-dom";
 
 const Product = () => {
   return (
-    <div className="col-span-1 overflow-hidden bg-white rounded hover:shadow-md transition-all">
+    <div className=" overflow-hidden bg-white rounded hover:shadow-md transition-all">
       <Link to={`/product/id`}>
-        <img src="images/demo.jpg" className="h-40 w-full" alt="" />
+        <img src="images/demo.jpg" className="md:h-40 h-52 w-full" alt="" />
       </Link>
       <div className="px-5 py-6">
         <h2 className="text-sm font-bold text-gray-700 hover:text-gray-600">
           <Link to={`/product/id`}>🎯The Catcher in the Rye</Link>
         </h2>
-        {/* <h1 className="text-gray-400 text-xs my-1">Current Bid : $300</h1> */}
+
         <p className="my-3 text-xs text-gray-500">
           📑Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo unde
           quis, at, mollitia neque architecto officiis esse distinctio nostrum

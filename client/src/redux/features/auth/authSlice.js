@@ -1,27 +1,12 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { auth } from "../../../config/firebase.config";
-import { HandleError } from "../../../utils/handleError";
-export const createNewUser = createAsyncThunk(
-  "Authentication/createUser",
-  async (data, thunkAPI) => {
-    try {
-      const { name, email, password } = data;
-      await createUserWithEmailAndPassword(auth, email, password);
-      await updateProfile(auth.currentUser, {
-        displayName: name,
-        photoURL: "",
-      });
-    } catch (error) {
-      return thunkAPI.rejectWithValue(HandleError(error.message));
-    }
-  }
-);
+import { createSlice } from "@reduxjs/toolkit";
+
+import { createNewUser, loginUser } from "./authService";
 
 const initialState = {
   user: null,
   loading: false,
   error: "",
+  loader: true,
 };
 
 const authSlice = createSlice({
@@ -30,6 +15,7 @@ const authSlice = createSlice({
   reducers: {
     isLoginUser(state, action) {
       state.user = action.payload;
+      state.loader = false;
     },
   },
   extraReducers: (builder) => {
@@ -38,10 +24,24 @@ const authSlice = createSlice({
     });
 
     builder.addCase(createNewUser.fulfilled, (state, action) => {
+      state.loader = true;
       state.loading = false;
     });
 
     builder.addCase(createNewUser.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    });
+    builder.addCase(loginUser.pending, (state) => {
+      state.loader = true;
+      state.loading = true;
+    });
+
+    builder.addCase(loginUser.fulfilled, (state, action) => {
+      state.loading = false;
+    });
+
+    builder.addCase(loginUser.rejected, (state, action) => {
       state.loading = false;
       state.error = action.payload;
     });

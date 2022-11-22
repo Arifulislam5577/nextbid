@@ -11,6 +11,7 @@ import Login from "../pages/Login/Login";
 import NotFound from "../pages/NotFound/NotFound";
 import ProductDetails from "../pages/ProductDetails/ProductDetails";
 import Signin from "../pages/Signin/Signin";
+import PrivateRoute from "./PrivateRoutes";
 
 const RootRoutes = createBrowserRouter([
   {
@@ -24,7 +25,11 @@ const RootRoutes = createBrowserRouter([
       { path: "/product/:id", element: <ProductDetails /> },
       {
         path: "/dashboard",
-        element: <Dashboard />,
+        element: (
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        ),
         children: [
           { index: true, element: <Profile /> },
           { path: "orders", element: <Orders /> },

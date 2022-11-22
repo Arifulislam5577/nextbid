@@ -4,7 +4,10 @@ import { ImHammer2 } from "react-icons/im";
 import { VscSignOut } from "react-icons/vsc";
 import { BiStoreAlt, BiHeart } from "react-icons/bi";
 import { Link, Outlet } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logOut } from "../../redux/features/auth/authService";
 const Dashboard = () => {
+  const dispatch = useDispatch();
   return (
     <section className="dashboard">
       <div className="container">
@@ -56,7 +59,10 @@ const Dashboard = () => {
                       Your Bid
                     </Link>
                   </li>
-                  <li className="flex items-center gap-2 pb-2 pl-5 hover:translate-x-2 transition-all duration-200 cursor-pointer">
+                  <li
+                    className="flex items-center gap-2 pb-2 pl-5 hover:translate-x-2 transition-all hover:text-red-600 duration-200 cursor-pointer"
+                    onClick={() => dispatch(logOut)}
+                  >
                     <VscSignOut />
                     Logout
                   </li>

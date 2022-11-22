@@ -1,6 +1,9 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 const Header = () => {
+  const { user } = useSelector((state) => state.authReducers);
+
   return (
     <header className="py-8">
       <div className="container flex items-center justify-between">
@@ -12,19 +15,27 @@ const Header = () => {
 
         <nav>
           <ul className="flex items-center content-center	justify-center gap-5">
-            <li className="hidden">
-              <NavLink to="/profile" className="text-gray-600 hover:text-black">
-                Dashboard
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/login"
-                className="bg-red-600 py-2.5 px-6 text-sm rounded text-white"
-              >
-                Join Us
-              </NavLink>
-            </li>
+            {user ? (
+              <>
+                <li className="">
+                  <NavLink
+                    to="/dashboard"
+                    className="bg-red-600 py-2.5 px-6 text-sm rounded text-white"
+                  >
+                    Dashboard
+                  </NavLink>
+                </li>
+              </>
+            ) : (
+              <li>
+                <NavLink
+                  to="/login"
+                  className="bg-red-600 py-2.5 px-6 text-sm rounded text-white"
+                >
+                  Join Us
+                </NavLink>
+              </li>
+            )}
           </ul>
         </nav>
       </div>

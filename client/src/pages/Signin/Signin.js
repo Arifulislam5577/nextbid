@@ -1,18 +1,27 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { createNewUser } from "../../redux/features/auth/authSlice";
+import { createNewUser } from "../../redux/features/auth/authService";
+import useRedirect from "../../hooks/useRedirect";
 
 const Signin = () => {
+  const redirect = useRedirect();
+  const navigate = useNavigate();
   const { loading, error, user } = useSelector((state) => state.authReducers);
   const { register, handleSubmit, reset } = useForm();
   const dispatch = useDispatch();
   const onSubmit = (data) => {
     dispatch(createNewUser(data));
-    Object.keys(user).length && reset();
+    reset();
   };
+
+  useEffect(() => {
+    if (user) {
+      navigate(redirect);
+    }
+  }, [redirect, user, navigate]);
   return (
     <motion.section
       initial={{ y: "5%" }}
@@ -20,7 +29,7 @@ const Signin = () => {
       transition={{ duration: 0.75, ease: "easeOut" }}
     >
       <div className="w-full flex items-center justify-between lg:w-2/3 mx-auto  ">
-        <div className="md:w-1/2 w-5/6 bg-gray-100 py-10 mx-auto rounded">
+        <div className="md:w-1/2 w-5/6 bg-white drop-shadow-lg py-10 mx-auto rounded">
           <h1 className="text-3xl font-bold text-center tracking-wider">
             Next<span className="text-red-600">Bid</span>
           </h1>
@@ -102,7 +111,10 @@ const Signin = () => {
             <div className="mt-2">
               <p className="text-sm text-gray-500 text-right">
                 Already have an account?{" "}
-                <Link className="text-red-500" to="/login">
+                <Link
+                  className="text-red-500"
+                  to={`/login?redirect=${redirect}`}
+                >
                   Login
                 </Link>
               </p>

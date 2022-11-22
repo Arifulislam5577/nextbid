@@ -3,7 +3,7 @@ import React from "react";
 const Hero = () => {
   return (
     <div className="flex lg:flex-row flex-col-reverse items-center lg:h-[80vh]">
-      <div className="lg:flex-grow lg:w-1/2 lg:pr-24 md:pr-16 flex flex-col lg:items-start lg:text-left mb-16 lg:mt-0 mt-10 lg:mb-0 items-center text-center">
+      <div className="lg:flex-grow lg:w-1/2 lg:pr-24 md:pr-16 flex flex-col lg:items-start lg:text-left mb-16 lg:mt-0  lg:mb-0 items-center text-center">
         <h1 className=" sm:text-6xl text-4xl mb-4 font-bold text-gray-900">
           Get your favorite products{" "}
           <span className=" text-red-600">before</span> sold
@@ -18,7 +18,7 @@ const Hero = () => {
           </button>
         </div>
       </div>
-      <div className="lg:max-w-lg lg:w-full md:w-1/2 md:justify-center mx-auto flex items-center md:mb-0 mb-20 lg:gap-0 gap-5">
+      <div className="lg:max-w-lg lg:w-full md:w-1/2 md:justify-center mx-auto flex items-center md:mb-0 mb-10 lg:gap-0 gap-5">
         <img className="" alt="hero" src="/images/hero1.svg" />
       </div>
     </div>
