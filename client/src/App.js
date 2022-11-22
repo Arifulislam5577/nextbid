@@ -15,8 +15,6 @@ function App() {
         const userInfo = {
           displayName: user.displayName,
           photoURL: user.photoURL,
-          uid: user.uid,
-          emailVerified: user.emailVerified,
           email: user.email,
         };
         dispatch(isLoginUser(userInfo));
