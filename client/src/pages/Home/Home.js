@@ -5,6 +5,7 @@ import Hero from "./Hero";
 import Products from "./Products";
 
 import { motion } from "framer-motion";
+import Blog from "./Blog";
 const Home = () => {
   return (
     <motion.section
@@ -17,7 +18,7 @@ const Home = () => {
         <Hero />
         <Mision />
         <Products />
-        <CallToAction />
+        <Blog />
       </div>
     </motion.section>
   );

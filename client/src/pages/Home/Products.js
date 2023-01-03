@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Product from "./Product";
+import Product from "../../components/Product";
 
 const Products = () => {
   return (
@@ -21,7 +21,7 @@ const Products = () => {
           <div className="lg:col-span-3 w-full flex items-center lg:justify-end justify-center">
             <Link
               to="/products"
-              className="py-2.5 px-6 bg-red-600 text-white rounded"
+              className="py-2.5 px-6 bg-orange-600 text-white "
             >
               View All
             </Link>

@@ -28,19 +28,13 @@ const Signin = () => {
       animate={{ y: "0%" }}
       transition={{ duration: 0.75, ease: "easeOut" }}
     >
-      <div className="w-full flex items-center justify-between lg:w-2/3 mx-auto  ">
+      <div className="w-full flex items-center justify-between lg:w-2/3 mx-auto  my-10">
         <div className="md:w-1/2 w-5/6 bg-white drop-shadow-lg py-10 mx-auto rounded">
           <h1 className="text-3xl font-bold text-center tracking-wider">
             Next<span className="text-red-600">Bid</span>
           </h1>
-          <p className="text-sm text-gray-600 text-center">
-            Create a new account
-          </p>
 
-          <form
-            className="lg:p-10 md:p-8 p-5"
-            onSubmit={handleSubmit(onSubmit)}
-          >
+          <form className="lg:p-10 p-8" onSubmit={handleSubmit(onSubmit)}>
             {error && (
               <p className="p-3 rounded capitalize bg-red-400 mb-4 text-white text-center">
                 {error}

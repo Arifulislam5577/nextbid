@@ -9,6 +9,7 @@ import { logOut } from "../../redux/features/auth/authService";
 const Dashboard = () => {
   const { user } = useSelector((state) => state.authReducers);
   const dispatch = useDispatch();
+
   return (
     <section className="dashboard">
       <div className="container">

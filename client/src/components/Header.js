@@ -1,43 +1,65 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
+import {
+  FaFacebookF,
+  FaTwitter,
+  FaLinkedinIn,
+  FaRegUser,
+} from "react-icons/fa";
+import { TbBrandNextjs } from "react-icons/tb";
 import { useSelector } from "react-redux";
 const Header = () => {
   const { user } = useSelector((state) => state.authReducers);
 
   return (
-    <header className="py-8">
-      <div className="container flex items-center justify-between">
-        <div className="logo">
-          <Link to="/" className=" font-bold text-3xl tracking-wider ">
-            💎Next<span className="text-red-600">Bid</span>
-          </Link>
-        </div>
+    <header>
+      <div className="py-1 bg-gray-900">
+        <div className="container flex items-center justify-between">
+          <h2 className="text-sm text-gray-200">Welcome to NextBid</h2>
 
-        <nav>
-          <ul className="flex items-center content-center	justify-center gap-5">
-            {user ? (
-              <>
-                <li className="">
+          <div className="flex items-center gap-5">
+            <FaFacebookF color="white" />
+            <FaTwitter color="white" />
+            <FaLinkedinIn color="white" />
+          </div>
+        </div>
+      </div>
+      <div className="py-5 bg-white">
+        <div className="container flex items-center justify-between">
+          <div className="logo">
+            <Link to="/" className=" text-xl flex items-center">
+              <TbBrandNextjs size={32} />
+              ext<span className="text-orange-600">Bid</span>
+            </Link>
+          </div>
+
+          <nav>
+            <ul className="flex items-center content-center	justify-center gap-5">
+              {user ? (
+                <>
+                  <li className="">
+                    <NavLink
+                      to="/dashboard"
+                      className="bg-red-600 py-2.5 px-6 text-sm rounded text-white"
+                    >
+                      Dashboard
+                    </NavLink>
+                  </li>
+                </>
+              ) : (
+                <li>
                   <NavLink
-                    to="/dashboard"
-                    className="bg-red-600 py-2.5 px-6 text-sm rounded text-white"
+                    to="/login"
+                    className="text-sm text-gray-600 flex items-center gap-1"
                   >
-                    Dashboard
+                    <FaRegUser />
+                    Sign In/Sign Up
                   </NavLink>
                 </li>
-              </>
-            ) : (
-              <li>
-                <NavLink
-                  to="/login"
-                  className="bg-red-600 py-2.5 px-6 text-sm rounded text-white"
-                >
-                  Join Us
-                </NavLink>
-              </li>
-            )}
-          </ul>
-        </nav>
+              )}
+            </ul>
+          </nav>
+        </div>
       </div>
     </header>
   );

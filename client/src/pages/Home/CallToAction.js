@@ -14,7 +14,7 @@ const CallToAction = () => {
         </p>
         <Link
           to="/login"
-          className=" mt-5 inline-block py-2.5 px-6 bg-red-600 text-white rounded"
+          className=" mt-5 inline-block py-2.5 px-6 bg-orange-600 text-white"
         >
           Join Us
         </Link>

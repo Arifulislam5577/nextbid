@@ -8,6 +8,7 @@ import {
 import { createUserInDB } from "../../../apis/userApi";
 import { auth } from "../../../config/firebase.config";
 import { HandleError } from "../../../utils/handleError";
+import { uploadImgBb } from "../../../utils/uploadImgBB";
 
 export const createNewUser = createAsyncThunk(
   "Authentication/createUser",
@@ -31,6 +32,23 @@ export const createNewUser = createAsyncThunk(
     }
   }
 );
+
+// export const updateUser = createAsyncThunk(
+//   "Authentication/updateUser",
+//   async (data, thunkAPI) => {
+//     try {
+//       const { name, img } = data;
+//       const imgurl = await uploadImgBb(img);
+
+//       await updateProfile(auth.currentUser, {
+//         displayName: name,
+//         photoURL: imgurl,
+//       });
+//     } catch (error) {
+//       return thunkAPI.rejectWithValue(HandleError(error.message));
+//     }
+//   }
+// );
 
 export const loginUser = createAsyncThunk(
   "Authentication/loginUser",

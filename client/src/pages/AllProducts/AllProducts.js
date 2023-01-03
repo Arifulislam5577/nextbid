@@ -1,6 +1,6 @@
 import React from "react";
-import Product from "../Home/Product";
 import { motion } from "framer-motion";
+import Product from "../../components/Product";
 const AllProducts = () => {
   return (
     <motion.section
