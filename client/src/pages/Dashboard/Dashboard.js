@@ -15,7 +15,7 @@ const Dashboard = () => {
       <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">
           <div className="lg:col-span-1 w-full">
-            <div className="p-5 bg-gray-100 rounded">
+            <div className="p-5 bg-white shadow-sm rounded">
               <div className="mx-auto">
                 <img
                   src={user?.photoURL}
@@ -62,7 +62,7 @@ const Dashboard = () => {
                     </Link>
                   </li>
                   <li
-                    className="flex items-center gap-2 pb-2 pl-5 hover:translate-x-2 transition-all hover:text-red-600 duration-200 cursor-pointer"
+                    className="flex items-center gap-2 pb-2 pl-5 hover:translate-x-2 transition-all hover:text-orange-600 duration-200 cursor-pointer"
                     onClick={() => dispatch(logOut)}
                   >
                     <VscSignOut />

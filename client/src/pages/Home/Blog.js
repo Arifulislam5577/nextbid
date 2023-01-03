@@ -10,9 +10,16 @@ const Blog = () => {
               <span className="text-primary mb-2 block text-lg font-semibold">
                 Our Blogs
               </span>
-              <h2 className="text-dark mb-4 text-3xl font-bold sm:text-4xl md:text-[40px]">
-                Our Recent News
-              </h2>
+
+              <h1 className="text-3xl font-bold text-black sm:text-4xl md:text-[40px]">
+                Our Recent
+                <div className="relative inline-flex">
+                  <span className="absolute inset-x-0 bottom-0 border-b-[20px] border-orange-600"></span>
+                  <h1 className="relative text-3xl font-bold text-black sm:text-4xl md:text-[40px] ml-2">
+                    News
+                  </h1>
+                </div>
+              </h1>
               <p className="text-body-color text-base">
                 There are many variations of passages of Lorem Ipsum available
                 but the majority have suffered alteration in some form.
@@ -31,7 +38,7 @@ const Blog = () => {
                 />
               </div>
               <div>
-                <span className="bg-orange-600 mb-1 inline-block rounded py-1 px-4 text-center text-xs font-semibold leading-loose text-gray-100">
+                <span className=" mb-1 inline-block rounded py-1  text-center text-xs font-semibold leading-loose text-orange-600">
                   Dec 22, 2023
                 </span>
                 <h3>
@@ -59,7 +66,7 @@ const Blog = () => {
                 />
               </div>
               <div>
-                <span className="bg-orange-600 mb-1 inline-block rounded py-1 px-4 text-center text-xs font-semibold leading-loose text-gray-100">
+                <span className=" mb-1 inline-block rounded py-1  text-center text-xs font-semibold leading-loose text-orange-600">
                   Mar 15, 2023
                 </span>
                 <h3>
@@ -87,7 +94,7 @@ const Blog = () => {
                 />
               </div>
               <div>
-                <span className="bg-orange-600 mb-1 inline-block rounded py-1 px-4 text-center text-xs font-semibold leading-loose text-gray-100">
+                <span className=" mb-1 inline-block rounded py-1  text-center text-xs font-semibold leading-loose text-orange-600">
                   Jan 05, 2023
                 </span>
                 <h3>

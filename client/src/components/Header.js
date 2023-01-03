@@ -24,7 +24,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <div className="py-5 bg-white">
+      <div className="py-5 bg-white shadow-sm">
         <div className="container flex items-center justify-between">
           <div className="logo">
             <Link to="/" className=" text-xl flex items-center">
@@ -40,7 +40,7 @@ const Header = () => {
                   <li className="">
                     <NavLink
                       to="/dashboard"
-                      className="bg-red-600 py-2.5 px-6 text-sm rounded text-white"
+                      className="bg-orange-600 py-2.5 px-6 text-sm rounded text-white"
                     >
                       Dashboard
                     </NavLink>

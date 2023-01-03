@@ -68,7 +68,7 @@ const Profile = () => {
         </div>
 
         <div className="mt-5">
-          <button className="py-2.5 text-sm px-3 text-center text-white capitalize bg-red-600 rounded">
+          <button className="py-2.5 text-sm px-3 text-center text-white capitalize bg-orange-600 rounded">
             update now
           </button>
         </div>

@@ -96,7 +96,7 @@ const ProductDetails = () => {
                   </div>
                 </div>
 
-                <button className="w-full py-2.5 text-white capitalize text-sm bg-red-600 rounded">
+                <button className="w-full py-2.5 text-white capitalize text-sm bg-orange-600 rounded">
                   bid now
                 </button>
               </form>

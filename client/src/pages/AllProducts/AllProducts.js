@@ -7,16 +7,17 @@ const AllProducts = () => {
       initial={{ y: "3%" }}
       animate={{ y: "0%" }}
       transition={{ duration: 0.75, ease: "easeOut" }}
+      className="py-10"
     >
       <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-5">
           <div className="lg:col-span-1 w-full">
-            <div className="p-5 bg-gray-100">
+            <div className="p-5 bg-white shadow-sm">
               <div className="flex items-center justify-between border-b pb-3">
                 <h1 className="text-gray-600 font-bold text-sm">
                   Filter Product
                 </h1>
-                <button className="px-2 py-1 text-white bg-gray-700 hover:bg-red-600 text-xs rounded-full">
+                <button className="px-2 py-1 text-white bg-gray-700 hover:bg-orange-600 text-xs rounded-full">
                   reset
                 </button>
               </div>
@@ -136,7 +137,7 @@ const AllProducts = () => {
             </div>
           </div>
           <div className="lg:col-span-3 w-full ">
-            <div className="grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div className="grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
               <Product />
               <Product />
               <Product />

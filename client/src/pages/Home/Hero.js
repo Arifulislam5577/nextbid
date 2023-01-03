@@ -3,36 +3,6 @@ import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
-    // <div className="flex lg:flex-row flex-col-reverse items-center h-[90vh]">
-    //   <div className="lg:flex-grow lg:w-1/2 lg:pr-24 md:pr-16 flex flex-col lg:items-start lg:text-left mb-16 lg:mt-0  lg:mb-0 items-center text-center">
-    //     <h1 className=" sm:text-6xl text-4xl mb-4 font-bold text-gray-900">
-    //       Get your favorite products{" "}
-    //       <span className=" text-red-600">before</span> sold
-    //     </h1>
-    //     <p className="mb-8 leading-relaxed">
-    //       Copper mug try-hard pitchfork pour-over freegan heirloom neutra air
-    //       plant cold-pressed tacos poke beard tote bag.
-    //     </p>
-    //     <div className="flex justify-center">
-    //       <button className="inline-flex text-white bg-red-600 py-2.5 px-6 rounded text-sm">
-    //         Buy Now
-    //       </button>
-    //     </div>
-    //   </div>
-    //   <div className="lg:max-w-lg lg:w-full md:w-1/2 md:justify-center mx-auto grid grid-cols-2 items-center md:mb-0 mb-10 lg:gap-2 gap-5 overflow-hidden">
-    //     <img
-    //       className="rounded-3xl h-full p-5  object-contain"
-    //       alt="hero"
-    //       src="https://images.unsplash.com/photo-1547119957-637f8679db1e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80"
-    //     />
-    //     <img
-    //       className="rounded-3xl h-full p-5  object-contain"
-    //       alt="hero"
-    //       src="https://images.unsplash.com/photo-1547119957-637f8679db1e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80"
-    //     />
-    //   </div>
-    // </div>
-
     <section className="py-10">
       <div className="grid items-center grid-cols-1 gap-12 lg:grid-cols-2">
         <div>
