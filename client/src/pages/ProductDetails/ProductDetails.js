@@ -2,20 +2,24 @@ import React from "react";
 import BiderInfo from "./BiderInfo";
 import { ImPriceTags } from "react-icons/im";
 import { AiFillCarryOut } from "react-icons/ai";
-import { BiAward } from "react-icons/bi";
+import { motion } from "framer-motion";
 const ProductDetails = () => {
   return (
-    <section className="">
+    <motion.section
+      className="py-10"
+      initial={{ y: "3%" }}
+      animate={{ y: "0%" }}
+      transition={{ duration: 0.75, ease: "easeOut" }}
+    >
       <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
           <div className="lg:col-span-2 col-span-1 w-full">
             <img
-              src="https://res.cloudinary.com/helpkoro/image/upload/v1655955422/m0slybbywemhlelka90x.jpg"
+              src="https://api.tailgrids.com/images/product/9783dd36-e489-4e62-b143-9e95a4c5ca84.jpg"
               alt=""
             />
 
             <h1 className="text-xl font-bold my-3 text-gray-600 flex items-center gap-1">
-              <BiAward className="lg:block hidden" />
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa,
               harum!
             </h1>
@@ -104,7 +108,7 @@ const ProductDetails = () => {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

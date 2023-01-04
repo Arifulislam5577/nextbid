@@ -2,7 +2,6 @@ import React from "react";
 import Mision from "./Mision";
 import Hero from "./Hero";
 import Products from "./Products";
-
 import { motion } from "framer-motion";
 import Blog from "./Blog";
 const Home = () => {

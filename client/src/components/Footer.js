@@ -1,16 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { TbBrandNextjs } from "react-icons/tb";
 
 const Footer = () => {
   return (
     <footer className="text-gray-600 body-font">
       <div className="container  py-8 flex items-center sm:flex-row flex-col">
-        <Link
-          to="/"
-          className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900"
-        >
-          <span className="ml-3 text-xl">NextBid</span>
-        </Link>
+        <div className="logo">
+          <Link to="/" className="text-gray-900 text-xl flex items-center">
+            <TbBrandNextjs size={32} />
+            ext<span className="text-orange-600">Bid</span>
+          </Link>
+        </div>
         <p className="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">
           © 2022 NextBid —
           <a

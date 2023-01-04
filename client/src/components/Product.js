@@ -14,15 +14,15 @@ const Product = () => {
       <div className="p-5">
         <Link
           to={`/product/id`}
-          className="text-xs text-gray-500 rounded bg-gray-100 py-1 px-2 my-1"
+          className="text-xs text-gray-500 rounded bg-gray-100 py-1 px-2 my-1 inline-block"
         >
           #Category
         </Link>
-        <h2 className="text-xl font-bold text-gray-900 hover:text-gray-700">
+        <h2 className="text-base font-bold text-gray-900 hover:text-gray-700">
           <Link to={`/product/id`}>The Catcher in the Rye</Link>
         </h2>
 
-        <p className="my-3 text-sm text-gray-500">
+        <p className="my-2 text-sm text-gray-500">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo unde
           quis.
         </p>
