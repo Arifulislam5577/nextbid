@@ -2,8 +2,8 @@ import asyncHandler from "express-async-handler";
 import firebaseApp from "../config/firebase.config.js";
 
 export const verifyUser = asyncHandler(async (req, res, next) => {
+  console.log({ header: req.headers });
   let token;
-
   if (
     req.headers.authorization &&
     req.headers.authorization.startsWith("Bearer")

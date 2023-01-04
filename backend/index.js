@@ -17,9 +17,9 @@ app.use(express.json());
 app.use(express.urlencoded({ limit: "50mb", extended: false }));
 
 // ALL ROUTES
-app.get('/', (req, res) => {
-  res.send('Hello World')
-})
+app.get("/", (req, res) => {
+  res.send("Hello World");
+});
 app.use("/api/v1/products", productRouter);
 app.use("/api/v1/user", userRouter);
 

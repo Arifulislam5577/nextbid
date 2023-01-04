@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { createNewUser, loginUser } from "./authService";
+import { createNewUser, loginUser, userInDB } from "./authService";
 
 const initialState = {
   user: null,
@@ -21,11 +21,14 @@ const authSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(createNewUser.pending, (state) => {
       state.loading = true;
+      state.loader = true;
+      state.error = "";
     });
 
     builder.addCase(createNewUser.fulfilled, (state, action) => {
-      state.loader = true;
+      state.loader = false;
       state.loading = false;
+      state.error = "";
     });
 
     builder.addCase(createNewUser.rejected, (state, action) => {
@@ -34,16 +37,36 @@ const authSlice = createSlice({
     });
     builder.addCase(loginUser.pending, (state) => {
       state.loader = true;
+      state.error = "";
       state.loading = true;
     });
 
     builder.addCase(loginUser.fulfilled, (state, action) => {
       state.loading = false;
+      state.loader = false;
     });
 
     builder.addCase(loginUser.rejected, (state, action) => {
       state.loading = false;
       state.error = action.payload;
+    });
+    builder.addCase(userInDB.pending, (state) => {
+      state.loader = true;
+      state.error = "";
+      state.loading = true;
+    });
+
+    builder.addCase(userInDB.fulfilled, (state, action) => {
+      state.loading = false;
+      state.error = "";
+      state.loader = false;
+      state.user = action.payload;
+    });
+
+    builder.addCase(userInDB.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+      state.loader = false;
     });
   },
 });

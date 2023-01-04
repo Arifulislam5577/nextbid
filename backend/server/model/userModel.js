@@ -4,8 +4,8 @@ const { Schema, model } = mongoose;
 
 const userSchema = new Schema(
   {
-    userName: { type: String, required: true },
-    userImg: { type: String, required: true },
+    userName: { type: String },
+    userImg: { type: String },
     userEmail: { type: String, required: true },
     isVerify: { type: Boolean, default: false },
     isAdmin: { type: Boolean, default: false },
