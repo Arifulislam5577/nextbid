@@ -12,10 +12,10 @@ const Blog = () => {
               </span>
 
               <h1 className="text-3xl font-bold text-black sm:text-4xl md:text-[40px]">
-                Our Recent
+                Our Recent{" "}
                 <div className="relative inline-flex">
                   <span className="absolute inset-x-0 bottom-0 border-b-[20px] border-orange-600"></span>
-                  <h1 className="relative text-3xl font-bold text-black sm:text-4xl md:text-[40px] ml-2">
+                  <h1 className="relative text-3xl font-bold text-black sm:text-4xl md:text-[40px] ">
                     News
                   </h1>
                 </div>

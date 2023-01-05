@@ -12,11 +12,10 @@ const Login = () => {
   const redirect = useRedirect();
   const navigate = useNavigate();
   const { loading, error, user } = useSelector((state) => state.authReducers);
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
   const onSubmit = (data) => {
     dispatch(loginUser(data));
-    reset();
   };
 
   useEffect(() => {

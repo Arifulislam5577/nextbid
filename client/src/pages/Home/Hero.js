@@ -25,7 +25,7 @@ const Hero = () => {
           <div className="mt-10 sm:flex sm:items-center sm:space-x-8">
             <Link
               to="/login"
-              className="inline-flex items-center justify-center px-10 py-4 text-base font-semibold text-white transition-all duration-200 bg-orange-600 hover:bg-orange-600 focus:bg-orange-600"
+              className="inline-flex items-center justify-center px-6 py-3 text-sm rounded text-white transition-all duration-200 bg-orange-600 hover:bg-orange-600 focus:bg-orange-600"
             >
               Start exploring
             </Link>

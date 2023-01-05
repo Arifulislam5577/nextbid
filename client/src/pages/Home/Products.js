@@ -23,7 +23,7 @@ const Products = () => {
           <div className="lg:col-span-3 w-full flex items-center lg:justify-end justify-center">
             <Link
               to="/products"
-              className="py-2.5 px-6 bg-orange-600 text-white "
+              className="py-3 px-6 text-sm rounded bg-orange-600 text-white "
             >
               View All
             </Link>
