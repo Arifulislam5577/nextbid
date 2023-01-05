@@ -14,14 +14,16 @@ function App() {
     const subscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
         const token = await user.getIdToken();
-
         if (token) {
           localStorage.setItem("token", JSON.stringify(token));
           dispatch(userInDB(token));
+          return;
+        } else {
+          dispatch(isLoginUser(null));
+          return;
         }
-      } else {
-        dispatch(isLoginUser(null));
       }
+      dispatch(isLoginUser(null));
     });
 
     return () => subscribe();

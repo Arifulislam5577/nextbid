@@ -46,6 +46,7 @@ export const loginUser = createAsyncThunk(
 );
 
 export const logOut = async () => {
+  localStorage.removeItem("token");
   return await signOut(auth);
 };
 
@@ -53,17 +54,15 @@ export const userInDB = createAsyncThunk(
   "Authentication/createUserInDb",
   async (token, thunkAPI) => {
     try {
-      const config = {
-        headers: {
-          "Content-type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      };
-
       const { data } = await axios.post(
         `http://localhost:5000/api/v1/user`,
         {},
-        config
+        {
+          headers: {
+            "content-type": "application/json",
+            authorization: `Bearer ${token}`,
+          },
+        }
       );
       return data;
     } catch (error) {

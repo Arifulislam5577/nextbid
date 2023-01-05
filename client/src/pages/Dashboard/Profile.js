@@ -4,7 +4,7 @@ import { ImUpload } from "react-icons/im";
 import { useDispatch, useSelector } from "react-redux";
 const Profile = () => {
   const { user } = useSelector((state) => state.authReducers);
-  const [name, setName] = useState(user ? user.displayName : "");
+  const [name, setName] = useState(user ? user.userName : "");
   const [img, setImg] = useState("");
 
   const dispatch = useDispatch();
@@ -38,7 +38,7 @@ const Profile = () => {
           type="email"
           className=" w-full px-3 py-4 focus:outline-none text-sm text-gray-600 bg-gray-300 rounded placeholder:text-xs"
           placeholder="Enter Your Email"
-          defaultValue={user?.email}
+          defaultValue={user?.userEmail}
           readOnly
         />
       </div>

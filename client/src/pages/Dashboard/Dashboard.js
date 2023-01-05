@@ -18,8 +18,8 @@ const Dashboard = () => {
             <div className="p-5 bg-white shadow-sm rounded">
               <div className="mx-auto">
                 <img
-                  src={user?.photoURL}
-                  alt={user?.displayName}
+                  src={user?.userImg}
+                  alt={user?.userName}
                   className="h-28 w-28 p-2 border border-gray-200 bg-white rounded-full mx-auto "
                 />
               </div>

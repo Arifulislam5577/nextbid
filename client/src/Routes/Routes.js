@@ -4,7 +4,6 @@ import AllProducts from "../pages/AllProducts/AllProducts";
 import Bids from "../pages/Dashboard/Bids";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import Orders from "../pages/Dashboard/Orders";
-import Profile from "../pages/Dashboard/Profile";
 import Wishlist from "../pages/Dashboard/Wishlist";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
@@ -31,7 +30,7 @@ const RootRoutes = createBrowserRouter([
           </PrivateRoute>
         ),
         children: [
-          { index: true, element: <Profile /> },
+          { index: true, element: <Orders /> },
           { path: "orders", element: <Orders /> },
           { path: "wishlist", element: <Wishlist /> },
           { path: "mybids", element: <Bids /> },
