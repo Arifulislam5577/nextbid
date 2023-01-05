@@ -16,13 +16,13 @@ const Hero = () => {
             </div>
           </h1>
 
-          <p className="mt-8 text-base text-black sm:text-xl">
+          <p className="my-8 text-base text-black ">
             Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
             sint. Velit officia consequat duis enim velit mollit. Exercitation
             veniam consequat.
           </p>
 
-          <div className="mt-10 sm:flex sm:items-center sm:space-x-8">
+          <div className=" sm:flex sm:items-center ">
             <Link
               to="/login"
               className="inline-flex items-center justify-center px-6 py-3 text-sm rounded text-white transition-all duration-200 bg-orange-600 hover:bg-orange-600 focus:bg-orange-600"

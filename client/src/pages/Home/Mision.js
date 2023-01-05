@@ -609,8 +609,15 @@ const Mision = () => {
             Why Choose Us
           </span>
           <h2 className="text-dark mb-8 text-3xl font-bold sm:text-4xl">
-            Make your customers happy by giving services.
+            Make your customers happy by giving{" "}
+            <div className="relative inline-flex">
+              <span className="absolute inset-x-0 bottom-0 border-b-[20px] border-orange-600"></span>
+              <h1 className="relative text-3xl font-bold text-black sm:text-4xl md:text-[40px] ">
+                services.
+              </h1>
+            </div>
           </h2>
+
           <p className="text-body-color mb-8 text-base">
             It is a long established fact that a reader will be distracted by
             the readable content of a page when looking at its layout. The point

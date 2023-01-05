@@ -7,7 +7,6 @@ const productSchema = new Schema(
     name: {
       type: String,
       required: [true, "Product name required"],
-      maxLength: 100,
     },
     description: {
       type: String,
@@ -33,25 +32,12 @@ const productSchema = new Schema(
       type: Boolean,
       default: false,
     },
-    isSell: {
+    isSold: {
       type: Boolean,
       default: false,
     },
-    sellerInfo: {
-      sellerName: { type: String, required: [true, "Seller name required"] },
-      sellerImg: { type: String, required: [true, "Seller image required"] },
-      sellerEmail: { type: String, required: [true, "Seller email required"] },
-      sellerCountry: {
-        type: String,
-        required: [true, "Seller Category required"],
-      },
-    },
-    newBuyer: {
-      buyerName: { type: String, default: "" },
-      buyerImg: { type: String, default: "" },
-      buyerEmail: { type: String, default: "" },
-      buyerCountry: { type: String, default: "" },
-    },
+    sellerInfo: { type: mongoose.Types.ObjectId, required: true, ref: "user" },
+    newBuyerInfo: { type: mongoose.Types.ObjectId, ref: "user" },
   },
   { timestamps: true }
 );

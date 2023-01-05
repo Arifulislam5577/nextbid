@@ -33,40 +33,44 @@ const authSlice = createSlice({
 
     builder.addCase(createNewUser.rejected, (state, action) => {
       state.loading = false;
+      state.loader = false;
       state.error = action.payload;
     });
     builder.addCase(loginUser.pending, (state) => {
       state.loader = true;
-      state.error = "";
       state.loading = true;
+      state.error = "";
     });
 
     builder.addCase(loginUser.fulfilled, (state, action) => {
       state.loading = false;
       state.loader = false;
+      state.error = "";
     });
 
     builder.addCase(loginUser.rejected, (state, action) => {
+      state.loader = false;
       state.loading = false;
       state.error = action.payload;
     });
     builder.addCase(userInDB.pending, (state) => {
       state.loader = true;
-      state.error = "";
       state.loading = true;
+      state.error = "";
     });
 
     builder.addCase(userInDB.fulfilled, (state, action) => {
       state.loading = false;
-      state.error = "";
       state.loader = false;
+      state.error = "";
       state.user = action.payload;
     });
 
     builder.addCase(userInDB.rejected, (state, action) => {
       state.loading = false;
-      state.error = action.payload;
       state.loader = false;
+      state.user = null;
+      state.error = action.payload;
     });
   },
 });

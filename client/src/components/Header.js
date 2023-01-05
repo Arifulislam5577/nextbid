@@ -38,11 +38,12 @@ const Header = () => {
               {user ? (
                 <>
                   <li className="">
-                    <NavLink
-                      to="/dashboard"
-                      className="bg-orange-600 py-2.5 px-6 text-sm rounded text-white"
-                    >
-                      Dashboard
+                    <NavLink to="/dashboard">
+                      <img
+                        src={user?.userImg}
+                        alt="user"
+                        className="h-11 w-11 rounded-full p-1 border"
+                      />
                     </NavLink>
                   </li>
                 </>

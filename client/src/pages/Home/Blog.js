@@ -44,7 +44,7 @@ const Blog = () => {
                 <h3>
                   <a
                     href="/"
-                    className="text-dark hover:text-primary mb-4 inline-block text-xl font-semibold sm:text-2xl lg:text-xl xl:text-2xl"
+                    className="text-dark hover:text-primary mb-4 inline-block text-xl font-semibold sm:text-2xl lg:text-xl "
                   >
                     Meet AutoManage, the best AI management tools
                   </a>
@@ -72,7 +72,7 @@ const Blog = () => {
                 <h3>
                   <a
                     href="/"
-                    className="text-dark hover:text-primary mb-4 inline-block text-xl font-semibold sm:text-2xl lg:text-xl xl:text-2xl"
+                    className="text-dark hover:text-primary mb-4 inline-block text-xl font-semibold sm:text-2xl lg:text-xl "
                   >
                     How to earn more money as a wellness coach
                   </a>
@@ -100,7 +100,7 @@ const Blog = () => {
                 <h3>
                   <a
                     href="/"
-                    className="text-dark hover:text-primary mb-4 inline-block text-xl font-semibold sm:text-2xl lg:text-xl xl:text-2xl"
+                    className="text-dark hover:text-primary mb-4 inline-block text-xl font-semibold sm:text-2xl lg:text-xl "
                   >
                     The no-fuss guide to upselling and cross selling
                   </a>

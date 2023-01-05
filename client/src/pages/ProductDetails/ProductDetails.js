@@ -3,6 +3,7 @@ import BiderInfo from "./BiderInfo";
 import { ImPriceTags } from "react-icons/im";
 import { AiFillCarryOut } from "react-icons/ai";
 import { motion } from "framer-motion";
+import Product from "../../components/Product";
 const ProductDetails = () => {
   return (
     <motion.section
@@ -106,6 +107,25 @@ const ProductDetails = () => {
               </form>
             </div>
           </div>
+        </div>
+
+        <div class="border-gray-200 my-10 pb-4 items-center justify-between border-b md:flex">
+          <div class="w-full">
+            <h2 class="mb-2 text-2xl font-semibold text-black">
+              Related Product items
+            </h2>
+            <p class="text-body-color text-sm font-medium">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
+              ultrices lectus sem.
+            </p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-4 gap-5">
+          <Product />
+          <Product />
+          <Product />
+          <Product />
         </div>
       </div>
     </motion.section>
