@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import Product from "../../components/Product";
+import { useDispatch, useSelector } from "react-redux";
+import { getProducts } from "../../redux/features/product/productService";
+import ProductLoader from "../../components/ProductLoader";
+import ErrorMsg from "../../components/ErrorMsg";
 const AllProducts = () => {
+  const dispatch = useDispatch();
+
+  const { loading, error, products } = useSelector((state) => state.products);
+  console.log(products);
+  useEffect(() => {
+    dispatch(getProducts());
+  }, [dispatch]);
   return (
     <motion.section
       initial={{ y: "3%" }}
@@ -137,14 +148,24 @@ const AllProducts = () => {
             </div>
           </div>
           <div className="lg:col-span-3 w-full ">
-            <div className="grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-              <Product />
-              <Product />
-              <Product />
-              <Product />
-              <Product />
-              <Product />
-            </div>
+            {loading ? (
+              <div className="grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                <ProductLoader />
+                <ProductLoader />
+                <ProductLoader />
+                <ProductLoader />
+                <ProductLoader />
+                <ProductLoader />
+              </div>
+            ) : error ? (
+              <ErrorMsg error={error} />
+            ) : (
+              <div className="grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                {products?.products?.map((product) => (
+                  <Product key={product._id} product={product} />
+                ))}
+              </div>
+            )}
             <div className="my-5">
               <div className="flex justify-center space-x-1 dark:text-gray-100">
                 <button

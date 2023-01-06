@@ -1,46 +1,50 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Product = () => {
+const Product = ({ product }) => {
+  const { name, description, coverPhoto, newPrice, category, sellerInfo, _id } =
+    product;
+
+  console.log(description);
   return (
     <div className=" overflow-hidden bg-white rounded shadow transition-all">
-      <Link to={`/product/id`}>
-        <img
-          src="https://cdn.tailgrids.com/2.0/image/application/images/cards/card-01/image-02.jpg"
-          className="w-full"
-          alt=""
-        />
+      <Link to={`/product/${_id}`}>
+        <img src={coverPhoto} className="w-full h-44 object-cover" alt={name} />
       </Link>
       <div className="p-5">
         <Link
-          to={`/product/id`}
-          className="text-xs text-gray-500 rounded bg-gray-100 py-1 px-2 my-1 inline-block"
+          to={`/product/${category}`}
+          className="text-xs text-gray-500 rounded bg-gray-100 py-1 px-2 my-1 inline-block capitalize"
         >
-          #Category
+          #{category}
         </Link>
         <h2 className="text-base font-bold text-gray-900 hover:text-gray-700">
-          <Link to={`/product/id`}>The Catcher in the Rye</Link>
+          <Link to={`/product/${_id}`}>{name}</Link>
         </h2>
 
         <p className="my-2 text-sm text-gray-500">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo unde
-          quis.
+          {description?.length > 100
+            ? description?.split(" ").slice(0, 11).join(" ")
+            : description}
+          ...
         </p>
 
         <div className="border-t">
           <div className="flex items-center justify-between mt-2">
             <div className="flex items-center justify-between gap-2">
               <img
-                src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&amp;w=1000&amp;q=80"
-                alt=""
+                src={sellerInfo?.userImg}
+                alt={sellerInfo?.userName}
                 className="h-10 w-10 rounded-full"
               />
 
               <div>
                 <h1 className="text-xs font-bold text-gray-600 text-right">
-                  John Smith
+                  {sellerInfo?.userName}
                 </h1>
-                <p className="text-xs text-gray-500">User</p>
+                <p className="text-xs text-gray-500">
+                  {sellerInfo?.isAdmin ? "Admin" : "User"}
+                </p>
               </div>
             </div>
             <div>
