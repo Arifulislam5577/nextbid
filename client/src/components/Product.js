@@ -2,10 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Product = ({ product }) => {
-  const { name, description, coverPhoto, newPrice, category, sellerInfo, _id } =
-    product;
+  const { name, description, coverPhoto, category, sellerInfo, _id } = product;
 
-  console.log(description);
   return (
     <div className=" overflow-hidden bg-white rounded shadow transition-all">
       <Link to={`/product/${_id}`}>

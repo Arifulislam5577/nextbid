@@ -3,10 +3,17 @@ import axios from "axios";
 
 export const getProducts = createAsyncThunk(
   "Products/getProducts",
-  async (_, thunkAPI) => {
+  async (productData, thunkAPI) => {
+    const { page, category, keyword } = productData;
+
+    let api = `http://localhost:5000/api/v1/products?page=${page}&name=${keyword}`;
+
+    if (category) {
+      api = `http://localhost:5000/api/v1/products?category=${category}`;
+    }
     try {
       const { data } = await axios.get(
-        `http://localhost:5000/api/v1/products`,
+        `${api}`,
         {},
         {
           headers: {

@@ -1,18 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Product from "../../components/Product";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../../redux/features/product/productService";
 import ProductLoader from "../../components/ProductLoader";
 import ErrorMsg from "../../components/ErrorMsg";
+import Pagination from "../../components/Pagination";
 const AllProducts = () => {
-  const dispatch = useDispatch();
+  const [page, setPage] = useState(1);
+  const [category, setCategory] = useState("");
+  const [keyword, setKeyword] = useState("");
 
+  const dispatch = useDispatch();
   const { loading, error, products } = useSelector((state) => state.products);
-  console.log(products);
+  const pageNumber = Math.ceil(products?.totalDocuments / 6);
+
   useEffect(() => {
-    dispatch(getProducts());
-  }, [dispatch]);
+    dispatch(getProducts({ page, category, keyword }));
+  }, [dispatch, page, category, keyword]);
   return (
     <motion.section
       initial={{ y: "3%" }}
@@ -80,6 +85,7 @@ const AllProducts = () => {
                   <p className="text-gray-600 text-xs mb-3 flex items-center">
                     <input
                       type="radio"
+                      readOnly
                       name="product"
                       className="mr-2 accent-gray-600 "
                       id="all"
@@ -91,6 +97,7 @@ const AllProducts = () => {
                   <p className="text-gray-600 text-xs mb-3 flex items-center">
                     <input
                       type="radio"
+                      readOnly
                       name="product"
                       className="mr-2 accent-gray-600 "
                       id="Computer"
@@ -102,6 +109,7 @@ const AllProducts = () => {
                   <p className="text-gray-600 text-xs mb-3 flex items-center">
                     <input
                       type="radio"
+                      readOnly
                       name="product"
                       className="mr-2 accent-gray-600"
                       id="Electronics"
@@ -113,6 +121,7 @@ const AllProducts = () => {
                   <p className="text-gray-600 text-xs mb-3 flex items-center">
                     <input
                       type="radio"
+                      readOnly
                       name="product"
                       className="mr-2 accent-gray-600"
                       id="Transport"
@@ -124,6 +133,7 @@ const AllProducts = () => {
                   <p className="text-gray-600 text-xs mb-3 flex items-center">
                     <input
                       type="radio"
+                      readOnly
                       name="product"
                       className="mr-2 accent-gray-600"
                       id="Mobile"
@@ -135,6 +145,7 @@ const AllProducts = () => {
                   <p className="text-gray-600 text-xs mb-3 flex items-center">
                     <input
                       type="radio"
+                      readOnly
                       name="product"
                       className="mr-2 accent-gray-600"
                       id="Properties"
@@ -166,71 +177,8 @@ const AllProducts = () => {
                 ))}
               </div>
             )}
-            <div className="my-5">
-              <div className="flex justify-center space-x-1 dark:text-gray-100">
-                <button
-                  title="previous"
-                  type="button"
-                  className="inline-flex items-center justify-center w-8 h-8 py-0 border rounded-md shadow-md dark:bg-gray-900 dark:border-gray-800"
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    fill="none"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="w-4"
-                  >
-                    <polyline points="15 18 9 12 15 6"></polyline>
-                  </svg>
-                </button>
-                <button
-                  type="button"
-                  title="Page 1"
-                  className="inline-flex items-center justify-center w-8 h-8 text-sm font-semibold border rounded shadow-md dark:bg-gray-900 dark:text-violet-400 dark:border-violet-400"
-                >
-                  1
-                </button>
-                <button
-                  type="button"
-                  className="inline-flex items-center justify-center w-8 h-8 text-sm border rounded shadow-md dark:bg-gray-900 dark:border-gray-800"
-                  title="Page 2"
-                >
-                  2
-                </button>
-                <button
-                  type="button"
-                  className="inline-flex items-center justify-center w-8 h-8 text-sm border rounded shadow-md dark:bg-gray-900 dark:border-gray-800"
-                  title="Page 3"
-                >
-                  3
-                </button>
-                <button
-                  type="button"
-                  className="inline-flex items-center justify-center w-8 h-8 text-sm border rounded shadow-md dark:bg-gray-900 dark:border-gray-800"
-                  title="Page 4"
-                >
-                  4
-                </button>
-                <button
-                  title="next"
-                  type="button"
-                  className="inline-flex items-center justify-center w-8 h-8 py-0 border rounded-md shadow-md dark:bg-gray-900 dark:border-gray-800"
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    fill="none"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="w-4"
-                  >
-                    <polyline points="9 18 15 12 9 6"></polyline>
-                  </svg>
-                </button>
-              </div>
+            <div className="my-5 w-full flex items-center justify-start">
+              <Pagination pageNum={pageNumber} setPage={setPage} page={page} />
             </div>
           </div>
         </div>
