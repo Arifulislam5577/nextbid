@@ -33,7 +33,7 @@ export const createNewProduct = expressAsyncHandler(async (req, res, next) => {
 });
 
 export const getProducts = expressAsyncHandler(async (req, res) => {
-  const { name, category, isFeatured, sort, page, limit } = req.query;
+  let { name, category, isFeatured, sort, page, limit, price } = req.query;
   const queryObj = {};
 
   if (category) {
@@ -45,6 +45,10 @@ export const getProducts = expressAsyncHandler(async (req, res) => {
 
   if (name) {
     queryObj.name = { $regex: name, $options: "i" };
+  }
+  if (price) {
+    const priceRange = price.split(",");
+    queryObj.newPrice = { $gte: priceRange[0], $lte: priceRange[1] };
   }
 
   let apiData = Product.find(queryObj).populate("sellerInfo");
@@ -72,6 +76,10 @@ export const getProductById = expressAsyncHandler(async (req, res) => {
   if (!product) {
     return res.status(404).json({ message: "Product not found" });
   }
+  const relatedProduct = await Product.find({
+    category: product.category,
+    _id: { $nin: [product._id] },
+  });
 
-  return res.status(200).json(product);
+  return res.status(200).json({ product, relatedProduct });
 });
