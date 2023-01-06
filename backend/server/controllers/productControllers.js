@@ -32,6 +32,40 @@ export const createNewProduct = expressAsyncHandler(async (req, res, next) => {
   return res.status(201).json({ message: "Product created successfully" });
 });
 
+export const getProducts = expressAsyncHandler(async (req, res) => {
+  const { name, category, isFeatured, sort, page, limit } = req.query;
+  const queryObj = {};
+
+  if (category) {
+    queryObj.category = category;
+  }
+  if (isFeatured) {
+    queryObj.isFeatured = isFeatured;
+  }
+
+  if (name) {
+    queryObj.name = { $regex: name, $options: "i" };
+  }
+
+  let apiData = Product.find(queryObj).populate("sellerInfo");
+
+  if (sort) {
+    apiData = apiData.sort(sort);
+  }
+
+  const pageNum = page * 1 || 1;
+  const limitNum = limit * 1 || 6;
+  const skip = (pageNum - 1) * limitNum;
+  apiData = apiData.skip(skip).limit(limitNum);
+
+  const products = await apiData;
+  const totalDocuments = await Product.countDocuments();
+
+  return res
+    .status(200)
+    .json({ totalDocuments, result: products.length, products });
+});
+
 export const getProductById = expressAsyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id);
 
