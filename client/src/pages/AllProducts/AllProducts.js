@@ -6,18 +6,32 @@ import { getProducts } from "../../redux/features/product/productService";
 import ProductLoader from "../../components/ProductLoader";
 import ErrorMsg from "../../components/ErrorMsg";
 import Pagination from "../../components/Pagination";
+import Box from "@mui/material/Box";
+import Slider from "@mui/material/Slider";
 const AllProducts = () => {
+  const productCategory = [
+    "All Products",
+    "car",
+    "computer",
+    "electronics",
+    "mobile",
+    "properties",
+  ];
   const [page, setPage] = useState(1);
   const [category, setCategory] = useState("");
   const [keyword, setKeyword] = useState("");
-
+  const [value, setValue] = useState([0, 10000]);
   const dispatch = useDispatch();
   const { loading, error, products } = useSelector((state) => state.products);
   const pageNumber = Math.ceil(products?.totalDocuments / 6);
 
   useEffect(() => {
-    dispatch(getProducts({ page, category, keyword }));
-  }, [dispatch, page, category, keyword]);
+    if (category === "All Products") {
+      setCategory("");
+    }
+
+    dispatch(getProducts({ page, category, value, keyword }));
+  }, [dispatch, page, category, value, keyword]);
   return (
     <motion.section
       initial={{ y: "3%" }}
@@ -44,10 +58,10 @@ const AllProducts = () => {
                   <label htmlFor="Search" className="hidden">
                     Search
                   </label>
-                  <div className="relative">
+                  <form className="relative">
                     <span className="absolute inset-y-0 left-0 flex items-center pl-2">
                       <button
-                        type="button"
+                        type="submit"
                         title="search"
                         className="p-1 focus:outline-none focus:ring"
                       >
@@ -61,99 +75,42 @@ const AllProducts = () => {
                       </button>
                     </span>
                     <input
-                      type="search"
-                      name="Search"
+                      type="text"
                       placeholder="Search..."
+                      value={keyword}
+                      onChange={(e) => setKeyword(e.target.value)}
                       className="py-2 pl-10 text-sm rounded w-full focus:outline-none bg-gray-900 dark:text-gray-100 focus:dark:bg-gray-900 focus:dark:border-violet-400"
                     />
-                  </div>
+                  </form>
                 </fieldset>
               </div>
               <div className="my-4 border-b pb-3">
                 <h1 className="text-gray-600 font-bold text-sm">Price</h1>
-                <input
-                  id="slider"
-                  type="range"
-                  value="75"
-                  className="w-full h-2 rounded-lg cursor-pointer accent-gray-600"
-                />
-                <p className="text-xs text-gray-600">Range: $120</p>
+                <div className="mt-3">
+                  <Box>
+                    <Slider
+                      value={value}
+                      onChange={(e) => setValue(e.target.value)}
+                      valueLabelDisplay="auto"
+                      min={0}
+                      max={10000}
+                      aria-labelledby="range-slider"
+                    />
+                  </Box>
+                </div>
               </div>
               <div className="my-4 pb-3">
                 <h1 className="text-gray-600 font-bold text-sm">Category</h1>
                 <div className="my-2">
-                  <p className="text-gray-600 text-xs mb-3 flex items-center">
-                    <input
-                      type="radio"
-                      readOnly
-                      name="product"
-                      className="mr-2 accent-gray-600 "
-                      id="all"
-                    />
-                    <label className="cursor-pointer" htmlFor="all">
-                      All products
-                    </label>
-                  </p>
-                  <p className="text-gray-600 text-xs mb-3 flex items-center">
-                    <input
-                      type="radio"
-                      readOnly
-                      name="product"
-                      className="mr-2 accent-gray-600 "
-                      id="Computer"
-                    />
-                    <label className="cursor-pointer" htmlFor="Computer">
-                      Computer
-                    </label>
-                  </p>
-                  <p className="text-gray-600 text-xs mb-3 flex items-center">
-                    <input
-                      type="radio"
-                      readOnly
-                      name="product"
-                      className="mr-2 accent-gray-600"
-                      id="Electronics"
-                    />
-                    <label className="cursor-pointer" htmlFor="Electronics">
-                      Electronics
-                    </label>
-                  </p>
-                  <p className="text-gray-600 text-xs mb-3 flex items-center">
-                    <input
-                      type="radio"
-                      readOnly
-                      name="product"
-                      className="mr-2 accent-gray-600"
-                      id="Transport"
-                    />
-                    <label className="cursor-pointer" htmlFor="Transport">
-                      Transport
-                    </label>
-                  </p>
-                  <p className="text-gray-600 text-xs mb-3 flex items-center">
-                    <input
-                      type="radio"
-                      readOnly
-                      name="product"
-                      className="mr-2 accent-gray-600"
-                      id="Mobile"
-                    />
-                    <label className="cursor-pointer" htmlFor="Mobile">
-                      Mobile
-                    </label>
-                  </p>
-                  <p className="text-gray-600 text-xs mb-3 flex items-center">
-                    <input
-                      type="radio"
-                      readOnly
-                      name="product"
-                      className="mr-2 accent-gray-600"
-                      id="Properties"
-                    />
-                    <label className="cursor-pointer" htmlFor="Properties">
-                      Properties
-                    </label>
-                  </p>
+                  {productCategory.map((category) => (
+                    <button
+                      key={category}
+                      onClick={() => setCategory(category)}
+                      className="block my-2 capitalize text-sm hover:translate-x-1 transition-all"
+                    >
+                      {category}
+                    </button>
+                  ))}
                 </div>
               </div>
             </div>
@@ -170,6 +127,8 @@ const AllProducts = () => {
               </div>
             ) : error ? (
               <ErrorMsg error={error} />
+            ) : products?.products?.length === 0 ? (
+              "No Products"
             ) : (
               <div className="grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                 {products?.products?.map((product) => (
@@ -177,7 +136,13 @@ const AllProducts = () => {
                 ))}
               </div>
             )}
-            <div className="my-5 w-full flex items-center justify-start">
+            <div
+              className={`my-5 w-full flex items-center justify-start ${
+                ((category && products?.result) ||
+                  !products?.products?.length) &&
+                "hidden"
+              }`}
+            >
               <Pagination pageNum={pageNumber} setPage={setPage} page={page} />
             </div>
           </div>

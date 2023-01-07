@@ -4,9 +4,14 @@ import axios from "axios";
 export const getProducts = createAsyncThunk(
   "Products/getProducts",
   async (productData, thunkAPI) => {
-    const { page, category, keyword } = productData;
+    const {
+      page = 1,
+      category = "",
+      keyword = "",
+      value = [0, 10000],
+    } = productData;
 
-    let api = `http://localhost:5000/api/v1/products?page=${page}&name=${keyword}`;
+    let api = `http://localhost:5000/api/v1/products?price[gte]=${value[0]}&price[lte]=${value[1]}&searchBy=${keyword}&page=${page}`;
 
     if (category) {
       api = `http://localhost:5000/api/v1/products?category=${category}`;
@@ -24,6 +29,7 @@ export const getProducts = createAsyncThunk(
           },
         }
       );
+
       return data;
     } catch (error) {
       const message =

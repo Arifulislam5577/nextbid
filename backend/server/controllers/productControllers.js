@@ -1,5 +1,6 @@
 import expressAsyncHandler from "express-async-handler";
 import Product from "../model/productModel.js";
+import ApiService from "../services/ApiServices.js";
 import { uplaodImg } from "../utils/uploadImg.js";
 
 export const createNewProduct = expressAsyncHandler(async (req, res, next) => {
@@ -33,37 +34,13 @@ export const createNewProduct = expressAsyncHandler(async (req, res, next) => {
 });
 
 export const getProducts = expressAsyncHandler(async (req, res) => {
-  let { name, category, isFeatured, sort, page, limit, price } = req.query;
-  const queryObj = {};
-
-  if (category) {
-    queryObj.category = category;
-  }
-  if (isFeatured) {
-    queryObj.isFeatured = isFeatured;
-  }
-
-  if (name) {
-    queryObj.name = { $regex: name, $options: "i" };
-  }
-  if (price) {
-    const priceRange = price.split(",");
-    queryObj.newPrice = { $gte: priceRange[0], $lte: priceRange[1] };
-  }
-
-  let apiData = Product.find(queryObj).populate("sellerInfo");
-
-  if (sort) {
-    apiData = apiData.sort(sort);
-  }
-
-  const pageNum = page * 1 || 1;
-  const limitNum = limit * 1 || 6;
-  const skip = (pageNum - 1) * limitNum;
-  apiData = apiData.skip(skip).limit(limitNum);
-
-  const products = await apiData;
   const totalDocuments = await Product.countDocuments();
+  const apiServices = new ApiService(Product.find(), req.query)
+    .search()
+    .filter()
+    .paginate(6);
+
+  const products = await apiServices.query;
 
   return res
     .status(200)

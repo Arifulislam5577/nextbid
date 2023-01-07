@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Product = ({ product }) => {
-  const { name, description, coverPhoto, category, sellerInfo, _id } = product;
+  const { name, description, coverPhoto, newPrice, sellerInfo, _id } = product;
 
   return (
     <div className=" overflow-hidden bg-white rounded shadow transition-all">
@@ -10,12 +10,6 @@ const Product = ({ product }) => {
         <img src={coverPhoto} className="w-full h-44 object-cover" alt={name} />
       </Link>
       <div className="p-5">
-        <Link
-          to={`/product/${category}`}
-          className="text-xs text-gray-500 rounded bg-gray-100 py-1 px-2 my-1 inline-block capitalize"
-        >
-          #{category}
-        </Link>
         <h2 className="text-base font-bold text-gray-900 hover:text-gray-700">
           <Link to={`/product/${_id}`}>{name}</Link>
         </h2>
@@ -26,6 +20,8 @@ const Product = ({ product }) => {
             : description}
           ...
         </p>
+
+        <p className="font-bold text-gray-600 my-3 text-sm">${newPrice}</p>
 
         <div className="border-t">
           <div className="flex items-center justify-between mt-2">
