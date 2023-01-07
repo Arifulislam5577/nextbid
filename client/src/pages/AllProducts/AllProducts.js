@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { GrPowerReset } from "react-icons/gr";
 import Product from "../../components/Product";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../../redux/features/product/productService";
@@ -8,6 +9,7 @@ import ErrorMsg from "../../components/ErrorMsg";
 import Pagination from "../../components/Pagination";
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
+import { Alert } from "@mui/material";
 const AllProducts = () => {
   const productCategory = [
     "All Products",
@@ -28,6 +30,7 @@ const AllProducts = () => {
   useEffect(() => {
     if (category === "All Products") {
       setCategory("");
+      setPage(1);
     }
 
     dispatch(getProducts({ page, category, value, keyword }));
@@ -44,16 +47,14 @@ const AllProducts = () => {
           <div className="lg:col-span-1 w-full">
             <div className="p-5 bg-white shadow-sm">
               <div className="flex items-center justify-between border-b pb-3">
-                <h1 className="text-gray-600 font-bold text-sm">
-                  Filter Product
-                </h1>
-                <button className="px-2 py-1 text-white bg-gray-700 hover:bg-orange-600 text-xs rounded-full">
-                  reset
+                <h1 className="text-gray-600  text-sm">Filter Product</h1>
+                <button className="">
+                  <GrPowerReset size="18" />
                 </button>
               </div>
 
               <div className="my-4 border-b pb-3">
-                <h1 className="text-gray-600 font-bold text-sm">Search</h1>
+                <h1 className="text-gray-600  text-sm">Search</h1>
                 <fieldset className="w-full space-y-1 dark:text-gray-100">
                   <label htmlFor="Search" className="hidden">
                     Search
@@ -79,13 +80,13 @@ const AllProducts = () => {
                       placeholder="Search..."
                       value={keyword}
                       onChange={(e) => setKeyword(e.target.value)}
-                      className="py-2 pl-10 text-sm rounded w-full focus:outline-none bg-gray-900 dark:text-gray-100 focus:dark:bg-gray-900 focus:dark:border-violet-400"
+                      className="py-2 pl-10 text-sm placeholder:text-gray-100 rounded w-full focus:outline-none bg-gray-300 text-gray-900 "
                     />
                   </form>
                 </fieldset>
               </div>
               <div className="my-4 border-b pb-3">
-                <h1 className="text-gray-600 font-bold text-sm">Price</h1>
+                <h1 className="text-gray-600  text-sm">Price</h1>
                 <div className="mt-3">
                   <Box>
                     <Slider
@@ -95,12 +96,13 @@ const AllProducts = () => {
                       min={0}
                       max={10000}
                       aria-labelledby="range-slider"
+                      className="text-gray-600"
                     />
                   </Box>
                 </div>
               </div>
               <div className="my-4 pb-3">
-                <h1 className="text-gray-600 font-bold text-sm">Category</h1>
+                <h1 className="text-gray-600  text-sm mb-5">Category</h1>
                 <div className="my-2">
                   {productCategory.map((category) => (
                     <button
@@ -128,7 +130,9 @@ const AllProducts = () => {
             ) : error ? (
               <ErrorMsg error={error} />
             ) : products?.products?.length === 0 ? (
-              "No Products"
+              <Alert variant="filled" severity="warning">
+                No Product Found - Try Another Product
+              </Alert>
             ) : (
               <div className="grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                 {products?.products?.map((product) => (

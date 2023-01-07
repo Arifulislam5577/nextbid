@@ -35,7 +35,10 @@ export const createNewProduct = expressAsyncHandler(async (req, res, next) => {
 
 export const getProducts = expressAsyncHandler(async (req, res) => {
   const totalDocuments = await Product.countDocuments();
-  const apiServices = new ApiService(Product.find(), req.query)
+  const apiServices = new ApiService(
+    Product.find().populate("sellerInfo"),
+    req.query
+  )
     .search()
     .filter()
     .paginate(6);

@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 const Product = ({ product }) => {
   const { name, description, coverPhoto, newPrice, sellerInfo, _id } = product;
-
   return (
     <div className=" overflow-hidden bg-white rounded shadow transition-all">
       <Link to={`/product/${_id}`}>

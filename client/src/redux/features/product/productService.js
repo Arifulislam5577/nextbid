@@ -9,9 +9,17 @@ export const getProducts = createAsyncThunk(
       category = "",
       keyword = "",
       value = [0, 10000],
+      isFeatured = false,
+      isSold = false,
     } = productData;
 
-    let api = `http://localhost:5000/api/v1/products?price[gte]=${value[0]}&price[lte]=${value[1]}&searchBy=${keyword}&page=${page}`;
+    let api = `http://localhost:5000/api/v1/products?newPrice[gte]=${
+      value[0]
+    }&newPrice[lte]=${
+      value[1]
+    }&searchBy=${keyword}&page=${page}&isSold=${isSold}${
+      isFeatured ? "&isFeatured=true" : ""
+    }`;
 
     if (category) {
       api = `http://localhost:5000/api/v1/products?category=${category}`;
