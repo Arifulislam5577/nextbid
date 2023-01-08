@@ -11,19 +11,57 @@ export const getProducts = createAsyncThunk(
       value = [0, 10000],
       isFeatured = false,
       isSold = false,
+      limit = 6,
+      sort = "",
     } = productData;
 
     let api = `http://localhost:5000/api/v1/products?newPrice[gte]=${
       value[0]
-    }&newPrice[lte]=${
-      value[1]
-    }&searchBy=${keyword}&page=${page}&isSold=${isSold}${
-      isFeatured ? "&isFeatured=true" : ""
+    }&newPrice[lte]=${value[1]}&searchBy=${keyword}&page=${page}&sort=${
+      sort === "dsc" ? "newPrice" : sort === "asc" ? "-newPrice" : ""
+    }&isSold=${isSold}${isFeatured ? "&isFeatured=true" : ""}${
+      limit === 3 ? "&limit=3" : "&limit=6"
     }`;
 
     if (category) {
-      api = `http://localhost:5000/api/v1/products?category=${category}`;
+      api = `http://localhost:5000/api/v1/products?category=${category}&newPrice[lte]=${
+        value[1]
+      }&searchBy=${keyword}&page=${page}&sort=${
+        sort === "dsc" ? "newPrice" : sort === "asc" ? "-newPrice" : ""
+      }`;
     }
+    try {
+      const { data } = await axios.get(
+        `${api}`,
+        {},
+        {
+          headers: {
+            "content-type": "application/json",
+            authorization: `Bearer ${JSON.parse(
+              localStorage.getItem("token")
+            )}`,
+          },
+        }
+      );
+
+      return data;
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+export const getProductById = createAsyncThunk(
+  "Products/getProductsById",
+  async (productId, thunkAPI) => {
+    let api = `http://localhost:5000/api/v1/products/${productId}`;
+
     try {
       const { data } = await axios.get(
         `${api}`,

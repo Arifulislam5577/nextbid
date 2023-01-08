@@ -41,7 +41,8 @@ export const getProducts = expressAsyncHandler(async (req, res) => {
   )
     .search()
     .filter()
-    .paginate(6);
+    .sort()
+    .paginate(req.query.limit ? req.query.limit : 6);
 
   const products = await apiServices.query;
 
@@ -51,15 +52,16 @@ export const getProducts = expressAsyncHandler(async (req, res) => {
 });
 
 export const getProductById = expressAsyncHandler(async (req, res) => {
-  const product = await Product.findById(req.params.id);
+  const product = await Product.findById(req.params.id).populate("sellerInfo");
 
   if (!product) {
     return res.status(404).json({ message: "Product not found" });
   }
   const relatedProduct = await Product.find({
     category: product.category,
+    isSold: false,
     _id: { $nin: [product._id] },
-  });
+  }).populate("sellerInfo");
 
   return res.status(200).json({ product, relatedProduct });
 });

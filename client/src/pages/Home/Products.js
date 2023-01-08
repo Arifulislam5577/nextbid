@@ -13,7 +13,7 @@ const Products = () => {
   const dispatch = useDispatch();
   const { loading, error, products } = useSelector((state) => state.products);
   useEffect(() => {
-    dispatch(getProducts({ isFeatured, isSold }));
+    dispatch(getProducts({ isFeatured, isSold, limit: 3 }));
   }, [dispatch, isFeatured, isSold]);
   return (
     <>

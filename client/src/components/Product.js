@@ -6,7 +6,7 @@ const Product = ({ product }) => {
   return (
     <div className=" overflow-hidden bg-white rounded shadow transition-all">
       <Link to={`/product/${_id}`}>
-        <img src={coverPhoto} className="w-full h-44 object-cover" alt={name} />
+        <img src={coverPhoto} className="w-full h-40" alt={name} />
       </Link>
       <div className="p-5">
         <h2 className="text-base font-bold text-gray-900 hover:text-gray-700">

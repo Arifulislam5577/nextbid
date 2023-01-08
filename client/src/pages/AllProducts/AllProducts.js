@@ -22,19 +22,30 @@ const AllProducts = () => {
   const [page, setPage] = useState(1);
   const [category, setCategory] = useState("");
   const [keyword, setKeyword] = useState("");
+  const [sort, setSort] = useState("");
   const [value, setValue] = useState([0, 10000]);
   const dispatch = useDispatch();
   const { loading, error, products } = useSelector((state) => state.products);
   const pageNumber = Math.ceil(products?.totalDocuments / 6);
 
+  const resetAll = () => {
+    setPage(1);
+    setCategory("");
+    setKeyword("");
+    setSort("");
+    setValue([0, 10000]);
+  };
   useEffect(() => {
     if (category === "All Products") {
       setCategory("");
       setPage(1);
     }
 
-    dispatch(getProducts({ page, category, value, keyword }));
-  }, [dispatch, page, category, value, keyword]);
+    if (sort === "Select Options") {
+      setSort("");
+    }
+    dispatch(getProducts({ page, category, value, keyword, sort }));
+  }, [dispatch, page, category, value, keyword, sort]);
   return (
     <motion.section
       initial={{ y: "3%" }}
@@ -48,7 +59,7 @@ const AllProducts = () => {
             <div className="p-5 bg-white shadow-sm">
               <div className="flex items-center justify-between border-b pb-3">
                 <h1 className="text-gray-600  text-sm">Filter Product</h1>
-                <button className="">
+                <button className="" onClick={resetAll}>
                   <GrPowerReset size="18" />
                 </button>
               </div>
@@ -80,7 +91,7 @@ const AllProducts = () => {
                       placeholder="Search..."
                       value={keyword}
                       onChange={(e) => setKeyword(e.target.value)}
-                      className="py-2 pl-10 text-sm placeholder:text-gray-100 rounded w-full focus:outline-none bg-gray-300 text-gray-900 "
+                      className="py-2 pl-10 text-sm placeholder:text-gray-300 rounded w-full focus:outline-none bg-gray-500 text-gray-300 "
                     />
                   </form>
                 </fieldset>
@@ -114,6 +125,17 @@ const AllProducts = () => {
                     </button>
                   ))}
                 </div>
+              </div>
+              <div className="my-4 pb-3">
+                <h1 className="text-gray-600  text-sm">Sort By</h1>
+                <select
+                  onChange={(e) => setSort(e.target.value)}
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm  w-full rounded-none block mt-2 py-1"
+                >
+                  <option defaultValue>Select Options</option>
+                  <option value="asc">Higher To Low</option>
+                  <option value="dsc">Lower To High</option>
+                </select>
               </div>
             </div>
           </div>

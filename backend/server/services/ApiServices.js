@@ -38,6 +38,12 @@ class ApiService {
     this.query = this.query.limit(resultPerPage).skip(skip);
     return this;
   }
+
+  sort() {
+    const sortedBy = this.queryStr.sort;
+    this.query = this.query.sort(sortedBy);
+    return this;
+  }
 }
 
 export default ApiService;
