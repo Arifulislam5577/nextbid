@@ -1,6 +1,7 @@
 import expressAsyncHandler from "express-async-handler";
 import Product from "../model/productModel.js";
 import ApiService from "../services/ApiServices.js";
+import { productAllInfo } from "../services/productServices.js";
 import { uplaodImg } from "../utils/uploadImg.js";
 
 export const createNewProduct = expressAsyncHandler(async (req, res, next) => {
@@ -57,11 +58,14 @@ export const getProductById = expressAsyncHandler(async (req, res) => {
   if (!product) {
     return res.status(404).json({ message: "Product not found" });
   }
-  const relatedProduct = await Product.find({
-    category: product.category,
-    isSold: false,
-    _id: { $nin: [product._id] },
-  }).populate("sellerInfo");
+  const { totalBid, lastThreeBid, highestBid, relatedProduct } =
+    await productAllInfo(product);
 
-  return res.status(200).json({ product, relatedProduct });
+  return res.status(200).json({
+    product,
+    relatedProduct,
+    productBid: lastThreeBid,
+    totalBid,
+    highestBid,
+  });
 });

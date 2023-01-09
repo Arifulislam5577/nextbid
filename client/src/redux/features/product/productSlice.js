@@ -5,13 +5,18 @@ const initialState = {
   products: [],
   loading: false,
   error: "",
-  product: null,
+  productInfo: null,
+  bidActive: true,
 };
 
 const productSlice = createSlice({
   name: "Products",
   initialState,
-  reducers: {},
+  reducers: {
+    isBidActive(state, action) {
+      state.bidActive = false;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(getProducts.pending, (state) => {
       state.loading = true;
@@ -34,7 +39,7 @@ const productSlice = createSlice({
     });
 
     builder.addCase(getProductById.fulfilled, (state, action) => {
-      state.product = action.payload;
+      state.productInfo = action.payload;
       state.loading = false;
       state.error = "";
     });
@@ -47,3 +52,5 @@ const productSlice = createSlice({
 });
 
 export const productReducers = productSlice.reducer;
+
+export const { isBidActive } = productSlice.actions;

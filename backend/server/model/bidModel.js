@@ -4,18 +4,17 @@ const { Schema, model } = mongoose;
 
 const biderSchema = new Schema(
   {
-    biderInfo: {
-      biderName: { type: String, required: true },
-      biderImg: { type: String, required: true },
-      biderEmail: { type: String, required: true },
-      biderCountry: { type: String, required: true },
+    userInfo: {
+      type: mongoose.Types.ObjectId,
+      required: true,
+      ref: "user",
     },
     productInfo: {
       type: mongoose.Types.ObjectId,
       required: true,
       ref: "product",
     },
-    bidAmount: { type: Number, required: true },
+    amount: { type: Number, required: true },
   },
   { timestamps: true }
 );

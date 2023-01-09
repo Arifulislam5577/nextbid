@@ -1,6 +1,9 @@
 import express from "express";
-const router = express.Router();
+import { createNewBid, getProductBid } from "../controllers/bidControllers.js";
+import { verifyUser } from "../middlewares/verifyUser.js";
 
-router.route("/").get();
+const bidRouter = express.Router();
 
-export default router;
+bidRouter.route("/").post(verifyUser, createNewBid).get(getProductBid);
+
+export default bidRouter;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import BiderInfo from "./BiderInfo";
 import { ImPriceTags } from "react-icons/im";
 import { AiFillCarryOut } from "react-icons/ai";
@@ -10,14 +10,18 @@ import { useParams } from "react-router-dom";
 import { getProductById } from "../../redux/features/product/productService";
 import { useDispatch, useSelector } from "react-redux";
 import Countdown from "react-countdown";
+import { isBidActive } from "../../redux/features/product/productSlice";
 const ProductDetails = () => {
-  const [active, setActive] = useState(false);
   const { id } = useParams();
   const dispatch = useDispatch();
-  const { error, product, loading } = useSelector((state) => state.products);
+  const { error, productInfo, loading, bidActive } = useSelector(
+    (state) => state.products
+  );
+  const { user } = useSelector((state) => state.authReducers);
+
   const renderer = ({ days, hours, minutes, seconds, completed }) => {
     if (completed) {
-      setActive(true);
+      dispatch(isBidActive());
       return (
         <h1 className="text-white text-center font-bold pb-2 border-b uppercase text-xl">
           Offer End
@@ -81,13 +85,13 @@ const ProductDetails = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
           <div className="lg:col-span-2 col-span-1 w-full">
             <img
-              src={product?.product?.coverPhoto}
+              src={productInfo?.product?.coverPhoto}
               alt=""
               className="rounded"
             />
 
             <h1 className="text-xl font-bold my-3 text-gray-600 flex items-center gap-1">
-              {product?.product?.name}
+              {productInfo?.product?.name}
             </h1>
             <hr />
             <h1 className="text-sm font-bold my-3 text-gray-600 flex items-center gap-1">
@@ -97,10 +101,16 @@ const ProductDetails = () => {
             <hr />
             <div className="my-3">
               <p className="text-gray-500 text-sm my-2">
-                {product?.product?.description.split(".").slice(0, 3).join(".")}
+                {productInfo?.product?.description
+                  .split(".")
+                  .slice(0, 3)
+                  .join(".")}
               </p>
               <p className="text-gray-500 text-sm my-2">
-                {product?.product?.description.split(".").slice(3, 6).join(".")}
+                {productInfo?.product?.description
+                  .split(".")
+                  .slice(3, 6)
+                  .join(".")}
               </p>
             </div>
           </div>
@@ -108,7 +118,7 @@ const ProductDetails = () => {
             <div className="lg:py-6 lg:px-8 p-5 bg-orange-600 rounded shadow">
               <Countdown
                 renderer={renderer}
-                date={new Date("2023-01-08T16:23:00.466+00:00") + 10000}
+                date={new Date("2023-02-09T17:10:00.466+00:00") + 10000}
               />
 
               <div className="flex items-center justify-between my-3 text-base text-white">
@@ -116,47 +126,49 @@ const ProductDetails = () => {
                   <ImPriceTags />
                   Minimum Sell Price
                 </h2>
-                <h2>${product?.product?.newPrice}</h2>
+                <h2>${productInfo?.product?.newPrice}</h2>
               </div>
               <div className="flex items-center justify-between my-3 text-base text-white">
                 <h2 className="flex items-center gap-1">
                   <ImPriceTags />
-                  Current Bid
+                  Highest Bid
                 </h2>
-                <h2>$200</h2>
+                <h2>${productInfo?.highestBid}</h2>
               </div>
               <div className="flex items-center justify-between my-3 text-base text-white">
                 <h2 className="flex items-center gap-1">
                   <AiFillCarryOut />
                   Total Bid
                 </h2>
-                <h2>4</h2>
+                <h2>{productInfo?.totalBid}</h2>
               </div>
               <div className="mb-3">
                 <h1 className="text-center text-white font-bold pb-2 border-b">
                   Lastest Bids
                 </h1>
-                <BiderInfo />
-                <BiderInfo />
-                <BiderInfo />
-                <BiderInfo />
+
+                {productInfo?.productBid?.length <= 0
+                  ? "No Bid"
+                  : productInfo?.productBid?.map((bidInfo) => (
+                      <BiderInfo key={bidInfo._id} biderInfo={bidInfo} />
+                    ))}
               </div>
               <div className="my-3">
                 <form>
                   <div className="grid grid-cols-4 mb-3">
                     <div className="col-span-1">
                       <img
-                        src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&amp;w=1000&amp;q=80"
-                        alt=""
+                        src={user?.userImg}
+                        alt={user?.userName}
                         className="h-12 w-12 rounded-full"
                       />
                     </div>
                     <div className="col-span-3">
                       <input
                         type="number"
-                        min={product?.product?.newPrice}
-                        className="w-full  border-b py-2 text-sm text-white focus:outline-none placeholder:text-xs px-3 bg-transparent"
-                        placeholder="$enter amount"
+                        min={productInfo?.product?.newPrice}
+                        className="w-full  border-b py-2 text-sm text-white focus:outline-none placeholder:text-xs placeholder:text-gray-300 px-3 bg-transparent"
+                        placeholder="$enter your amount"
                         required
                       />
                     </div>
@@ -164,12 +176,12 @@ const ProductDetails = () => {
 
                   <button
                     type="submit"
-                    disabled={active}
+                    disabled={!bidActive}
                     className={`w-full py-2.5 text-white capitalize text-sm ${
-                      active ? "bg-gray-500" : "bg-gray-900"
+                      !bidActive ? "bg-gray-500" : "bg-gray-900"
                     } rounded`}
                   >
-                    {active ? "bid off" : "bid now"}
+                    {!bidActive ? "bid off" : "bid now"}
                   </button>
                 </form>
               </div>
@@ -190,7 +202,7 @@ const ProductDetails = () => {
         </div>
 
         <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-4 gap-5">
-          {product?.relatedProduct?.map((product) => (
+          {productInfo?.relatedProduct?.map((product) => (
             <Product key={product._id} product={product} />
           ))}
         </div>

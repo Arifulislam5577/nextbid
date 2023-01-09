@@ -9,6 +9,8 @@ import {
   errorHandler,
   notFound,
 } from "./server/middlewares/errorMiddleware.js";
+import bidRouter from "./server/routes/biderRoutes.js";
+
 dotenv.config();
 
 const app = express();
@@ -30,6 +32,7 @@ app.get("/", (req, res) => {
 });
 app.use("/api/v1/products", productRouter);
 app.use("/api/v1/user", userRouter);
+app.use("/api/v1/bid", bidRouter);
 
 //ERROR HANDLEING
 
