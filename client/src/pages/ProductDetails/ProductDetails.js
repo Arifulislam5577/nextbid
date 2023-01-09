@@ -18,7 +18,11 @@ const ProductDetails = () => {
   const renderer = ({ days, hours, minutes, seconds, completed }) => {
     if (completed) {
       setActive(true);
-      return <span>You are good to go!</span>;
+      return (
+        <h1 className="text-white text-center font-bold pb-2 border-b uppercase text-xl">
+          Offer End
+        </h1>
+      );
     } else {
       return (
         <div className="flex items-center gap-3  my-3 text-2xl text-center justify-center text-white pb-3 border-b font-bold ">
@@ -128,7 +132,7 @@ const ProductDetails = () => {
                 </h2>
                 <h2>4</h2>
               </div>
-              <div className="mb-2">
+              <div className="mb-3">
                 <h1 className="text-center text-white font-bold pb-2 border-b">
                   Lastest Bids
                 </h1>

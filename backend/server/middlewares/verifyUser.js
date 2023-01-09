@@ -10,8 +10,13 @@ export const verifyUser = asyncHandler(async (req, res, next) => {
     try {
       token = req.headers.authorization.split(" ")[1];
       const decoded = await firebaseApp.auth().verifyIdToken(token);
-      req.user = decoded;
-      next();
+      await firebaseApp
+        .auth()
+        .getUser(decoded.uid)
+        .then((userRecord) => {
+          req.user = userRecord;
+          next();
+        });
     } catch (error) {
       res.status(401).json({ message: "No authorizated" });
     }

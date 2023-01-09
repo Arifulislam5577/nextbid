@@ -20,8 +20,9 @@ export const createNewUser = createAsyncThunk(
 
       await updateProfile(auth.currentUser, {
         displayName: name,
-        photoURL:
-          "https://www.shareicon.net/data/2016/05/24/770107_man_512x512.png",
+        photoURL: `https://randomuser.me/api/portraits/men/${Math.ceil(
+          Math.random() * 100
+        )}.jpg`,
       });
     } catch (error) {
       return thunkAPI.rejectWithValue(HandleError(error.message));

@@ -1,20 +1,18 @@
 import User from "../model/userModel.js";
 import asyncHandler from "express-async-handler";
 
-export const createUser = asyncHandler(async (req, res, next) => {
-  const { email, email_verified, name, picture } = req.user;
+export const createUser = asyncHandler(async (req, res) => {
+  const { email, emailVerified, displayName, photoURL } = req.user;
 
   const user = await User.findOne({ userEmail: email });
   if (Object.keys(user ? user : {}).length) {
-    const updateUser = await User.findByIdAndUpdate(user._id, {
-      userName: name,
-      userImg: picture,
-    });
-    return res.status(200).json(updateUser);
+    return res.status(200).json(user);
   } else {
     const user = await User.create({
       userEmail: email,
-      isVerify: email_verified,
+      isVerify: emailVerified,
+      userName: displayName,
+      userImg: photoURL,
     });
 
     if (!user) {
