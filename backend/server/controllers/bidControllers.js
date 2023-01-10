@@ -1,7 +1,7 @@
 import Bider from "../model/bidModel.js";
 import asyncHandler from "express-async-handler";
 import Product from "../model/productModel.js";
-
+import { productAllInfo } from "../services/productServices.js";
 // CREATE NEW BID IN PRODUCT
 
 export const createNewBid = asyncHandler(async (req, res) => {
@@ -29,11 +29,11 @@ export const getProductBid = asyncHandler(async (req, res) => {
   if (!product) {
     return res.status(404).json({ message: "Product not found" });
   }
+  const { totalBid, lastThreeBid, highestBid } = await productAllInfo(product);
 
-  const productBid = await Bider.find({ productInfo })
-    .limit(3)
-    .sort({ createdAt: -1 })
-    .populate("userInfo");
-
-  res.status(200).json(productBid);
+  res.status(200).json({
+    totalBid,
+    lastThreeBid,
+    highestBid,
+  });
 });

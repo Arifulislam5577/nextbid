@@ -21,7 +21,7 @@ export const createNewUser = createAsyncThunk(
       await updateProfile(auth.currentUser, {
         displayName: name,
         photoURL: `https://randomuser.me/api/portraits/men/${Math.ceil(
-          Math.random() * 100
+          Math.random() * 50
         )}.jpg`,
       });
     } catch (error) {
@@ -72,6 +72,7 @@ export const userInDB = createAsyncThunk(
           },
         }
       );
+      console.log({ user: data });
       return data;
     } catch (error) {
       const message =

@@ -4,6 +4,7 @@ import Product from "../model/productModel.js";
 export const productAllInfo = async (product) => {
   const productBidInfo = await Bider.find({ productInfo: product._id }).sort({
     amount: -1,
+    createdAt: 1,
   });
 
   const totalBid = productBidInfo.length;

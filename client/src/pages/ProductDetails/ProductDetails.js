@@ -1,23 +1,56 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import BiderInfo from "./BiderInfo";
 import { ImPriceTags } from "react-icons/im";
 import { AiFillCarryOut } from "react-icons/ai";
 import { motion } from "framer-motion";
-import Product from "../../components/Product";
 import ErrorMsg from "../../components/ErrorMsg";
 import ProductLoader from "../../components/ProductLoader";
-import { useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { getProductById } from "../../redux/features/product/productService";
 import { useDispatch, useSelector } from "react-redux";
 import Countdown from "react-countdown";
 import { isBidActive } from "../../redux/features/product/productSlice";
+import RelatedProduct from "./RelatedProduct";
+import {
+  createNewProductBid,
+  getProductBid,
+} from "../../redux/features/productBids/productBidService";
+import { resetBids } from "../../redux/features/productBids/productBidSlice";
+
 const ProductDetails = () => {
+  const [amount, setAmount] = useState(0);
+  const location = useLocation();
+  const navigate = useNavigate();
   const { id } = useParams();
   const dispatch = useDispatch();
   const { error, productInfo, loading, bidActive } = useSelector(
     (state) => state.products
   );
+
   const { user } = useSelector((state) => state.authReducers);
+  const {
+    loading: bidLoader,
+    error: bidError,
+    success,
+    bidInfo,
+  } = useSelector((state) => state.productBid);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (user) {
+      dispatch(
+        createNewProductBid({
+          userInfo: user._id,
+          productInfo: productInfo?.product?._id,
+          amount: amount * 1,
+        })
+      );
+
+      setAmount(0);
+    } else {
+      navigate(`/login?redirect=${location.pathname}`);
+    }
+  };
 
   const renderer = ({ days, hours, minutes, seconds, completed }) => {
     if (completed) {
@@ -38,11 +71,20 @@ const ProductDetails = () => {
       );
     }
   };
+
   useEffect(() => {
     if (id) {
       dispatch(getProductById(id));
+      dispatch(getProductBid(id));
     }
   }, [dispatch, id]);
+
+  useEffect(() => {
+    if (success) {
+      dispatch(resetBids());
+      dispatch(getProductBid(id));
+    }
+  }, [dispatch, success, id]);
 
   if (loading) {
     return (
@@ -90,7 +132,7 @@ const ProductDetails = () => {
               className="rounded"
             />
 
-            <h1 className="text-xl font-bold my-3 text-gray-600 flex items-center gap-1">
+            <h1 className="text-xl font-bold my-3 text-gray-900 flex items-center gap-1">
               {productInfo?.product?.name}
             </h1>
             <hr />
@@ -115,7 +157,7 @@ const ProductDetails = () => {
             </div>
           </div>
           <div className="lg:col-span-1 w-full">
-            <div className="lg:py-6 lg:px-8 p-5 bg-orange-600 rounded shadow">
+            <div className="lg:py-6 lg:px-8 p-5 bg-orange-600 rounded shadow ">
               <Countdown
                 renderer={renderer}
                 date={new Date("2023-02-09T17:10:00.466+00:00") + 10000}
@@ -124,7 +166,7 @@ const ProductDetails = () => {
               <div className="flex items-center justify-between my-3 text-base text-white">
                 <h2 className="flex items-center  gap-1">
                   <ImPriceTags />
-                  Minimum Sell Price
+                  Sell Price
                 </h2>
                 <h2>${productInfo?.product?.newPrice}</h2>
               </div>
@@ -133,33 +175,45 @@ const ProductDetails = () => {
                   <ImPriceTags />
                   Highest Bid
                 </h2>
-                <h2>${productInfo?.highestBid}</h2>
+                <h2>${bidInfo?.highestBid}</h2>
               </div>
               <div className="flex items-center justify-between my-3 text-base text-white">
                 <h2 className="flex items-center gap-1">
                   <AiFillCarryOut />
                   Total Bid
                 </h2>
-                <h2>{productInfo?.totalBid}</h2>
+                <h2>{bidInfo?.totalBid}</h2>
               </div>
               <div className="mb-3">
                 <h1 className="text-center text-white font-bold pb-2 border-b">
                   Lastest Bids
                 </h1>
-
-                {productInfo?.productBid?.length <= 0
-                  ? "No Bid"
-                  : productInfo?.productBid?.map((bidInfo) => (
-                      <BiderInfo key={bidInfo._id} biderInfo={bidInfo} />
-                    ))}
+                {bidError && (
+                  <p className="text-center my-2 text-white text-sm">
+                    {bidError}
+                  </p>
+                )}
+                {bidInfo?.lastThreeBid?.length <= 0 ? (
+                  <p className="text-center my-2 text-white text-sm">
+                    No Bids Available
+                  </p>
+                ) : (
+                  bidInfo?.lastThreeBid?.map((bidInfo) => (
+                    <BiderInfo key={bidInfo._id} biderInfo={bidInfo} />
+                  ))
+                )}
               </div>
               <div className="my-3">
-                <form>
+                <form onSubmit={handleSubmit}>
                   <div className="grid grid-cols-4 mb-3">
                     <div className="col-span-1">
                       <img
-                        src={user?.userImg}
-                        alt={user?.userName}
+                        src={
+                          user
+                            ? user?.userImg
+                            : "https://www.shareicon.net/data/2016/05/24/770107_man_512x512.png"
+                        }
+                        alt={user ? user?.userName : "user"}
                         className="h-12 w-12 rounded-full"
                       />
                     </div>
@@ -167,6 +221,8 @@ const ProductDetails = () => {
                       <input
                         type="number"
                         min={productInfo?.product?.newPrice}
+                        value={amount ? amount : ""}
+                        onChange={(e) => setAmount(e.target.value)}
                         className="w-full  border-b py-2 text-sm text-white focus:outline-none placeholder:text-xs placeholder:text-gray-300 px-3 bg-transparent"
                         placeholder="$enter your amount"
                         required
@@ -174,38 +230,33 @@ const ProductDetails = () => {
                     </div>
                   </div>
 
-                  <button
-                    type="submit"
-                    disabled={!bidActive}
-                    className={`w-full py-2.5 text-white capitalize text-sm ${
-                      !bidActive ? "bg-gray-500" : "bg-gray-900"
-                    } rounded`}
-                  >
-                    {!bidActive ? "bid off" : "bid now"}
-                  </button>
+                  {bidActive ? (
+                    <button
+                      type="submit"
+                      disabled={!bidActive || bidLoader}
+                      className={`w-full py-2.5 text-white capitalize text-sm ${
+                        !bidActive ? "bg-gray-500" : "bg-gray-900"
+                      } rounded`}
+                    >
+                      {bidLoader ? "Loading..." : "bid now"}
+                    </button>
+                  ) : (
+                    <button
+                      disabled={!bidActive}
+                      className={`w-full py-2.5 text-white capitalize text-sm 
+                        "bg-gray-500" 
+                      rounded`}
+                    >
+                      bid off
+                    </button>
+                  )}
                 </form>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="border-gray-200 my-10 pb-4 items-center justify-between border-b md:flex">
-          <div className="w-full">
-            <h2 className="mb-2 text-2xl font-semibold text-black">
-              Related Product items
-            </h2>
-            <p className="text-body-color text-sm font-medium">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
-              ultrices lectus sem.
-            </p>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-4 gap-5">
-          {productInfo?.relatedProduct?.map((product) => (
-            <Product key={product._id} product={product} />
-          ))}
-        </div>
+        <RelatedProduct relatedProduct={productInfo?.relatedProduct} />
       </div>
     </motion.section>
   );

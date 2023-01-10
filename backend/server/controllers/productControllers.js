@@ -58,14 +58,10 @@ export const getProductById = expressAsyncHandler(async (req, res) => {
   if (!product) {
     return res.status(404).json({ message: "Product not found" });
   }
-  const { totalBid, lastThreeBid, highestBid, relatedProduct } =
-    await productAllInfo(product);
+  const { relatedProduct } = await productAllInfo(product);
 
   return res.status(200).json({
     product,
     relatedProduct,
-    productBid: lastThreeBid,
-    totalBid,
-    highestBid,
   });
 });

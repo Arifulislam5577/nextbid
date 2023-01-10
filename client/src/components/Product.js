@@ -2,52 +2,32 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Product = ({ product }) => {
-  const { name, description, coverPhoto, newPrice, sellerInfo, _id } = product;
+  const { name, description, coverPhoto, newPrice, _id } = product;
   return (
     <div className=" overflow-hidden bg-white rounded shadow transition-all">
       <Link to={`/product/${_id}`}>
-        <img src={coverPhoto} className="w-full h-40" alt={name} />
+        <img src={coverPhoto} className="w-full h-44" alt={name} />
       </Link>
-      <div className="p-5">
-        <h2 className="text-base font-bold text-gray-900 hover:text-gray-700">
+      <div className="p-5 text-center">
+        <h2 className=" font-bold text-gray-900 hover:text-gray-700">
           <Link to={`/product/${_id}`}>{name}</Link>
         </h2>
 
-        <p className="my-2 text-sm text-gray-500">
+        <p className="my-1 text-sm text-gray-500">
           {description?.length > 100
-            ? description?.split(" ").slice(0, 11).join(" ")
+            ? description?.split(" ").slice(0, 8).join(" ")
             : description}
           ...
         </p>
-
-        <p className="font-bold text-gray-600 my-3 text-sm">${newPrice}</p>
-
-        <div className="border-t">
-          <div className="flex items-center justify-between mt-2">
-            <div className="flex items-center justify-between gap-2">
-              <img
-                src={sellerInfo?.userImg}
-                alt={sellerInfo?.userName}
-                className="h-10 w-10 rounded-full"
-              />
-
-              <div>
-                <h1 className="text-xs font-bold text-gray-600 text-right">
-                  {sellerInfo?.userName}
-                </h1>
-                <p className="text-xs text-gray-500">
-                  {sellerInfo?.isAdmin ? "Admin" : "User"}
-                </p>
-              </div>
-            </div>
-            <div>
-              <h1 className="text-xs font-bold text-gray-600 text-right">
-                Last Date
-              </h1>
-              <p className="text-xs text-gray-500 text-right">10 April,2023</p>
-            </div>
-          </div>
+        <div className="flex items-center justify-center my-3 mb-5">
+          <p className="font-bold text-gray-600 text-sm ">${newPrice}</p>
         </div>
+        <Link
+          to={`/product/${_id}`}
+          className="py-2 px-5 rounded-full border border-gray-600 text-gray-600 text-sm hover:bg-orange-600 hover:border-orange-600 hover:text-white duration-300 transition-all"
+        >
+          Bid Now
+        </Link>
       </div>
     </div>
   );
