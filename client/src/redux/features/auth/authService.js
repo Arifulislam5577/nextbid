@@ -72,7 +72,7 @@ export const userInDB = createAsyncThunk(
           },
         }
       );
-      console.log({ user: data });
+
       return data;
     } catch (error) {
       const message =

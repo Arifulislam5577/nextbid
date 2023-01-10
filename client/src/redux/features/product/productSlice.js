@@ -1,5 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getProducts, getProductById } from "./productService";
+import {
+  getProducts,
+  getProductById,
+  createNewProduct,
+} from "./productService";
 
 const initialState = {
   products: [],
@@ -7,6 +11,7 @@ const initialState = {
   error: "",
   productInfo: null,
   bidActive: true,
+  success: false,
 };
 
 const productSlice = createSlice({
@@ -45,6 +50,19 @@ const productSlice = createSlice({
     });
 
     builder.addCase(getProductById.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    });
+    builder.addCase(createNewProduct.pending, (state) => {
+      state.loading = true;
+    });
+
+    builder.addCase(createNewProduct.fulfilled, (state, action) => {
+      state.success = true;
+      state.loading = false;
+    });
+
+    builder.addCase(createNewProduct.rejected, (state, action) => {
       state.loading = false;
       state.error = action.payload;
     });

@@ -57,6 +57,55 @@ export const getProducts = createAsyncThunk(
   }
 );
 
+export const createNewProduct = createAsyncThunk(
+  "Products/createProduct",
+  async (productInfo, thunkAPI) => {
+    console.log(productInfo);
+    let api = `http://localhost:5000/api/v1/products`;
+    const {
+      name,
+      description,
+      coverPhoto,
+      newPrice,
+      category,
+      lastDate,
+      sellerInfo,
+    } = productInfo;
+    try {
+      const { data } = await axios.post(
+        `${api}`,
+        {
+          name,
+          description,
+          coverPhoto,
+          newPrice,
+          category,
+          lastDate,
+          sellerInfo,
+        },
+        {
+          headers: {
+            "content-type": "application/json",
+            authorization: `Bearer ${JSON.parse(
+              localStorage.getItem("token")
+            )}`,
+          },
+        }
+      );
+
+      return data;
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const getProductById = createAsyncThunk(
   "Products/getProductsById",
   async (productId, thunkAPI) => {

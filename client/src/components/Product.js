@@ -13,12 +13,12 @@ const Product = ({ product }) => {
           <Link to={`/product/${_id}`}>{name}</Link>
         </h2>
 
-        <p className="my-1 text-sm text-gray-500">
-          {description?.length > 100
-            ? description?.split(" ").slice(0, 8).join(" ")
-            : description}
-          ...
-        </p>
+        <div
+          className="my-1 text-sm text-gray-500"
+          dangerouslySetInnerHTML={{
+            __html: description?.split(" ").slice(0, 10).join(" "),
+          }}
+        ></div>
         <div className="flex items-center justify-center my-3 mb-5">
           <p className="font-bold text-gray-600 text-sm ">${newPrice}</p>
         </div>

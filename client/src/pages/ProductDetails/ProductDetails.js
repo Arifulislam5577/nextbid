@@ -141,26 +141,19 @@ const ProductDetails = () => {
               Description
             </h1>
             <hr />
-            <div className="my-3">
-              <p className="text-gray-500 text-sm my-2">
-                {productInfo?.product?.description
-                  .split(".")
-                  .slice(0, 3)
-                  .join(".")}
-              </p>
-              <p className="text-gray-500 text-sm my-2">
-                {productInfo?.product?.description
-                  .split(".")
-                  .slice(3, 6)
-                  .join(".")}
-              </p>
-            </div>
+
+            <div
+              className="text-gray-500 text-sm my-2"
+              dangerouslySetInnerHTML={{
+                __html: productInfo?.product?.description,
+              }}
+            ></div>
           </div>
           <div className="lg:col-span-1 w-full">
             <div className="lg:py-6 lg:px-8 p-5 bg-orange-600 rounded shadow ">
               <Countdown
                 renderer={renderer}
-                date={new Date("2023-02-09T17:10:00.466+00:00") + 10000}
+                date={new Date(productInfo?.product?.lastDate) + 10000}
               />
 
               <div className="flex items-center justify-between my-3 text-base text-white">
@@ -244,7 +237,7 @@ const ProductDetails = () => {
                     <button
                       disabled={!bidActive}
                       className={`w-full py-2.5 text-white capitalize text-sm 
-                        "bg-gray-500" 
+                        bg-gray-500 
                       rounded`}
                     >
                       bid off

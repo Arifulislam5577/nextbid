@@ -1,5 +1,4 @@
 import React from "react";
-import { BsFillPersonLinesFill } from "react-icons/bs";
 import { ImHammer2 } from "react-icons/im";
 import { VscSignOut } from "react-icons/vsc";
 import { BiStoreAlt, BiHeart } from "react-icons/bi";
@@ -11,7 +10,7 @@ const Dashboard = () => {
   const dispatch = useDispatch();
 
   return (
-    <section className="dashboard">
+    <section className="py-10">
       <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">
           <div className="lg:col-span-1 w-full">
@@ -25,18 +24,9 @@ const Dashboard = () => {
               </div>
               <div className="my-3">
                 <ul className="text-sm text-gray-600 mt-4 flex flex-col gap-3">
-                  <li className="flex items-center gap-2 border-b pb-2 pl-5 hover:translate-x-2 transition-all duration-200 cursor-pointer ">
-                    <Link
-                      to={`/dashboard`}
-                      className="flex items-center gap-2  w-full"
-                    >
-                      <BsFillPersonLinesFill />
-                      Profile
-                    </Link>
-                  </li>
                   <li className="flex items-center gap-2 border-b pb-2 pl-5 hover:translate-x-2 transition-all duration-200 cursor-pointer">
                     <Link
-                      to={`/dashboard/orders`}
+                      to={`/dashboard`}
                       className="flex items-center gap-2  w-full"
                     >
                       <BiStoreAlt />
@@ -45,11 +35,11 @@ const Dashboard = () => {
                   </li>
                   <li className="flex items-center gap-2 border-b pb-2 pl-5 hover:translate-x-2 transition-all duration-200 cursor-pointer">
                     <Link
-                      to={`/dashboard/wishlist`}
+                      to={`/dashboard/add`}
                       className="flex items-center gap-2  w-full"
                     >
                       <BiHeart />
-                      Wishlist
+                      Add Product
                     </Link>
                   </li>
                   <li className="flex items-center gap-2 border-b pb-2 pl-5 hover:translate-x-2 transition-all duration-200 cursor-pointer">
@@ -58,7 +48,7 @@ const Dashboard = () => {
                       className="flex items-center gap-2  w-full"
                     >
                       <ImHammer2 />
-                      Your Bid
+                      My Bids
                     </Link>
                   </li>
                   <li

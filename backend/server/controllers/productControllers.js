@@ -9,27 +9,25 @@ export const createNewProduct = expressAsyncHandler(async (req, res, next) => {
     name,
     description,
     coverPhoto,
-    oldPrice,
     newPrice,
     category,
     sellerInfo,
+    lastDate,
   } = req.body;
 
   const imgUrl = await uplaodImg(coverPhoto);
-
-  const product = new Product({
+  const product = await Product.create({
     name,
     description,
     coverPhoto: imgUrl,
-    oldPrice,
     newPrice,
     category,
     sellerInfo,
+    lastDate,
   });
-  const createdProduct = await product.save();
 
-  if (!createdProduct) {
-    throw new Error("Product Created Failed");
+  if (!product) {
+    return res.status(500).json({ message: "Product Created Failed" });
   }
   return res.status(201).json({ message: "Product created successfully" });
 });

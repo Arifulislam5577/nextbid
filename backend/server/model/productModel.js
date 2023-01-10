@@ -16,10 +16,7 @@ const productSchema = new Schema(
       type: String,
       required: [true, "Cover photo required"],
     },
-    oldPrice: {
-      type: Number,
-      required: [true, "Old price required"],
-    },
+
     newPrice: {
       type: Number,
       required: [true, "New price required"],
@@ -27,6 +24,10 @@ const productSchema = new Schema(
     category: {
       type: String,
       required: [true, "Category name required"],
+    },
+    lastDate: {
+      type: String,
+      required: [true, "Last date required"],
     },
     isFeatured: {
       type: Boolean,
