@@ -3,6 +3,7 @@ import {
   getProducts,
   getProductById,
   createNewProduct,
+  updateProductById,
 } from "./productService";
 
 const initialState = {
@@ -12,14 +13,20 @@ const initialState = {
   productInfo: null,
   bidActive: true,
   success: false,
+  updateSuccess: false,
 };
 
 const productSlice = createSlice({
   name: "Products",
   initialState,
   reducers: {
-    isBidActive(state, action) {
+    reset(state) {
       state.bidActive = false;
+      state.success = false;
+    },
+    updateReset(state) {
+      state.updateSuccess = false;
+      state.bidActive = true;
     },
   },
   extraReducers: (builder) => {
@@ -66,9 +73,19 @@ const productSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     });
+
+    builder.addCase(updateProductById.pending, (state) => {});
+
+    builder.addCase(updateProductById.fulfilled, (state, action) => {
+      state.updateSuccess = true;
+    });
+
+    builder.addCase(updateProductById.rejected, (state, action) => {
+      state.error = action.payload;
+    });
   },
 });
 
 export const productReducers = productSlice.reducer;
 
-export const { isBidActive } = productSlice.actions;
+export const { reset, updateReset } = productSlice.actions;

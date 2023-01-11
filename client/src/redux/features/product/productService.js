@@ -60,7 +60,6 @@ export const getProducts = createAsyncThunk(
 export const createNewProduct = createAsyncThunk(
   "Products/createProduct",
   async (productInfo, thunkAPI) => {
-    console.log(productInfo);
     let api = `http://localhost:5000/api/v1/products`;
     const {
       name,
@@ -125,6 +124,37 @@ export const getProductById = createAsyncThunk(
         }
       );
 
+      return data;
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+export const updateProductById = createAsyncThunk(
+  "Products/updateProductsById",
+  async (productId, thunkAPI) => {
+    let api = `http://localhost:5000/api/v1/products/${productId}`;
+
+    try {
+      const { data } = await axios.patch(
+        `${api}`,
+        {},
+        {
+          headers: {
+            "content-type": "application/json",
+            authorization: `Bearer ${JSON.parse(
+              localStorage.getItem("token")
+            )}`,
+          },
+        }
+      );
       return data;
     } catch (error) {
       const message =

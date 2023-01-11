@@ -28,3 +28,9 @@ export const productAllInfo = async (product) => {
     relatedProduct,
   };
 };
+
+export const addThreeDays = (date) => {
+  let newDate = new Date(date);
+  newDate.setDate(newDate.getDate() + 3);
+  return newDate;
+};

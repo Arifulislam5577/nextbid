@@ -6,10 +6,12 @@ import { motion } from "framer-motion";
 import ErrorMsg from "../../components/ErrorMsg";
 import ProductLoader from "../../components/ProductLoader";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { getProductById } from "../../redux/features/product/productService";
+import {
+  getProductById,
+  updateProductById,
+} from "../../redux/features/product/productService";
 import { useDispatch, useSelector } from "react-redux";
 import Countdown from "react-countdown";
-import { isBidActive } from "../../redux/features/product/productSlice";
 import RelatedProduct from "./RelatedProduct";
 import {
   createNewProductBid,
@@ -18,16 +20,18 @@ import {
 import { resetBids } from "../../redux/features/productBids/productBidSlice";
 
 const ProductDetails = () => {
+  const [isCompleted, setIsCompleted] = useState(false);
   const [amount, setAmount] = useState(0);
   const location = useLocation();
   const navigate = useNavigate();
   const { id } = useParams();
   const dispatch = useDispatch();
-  const { error, productInfo, loading, bidActive } = useSelector(
+
+  const { error, productInfo, loading, updateSuccess } = useSelector(
     (state) => state.products
   );
-
   const { user } = useSelector((state) => state.authReducers);
+
   const {
     loading: bidLoader,
     error: bidError,
@@ -52,9 +56,37 @@ const ProductDetails = () => {
     }
   };
 
+  const handleComplete = (completed) => {
+    setIsCompleted(completed);
+  };
+
+  useEffect(() => {
+    handleComplete(isCompleted);
+  }, [isCompleted]);
+
+  useEffect(() => {
+    if (id || updateSuccess) {
+      dispatch(getProductById(id));
+      dispatch(getProductBid(id));
+    }
+  }, [dispatch, id, updateSuccess]);
+
+  useEffect(() => {
+    if (success) {
+      dispatch(resetBids());
+      dispatch(getProductBid(id));
+    }
+  }, [dispatch, success, id]);
+
+  useEffect(() => {
+    if (isCompleted) {
+      dispatch(updateProductById(id));
+    }
+  }, [isCompleted, dispatch, bidInfo, id]);
+
   const renderer = ({ days, hours, minutes, seconds, completed }) => {
     if (completed) {
-      dispatch(isBidActive());
+      handleComplete(completed);
       return (
         <h1 className="text-white text-center font-bold pb-2 border-b uppercase text-xl">
           Offer End
@@ -71,20 +103,6 @@ const ProductDetails = () => {
       );
     }
   };
-
-  useEffect(() => {
-    if (id) {
-      dispatch(getProductById(id));
-      dispatch(getProductBid(id));
-    }
-  }, [dispatch, id]);
-
-  useEffect(() => {
-    if (success) {
-      dispatch(resetBids());
-      dispatch(getProductBid(id));
-    }
-  }, [dispatch, success, id]);
 
   if (loading) {
     return (
@@ -153,7 +171,7 @@ const ProductDetails = () => {
             <div className="lg:py-6 lg:px-8 p-5 bg-orange-600 rounded shadow ">
               <Countdown
                 renderer={renderer}
-                date={new Date(productInfo?.product?.lastDate) + 10000}
+                date={new Date(productInfo?.product?.lastDate)}
               />
 
               <div className="flex items-center justify-between my-3 text-base text-white">
@@ -223,24 +241,22 @@ const ProductDetails = () => {
                     </div>
                   </div>
 
-                  {bidActive ? (
+                  {productInfo?.product?.isSold ? (
                     <button
-                      type="submit"
-                      disabled={!bidActive || bidLoader}
-                      className={`w-full py-2.5 text-white capitalize text-sm ${
-                        !bidActive ? "bg-gray-500" : "bg-gray-900"
-                      } rounded`}
-                    >
-                      {bidLoader ? "Loading..." : "bid now"}
-                    </button>
-                  ) : (
-                    <button
-                      disabled={!bidActive}
+                      disabled
                       className={`w-full py-2.5 text-white capitalize text-sm 
                         bg-gray-500 
                       rounded`}
                     >
-                      bid off
+                      Product Sold
+                    </button>
+                  ) : (
+                    <button
+                      type="submit"
+                      disabled={bidLoader}
+                      className="w-full py-2.5 text-white capitalize text-sm bg-gray-900 rounded"
+                    >
+                      {bidLoader ? "Loading..." : "bid now"}
                     </button>
                   )}
                 </form>

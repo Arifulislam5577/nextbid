@@ -1,7 +1,8 @@
 import expressAsyncHandler from "express-async-handler";
+import Bider from "../model/bidModel.js";
 import Product from "../model/productModel.js";
 import ApiService from "../services/ApiServices.js";
-import { productAllInfo } from "../services/productServices.js";
+import { addThreeDays, productAllInfo } from "../services/productServices.js";
 import { uplaodImg } from "../utils/uploadImg.js";
 
 export const createNewProduct = expressAsyncHandler(async (req, res, next) => {
@@ -33,9 +34,9 @@ export const createNewProduct = expressAsyncHandler(async (req, res, next) => {
 });
 
 export const getProducts = expressAsyncHandler(async (req, res) => {
-  const totalDocuments = await Product.countDocuments();
+  const totalDocuments = await Product.find({ isSold: false }).countDocuments();
   const apiServices = new ApiService(
-    Product.find().populate("sellerInfo"),
+    Product.find({ isSold: false }).populate("sellerInfo"),
     req.query
   )
     .search()
@@ -62,4 +63,30 @@ export const getProductById = expressAsyncHandler(async (req, res) => {
     product,
     relatedProduct,
   });
+});
+
+export const updateProductDate = expressAsyncHandler(async function (req, res) {
+  const product = await Product.findById(req.params.id);
+
+  if (!product) {
+    return res.status(404).json({ message: "Product not found" });
+  }
+  const productBid = await Bider.find({ productInfo: product._id });
+
+  if (productBid.length) {
+    product.isSold = true;
+    const updatedProduct = await product.save();
+    if (!updatedProduct) {
+      return res.status(500).json({ message: "Product not Updated" });
+    }
+    return res.status(200).json({ message: "updated successfull", sold: true });
+  }
+
+  const updateDate = addThreeDays(product.lastDate);
+  product.lastDate = updateDate;
+  const updatedProduct = await product.save();
+  if (!updatedProduct) {
+    return res.status(500).json({ message: "Product not Updated" });
+  }
+  return res.status(200).json({ message: "updated successfull" });
 });
