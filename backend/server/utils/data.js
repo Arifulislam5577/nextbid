@@ -16,7 +16,7 @@ export const products = [
     description:
       "<p>A computer is an electronic device that is designed to process data, store and retrieve information, and perform a wide range of tasks. There are various types of computers, including desktops, laptops, tablets, and smartphones, which differ in terms of size, capabilities, and intended use.Computers are equipped with a central processing unit (CPU), which is the main component that performs calculations and executes instructions</p><p><br></p><p>They also have memory, which stores data and programs, and input/output devices, such as a keyboard and mouse, which allow users to interact with the computer.Computers are used for a wide range of purposes, including business, education, entertainment, and communication. They can be used to create and edit documents, browse the internet, play games, and access a wide range of applications and services</p>",
     newPrice: 1200,
-    lastDate: "2023-02-09T17:10:00.466+00:00",
+    lastDate: "2023-01-12T07:42:19.133+00:00",
     sellerInfo: "63bd9331cadfaca08da09886",
     category: "computer",
     coverPhoto:
@@ -27,7 +27,7 @@ export const products = [
     description:
       "<p>A computer is an electronic device that is designed to process data, store and retrieve information, and perform a wide range of tasks. There are various types of computers, including desktops, laptops, tablets, and smartphones, which differ in terms of size, capabilities, and intended use.Computers are equipped with a central processing unit (CPU), which is the main component that performs calculations and executes instructions</p><p><br></p><p>They also have memory, which stores data and programs, and input/output devices, such as a keyboard and mouse, which allow users to interact with the computer.Computers are used for a wide range of purposes, including business, education, entertainment, and communication. They can be used to create and edit documents, browse the internet, play games, and access a wide range of applications and services</p>",
     newPrice: 1200,
-    lastDate: "2023-02-09T17:10:00.466+00:00",
+    lastDate: "2023-01-12T07:42:19.133+00:00",
     sellerInfo: "63bd9331cadfaca08da09886",
     category: "computer",
     coverPhoto:
@@ -38,7 +38,7 @@ export const products = [
     description:
       "<p>A computer is an electronic device that is designed to process data, store and retrieve information, and perform a wide range of tasks. There are various types of computers, including desktops, laptops, tablets, and smartphones, which differ in terms of size, capabilities, and intended use.Computers are equipped with a central processing unit (CPU), which is the main component that performs calculations and executes instructions</p><p><br></p><p>They also have memory, which stores data and programs, and input/output devices, such as a keyboard and mouse, which allow users to interact with the computer.Computers are used for a wide range of purposes, including business, education, entertainment, and communication. They can be used to create and edit documents, browse the internet, play games, and access a wide range of applications and services</p>",
     newPrice: 1400,
-    lastDate: "2023-02-09T17:10:00.466+00:00",
+    lastDate: "2023-01-12T07:42:19.133+00:00",
     sellerInfo: "63bd9331cadfaca08da09886",
     category: "computer",
     isFeatured: true,
@@ -50,7 +50,7 @@ export const products = [
     description:
       "<p>A computer is an electronic device that is designed to process data, store and retrieve information, and perform a wide range of tasks. There are various types of computers, including desktops, laptops, tablets, and smartphones, which differ in terms of size, capabilities, and intended use.Computers are equipped with a central processing unit (CPU), which is the main component that performs calculations and executes instructions</p><p><br></p><p>They also have memory, which stores data and programs, and input/output devices, such as a keyboard and mouse, which allow users to interact with the computer.Computers are used for a wide range of purposes, including business, education, entertainment, and communication. They can be used to create and edit documents, browse the internet, play games, and access a wide range of applications and services</p>",
     newPrice: 1300,
-    lastDate: "2023-02-09T17:10:00.466+00:00",
+    lastDate: "2023-01-12T07:42:19.133+00:00",
     sellerInfo: "63bd9331cadfaca08da09886",
     category: "computer",
     coverPhoto:
@@ -61,7 +61,7 @@ export const products = [
     description:
       "<p>A car is a motor vehicle designed for the transportation of people or goods. It typically has four wheels and is powered by an internal combustion engine, although there are also electric cars and hybrid cars that use a combination of an internal combustion engine and an electric motor. Cars come in various sizes and styles, ranging from small hatchbacks and sedans to large SUVs and trucks</p><p>They are equipped with a variety of features, including air conditioning, navigation systems, and entertainment systems.Cars provide a convenient and comfortable way to travel, allowing people to easily get from one place to another. They offer a wide range of benefits, including the ability to travel long distances, the ability to transport large items or groups of people, and the convenience of not having to rely on public transportation</p>",
     newPrice: 5600,
-    lastDate: "2023-02-09T17:10:00.466+00:00",
+    lastDate: "2023-01-12T07:42:19.133+00:00",
     sellerInfo: "63bd9331cadfaca08da09886",
     category: "car",
     coverPhoto:
@@ -72,7 +72,7 @@ export const products = [
     description:
       "<p>A car is a motor vehicle designed for the transportation of people or goods. It typically has four wheels and is powered by an internal combustion engine, although there are also electric cars and hybrid cars that use a combination of an internal combustion engine and an electric motor. Cars come in various sizes and styles, ranging from small hatchbacks and sedans to large SUVs and trucks</p><p>They are equipped with a variety of features, including air conditioning, navigation systems, and entertainment systems.Cars provide a convenient and comfortable way to travel, allowing people to easily get from one place to another. They offer a wide range of benefits, including the ability to travel long distances, the ability to transport large items or groups of people, and the convenience of not having to rely on public transportation</p>",
     newPrice: 7600,
-    lastDate: "2023-02-09T17:10:00.466+00:00",
+    lastDate: "2023-01-12T07:42:19.133+00:00",
     sellerInfo: "63bd9331cadfaca08da09886",
     category: "car",
     coverPhoto:
@@ -83,7 +83,7 @@ export const products = [
     description:
       "<p>A car is a motor vehicle designed for the transportation of people or goods. It typically has four wheels and is powered by an internal combustion engine, although there are also electric cars and hybrid cars that use a combination of an internal combustion engine and an electric motor. Cars come in various sizes and styles, ranging from small hatchbacks and sedans to large SUVs and trucks</p><p>They are equipped with a variety of features, including air conditioning, navigation systems, and entertainment systems.Cars provide a convenient and comfortable way to travel, allowing people to easily get from one place to another. They offer a wide range of benefits, including the ability to travel long distances, the ability to transport large items or groups of people, and the convenience of not having to rely on public transportation</p>",
     newPrice: 4600,
-    lastDate: "2023-02-09T17:10:00.466+00:00",
+    lastDate: "2023-01-12T07:42:19.133+00:00",
     isFeatured: true,
     sellerInfo: "63bd9331cadfaca08da09886",
     category: "car",
@@ -95,7 +95,7 @@ export const products = [
     description:
       "<p>A car is a motor vehicle designed for the transportation of people or goods. It typically has four wheels and is powered by an internal combustion engine, although there are also electric cars and hybrid cars that use a combination of an internal combustion engine and an electric motor. Cars come in various sizes and styles, ranging from small hatchbacks and sedans to large SUVs and trucks</p><p>They are equipped with a variety of features, including air conditioning, navigation systems, and entertainment systems.Cars provide a convenient and comfortable way to travel, allowing people to easily get from one place to another. They offer a wide range of benefits, including the ability to travel long distances, the ability to transport large items or groups of people, and the convenience of not having to rely on public transportation</p>",
     newPrice: 6400,
-    lastDate: "2023-02-09T17:10:00.466+00:00",
+    lastDate: "2023-01-12T07:42:19.133+00:00",
     sellerInfo: "63bd9331cadfaca08da09886",
     category: "car",
     coverPhoto:
@@ -106,7 +106,7 @@ export const products = [
     description:
       "<p>A car is a motor vehicle designed for the transportation of people or goods. It typically has four wheels and is powered by an internal combustion engine, although there are also electric cars and hybrid cars that use a combination of an internal combustion engine and an electric motor. Cars come in various sizes and styles, ranging from small hatchbacks and sedans to large SUVs and trucks</p><p>They are equipped with a variety of features, including air conditioning, navigation systems, and entertainment systems.Cars provide a convenient and comfortable way to travel, allowing people to easily get from one place to another. They offer a wide range of benefits, including the ability to travel long distances, the ability to transport large items or groups of people, and the convenience of not having to rely on public transportation</p>",
     newPrice: 8600,
-    lastDate: "2023-02-09T17:10:00.466+00:00",
+    lastDate: "2023-01-12T07:42:19.133+00:00",
     sellerInfo: "63bd9331cadfaca08da09886",
     category: "car",
     coverPhoto:
@@ -118,7 +118,7 @@ export const products = [
     description:
       "<p>A mobile phone, also known as a cell phone or smartphone, is a portable electronic device that allows users to make and receive calls, send texts and emails, and access a variety of apps and services. Mobile phones are equipped with a range of features, including a touch screen display, a camera, a GPS system, and the ability to connect to the internet.Mobile phones have become an essential part of modern life, providing people with a convenient and easy way to stay connected and communicate with others. They allow users to make calls, send texts and emails, and access the internet from virtually anywhere, making them an ideal tool for staying in touch with friends, family, and colleagues.In recent years, there has been a surge in the development and adoption of smartphones, which offer a wide range of advanced features and capabilities. Smartphones are equipped with powerful processors, large displays, and high-resolution cameras, and they can run a variety of apps and services, such as social media, music and video streaming, and productivity tools.</p>",
     newPrice: 399,
-    lastDate: "2023-02-09T17:10:00.466+00:00",
+    lastDate: "2023-01-12T07:42:19.133+00:00",
     sellerInfo: "63bd9331cadfaca08da09886",
     category: "mobile",
     coverPhoto:
@@ -129,7 +129,7 @@ export const products = [
     description:
       "<p>A mobile phone, also known as a cell phone or smartphone, is a portable electronic device that allows users to make and receive calls, send texts and emails, and access a variety of apps and services. Mobile phones are equipped with a range of features, including a touch screen display, a camera, a GPS system, and the ability to connect to the internet.Mobile phones have become an essential part of modern life, providing people with a convenient and easy way to stay connected and communicate with others. They allow users to make calls, send texts and emails, and access the internet from virtually anywhere, making them an ideal tool for staying in touch with friends, family, and colleagues.In recent years, there has been a surge in the development and adoption of smartphones, which offer a wide range of advanced features and capabilities. Smartphones are equipped with powerful processors, large displays, and high-resolution cameras, and they can run a variety of apps and services, such as social media, music and video streaming, and productivity tools.</p>",
     newPrice: 499,
-    lastDate: "2023-02-09T17:10:00.466+00:00",
+    lastDate: "2023-01-12T07:42:19.133+00:00",
     sellerInfo: "63bd9331cadfaca08da09886",
     category: "mobile",
     coverPhoto:
@@ -140,7 +140,7 @@ export const products = [
     description:
       "<p>A mobile phone, also known as a cell phone or smartphone, is a portable electronic device that allows users to make and receive calls, send texts and emails, and access a variety of apps and services. Mobile phones are equipped with a range of features, including a touch screen display, a camera, a GPS system, and the ability to connect to the internet.Mobile phones have become an essential part of modern life, providing people with a convenient and easy way to stay connected and communicate with others. They allow users to make calls, send texts and emails, and access the internet from virtually anywhere, making them an ideal tool for staying in touch with friends, family, and colleagues.In recent years, there has been a surge in the development and adoption of smartphones, which offer a wide range of advanced features and capabilities. Smartphones are equipped with powerful processors, large displays, and high-resolution cameras, and they can run a variety of apps and services, such as social media, music and video streaming, and productivity tools.</p>",
     newPrice: 299,
-    lastDate: "2023-02-09T17:10:00.466+00:00",
+    lastDate: "2023-01-12T07:42:19.133+00:00",
     sellerInfo: "63bd9331cadfaca08da09886",
     category: "mobile",
     coverPhoto:
@@ -151,7 +151,7 @@ export const products = [
     description:
       "<p>A mobile phone, also known as a cell phone or smartphone, is a portable electronic device that allows users to make and receive calls, send texts and emails, and access a variety of apps and services. Mobile phones are equipped with a range of features, including a touch screen display, a camera, a GPS system, and the ability to connect to the internet.Mobile phones have become an essential part of modern life, providing people with a convenient and easy way to stay connected and communicate with others. They allow users to make calls, send texts and emails, and access the internet from virtually anywhere, making them an ideal tool for staying in touch with friends, family, and colleagues.In recent years, there has been a surge in the development and adoption of smartphones, which offer a wide range of advanced features and capabilities. Smartphones are equipped with powerful processors, large displays, and high-resolution cameras, and they can run a variety of apps and services, such as social media, music and video streaming, and productivity tools.</p>",
     newPrice: 499,
-    lastDate: "2023-02-09T17:10:00.466+00:00",
+    lastDate: "2023-01-12T07:42:19.133+00:00",
     sellerInfo: "63bd9331cadfaca08da09886",
     category: "mobile",
     coverPhoto:
@@ -162,7 +162,7 @@ export const products = [
     description:
       "<p>A mobile phone, also known as a cell phone or smartphone, is a portable electronic device that allows users to make and receive calls, send texts and emails, and access a variety of apps and services. Mobile phones are equipped with a range of features, including a touch screen display, a camera, a GPS system, and the ability to connect to the internet.Mobile phones have become an essential part of modern life, providing people with a convenient and easy way to stay connected and communicate with others. They allow users to make calls, send texts and emails, and access the internet from virtually anywhere, making them an ideal tool for staying in touch with friends, family, and colleagues.In recent years, there has been a surge in the development and adoption of smartphones, which offer a wide range of advanced features and capabilities. Smartphones are equipped with powerful processors, large displays, and high-resolution cameras, and they can run a variety of apps and services, such as social media, music and video streaming, and productivity tools.</p>",
     newPrice: 399,
-    lastDate: "2023-02-09T17:10:00.466+00:00",
+    lastDate: "2023-01-12T07:42:19.133+00:00",
     sellerInfo: "63bd9331cadfaca08da09886",
     category: "mobile",
     coverPhoto:
@@ -173,7 +173,7 @@ export const products = [
     description:
       "<p>Experience stunning picture quality with this LG 65-inch 4K OLED TV. The OLED panel delivers deep blacks and rich colors, while the 4K resolution brings your favorite movies and TV shows to life. With built-in smart features, you can access your favorite streaming apps and control your TV with your voice. Plus, the sleek and slim design makes it a perfect addition to any home theater setup.</p><p><br></p><p>Experience stunning picture quality with this LG 65-inch 4K OLED TV. The OLED panel delivers deep blacks and rich colors, while the 4K resolution brings your favorite movies and TV shows to life. With built-in smart features, you can access your favorite streaming apps and control your TV with your voice. Plus, the sleek and slim design makes it a perfect addition to any home theater setup.</p><p><br></p><p>Experience stunning picture quality with this LG 65-inch 4K OLED TV. The OLED panel delivers deep blacks and rich colors, while the 4K resolution brings your favorite movies and TV shows to life. With built-in smart features, you can access your favorite streaming apps and control your TV with your voice. Plus, the sleek and slim design makes it a perfect addition to any home theater setup.</p>",
     newPrice: 150,
-    lastDate: "2023-02-09T17:10:00.466+00:00",
+    lastDate: "2023-01-12T07:42:19.133+00:00",
     sellerInfo: "63bd9331cadfaca08da09886",
     category: "electronics",
     coverPhoto:
@@ -184,7 +184,7 @@ export const products = [
     description:
       "<p>Experience stunning picture quality with this LG 65-inch 4K OLED TV. The OLED panel delivers deep blacks and rich colors, while the 4K resolution brings your favorite movies and TV shows to life. With built-in smart features, you can access your favorite streaming apps and control your TV with your voice. Plus, the sleek and slim design makes it a perfect addition to any home theater setup.</p><p><br></p><p>Experience stunning picture quality with this LG 65-inch 4K OLED TV. The OLED panel delivers deep blacks and rich colors, while the 4K resolution brings your favorite movies and TV shows to life. With built-in smart features, you can access your favorite streaming apps and control your TV with your voice. Plus, the sleek and slim design makes it a perfect addition to any home theater setup.</p><p><br></p><p>Experience stunning picture quality with this LG 65-inch 4K OLED TV. The OLED panel delivers deep blacks and rich colors, while the 4K resolution brings your favorite movies and TV shows to life. With built-in smart features, you can access your favorite streaming apps and control your TV with your voice. Plus, the sleek and slim design makes it a perfect addition to any home theater setup.</p>",
     newPrice: 119,
-    lastDate: "2023-02-09T17:10:00.466+00:00",
+    lastDate: "2023-01-12T07:42:19.133+00:00",
     sellerInfo: "63bd9331cadfaca08da09886",
     category: "electronics",
     coverPhoto:
@@ -195,7 +195,7 @@ export const products = [
     description:
       "<p>Experience stunning picture quality with this LG 65-inch 4K OLED TV. The OLED panel delivers deep blacks and rich colors, while the 4K resolution brings your favorite movies and TV shows to life. With built-in smart features, you can access your favorite streaming apps and control your TV with your voice. Plus, the sleek and slim design makes it a perfect addition to any home theater setup.</p><p><br></p><p>Experience stunning picture quality with this LG 65-inch 4K OLED TV. The OLED panel delivers deep blacks and rich colors, while the 4K resolution brings your favorite movies and TV shows to life. With built-in smart features, you can access your favorite streaming apps and control your TV with your voice. Plus, the sleek and slim design makes it a perfect addition to any home theater setup.</p><p><br></p><p>Experience stunning picture quality with this LG 65-inch 4K OLED TV. The OLED panel delivers deep blacks and rich colors, while the 4K resolution brings your favorite movies and TV shows to life. With built-in smart features, you can access your favorite streaming apps and control your TV with your voice. Plus, the sleek and slim design makes it a perfect addition to any home theater setup.</p>",
     newPrice: 199,
-    lastDate: "2023-02-09T17:10:00.466+00:00",
+    lastDate: "2023-01-12T07:42:19.133+00:00",
     sellerInfo: "63bd9331cadfaca08da09886",
     category: "electronics",
     coverPhoto:
@@ -206,7 +206,7 @@ export const products = [
     description:
       "<p>Experience stunning picture quality with this LG 65-inch 4K OLED TV. The OLED panel delivers deep blacks and rich colors, while the 4K resolution brings your favorite movies and TV shows to life. With built-in smart features, you can access your favorite streaming apps and control your TV with your voice. Plus, the sleek and slim design makes it a perfect addition to any home theater setup.</p><p><br></p><p>Experience stunning picture quality with this LG 65-inch 4K OLED TV. The OLED panel delivers deep blacks and rich colors, while the 4K resolution brings your favorite movies and TV shows to life. With built-in smart features, you can access your favorite streaming apps and control your TV with your voice. Plus, the sleek and slim design makes it a perfect addition to any home theater setup.</p><p><br></p><p>Experience stunning picture quality with this LG 65-inch 4K OLED TV. The OLED panel delivers deep blacks and rich colors, while the 4K resolution brings your favorite movies and TV shows to life. With built-in smart features, you can access your favorite streaming apps and control your TV with your voice. Plus, the sleek and slim design makes it a perfect addition to any home theater setup.</p>",
     newPrice: 149,
-    lastDate: "2023-02-09T17:10:00.466+00:00",
+    lastDate: "2023-01-12T07:42:19.133+00:00",
     sellerInfo: "63bd9331cadfaca08da09886",
     category: "electronics",
     coverPhoto:
@@ -217,7 +217,7 @@ export const products = [
     description:
       "<p>Experience stunning picture quality with this LG 65-inch 4K OLED TV. The OLED panel delivers deep blacks and rich colors, while the 4K resolution brings your favorite movies and TV shows to life. With built-in smart features, you can access your favorite streaming apps and control your TV with your voice. Plus, the sleek and slim design makes it a perfect addition to any home theater setup.</p><p><br></p><p>Experience stunning picture quality with this LG 65-inch 4K OLED TV. The OLED panel delivers deep blacks and rich colors, while the 4K resolution brings your favorite movies and TV shows to life. With built-in smart features, you can access your favorite streaming apps and control your TV with your voice. Plus, the sleek and slim design makes it a perfect addition to any home theater setup.</p><p><br></p><p>Experience stunning picture quality with this LG 65-inch 4K OLED TV. The OLED panel delivers deep blacks and rich colors, while the 4K resolution brings your favorite movies and TV shows to life. With built-in smart features, you can access your favorite streaming apps and control your TV with your voice. Plus, the sleek and slim design makes it a perfect addition to any home theater setup.</p>",
     newPrice: 119,
-    lastDate: "2023-02-09T17:10:00.466+00:00",
+    lastDate: "2023-01-12T07:42:19.133+00:00",
     sellerInfo: "63bd9331cadfaca08da09886",
     category: "electronics",
     coverPhoto:
@@ -229,7 +229,7 @@ export const products = [
     description:
       "<p>This house is located in a quiet neighborhood in Los Angeles. The open floor plan and high ceilings create a spacious feel, and the large windows bring in plenty of natural light. The kitchen is equipped with stainless steel appliances and a breakfast bar, and the master bedroom has a walk-in closet and en-suite bathroom. The backyard has a patio and grassy area, perfect for outdoor gatherings. This is a great opportunity to own a piece of Los Angeles real estate.</p><p><br></p><p>This beautiful 3-bedroom, 2-bathroom house is located in a quiet neighborhood in Los Angeles. The open floor plan and high ceilings create a spacious feel, and the large windows bring in plenty of natural light. The kitchen is equipped with stainless steel appliances and a breakfast bar, and the master bedroom has a walk-in closet and en-suite bathroom. The backyard has a patio and grassy area, perfect for outdoor gatherings. This is a great opportunity to own a piece of Los Angeles real estate.</p>",
     newPrice: 7000,
-    lastDate: "2023-02-09T17:10:00.466+00:00",
+    lastDate: "2023-01-12T07:42:19.133+00:00",
     sellerInfo: "63bd9331cadfaca08da09886",
     category: "properties",
     coverPhoto:
@@ -240,7 +240,7 @@ export const products = [
     description:
       "<p>This house is located in a quiet neighborhood in Los Angeles. The open floor plan and high ceilings create a spacious feel, and the large windows bring in plenty of natural light. The kitchen is equipped with stainless steel appliances and a breakfast bar, and the master bedroom has a walk-in closet and en-suite bathroom. The backyard has a patio and grassy area, perfect for outdoor gatherings. This is a great opportunity to own a piece of Los Angeles real estate.</p><p><br></p><p>This beautiful 3-bedroom, 2-bathroom house is located in a quiet neighborhood in Los Angeles. The open floor plan and high ceilings create a spacious feel, and the large windows bring in plenty of natural light. The kitchen is equipped with stainless steel appliances and a breakfast bar, and the master bedroom has a walk-in closet and en-suite bathroom. The backyard has a patio and grassy area, perfect for outdoor gatherings. This is a great opportunity to own a piece of Los Angeles real estate.</p>",
     newPrice: 8000,
-    lastDate: "2023-02-09T17:10:00.466+00:00",
+    lastDate: "2023-01-12T07:42:19.133+00:00",
     sellerInfo: "63bd9331cadfaca08da09886",
     category: "properties",
     coverPhoto:
@@ -251,7 +251,7 @@ export const products = [
     description:
       "<p>This house is located in a quiet neighborhood in Los Angeles. The open floor plan and high ceilings create a spacious feel, and the large windows bring in plenty of natural light. The kitchen is equipped with stainless steel appliances and a breakfast bar, and the master bedroom has a walk-in closet and en-suite bathroom. The backyard has a patio and grassy area, perfect for outdoor gatherings. This is a great opportunity to own a piece of Los Angeles real estate.</p><p><br></p><p>This beautiful 3-bedroom, 2-bathroom house is located in a quiet neighborhood in Los Angeles. The open floor plan and high ceilings create a spacious feel, and the large windows bring in plenty of natural light. The kitchen is equipped with stainless steel appliances and a breakfast bar, and the master bedroom has a walk-in closet and en-suite bathroom. The backyard has a patio and grassy area, perfect for outdoor gatherings. This is a great opportunity to own a piece of Los Angeles real estate.</p>",
     newPrice: 9500,
-    lastDate: "2023-02-09T17:10:00.466+00:00",
+    lastDate: "2023-01-12T07:42:19.133+00:00",
     sellerInfo: "63bd9331cadfaca08da09886",
     category: "properties",
     coverPhoto:
@@ -262,7 +262,7 @@ export const products = [
     description:
       "<p>This house is located in a quiet neighborhood in Los Angeles. The open floor plan and high ceilings create a spacious feel, and the large windows bring in plenty of natural light. The kitchen is equipped with stainless steel appliances and a breakfast bar, and the master bedroom has a walk-in closet and en-suite bathroom. The backyard has a patio and grassy area, perfect for outdoor gatherings. This is a great opportunity to own a piece of Los Angeles real estate.</p><p><br></p><p>This beautiful 3-bedroom, 2-bathroom house is located in a quiet neighborhood in Los Angeles. The open floor plan and high ceilings create a spacious feel, and the large windows bring in plenty of natural light. The kitchen is equipped with stainless steel appliances and a breakfast bar, and the master bedroom has a walk-in closet and en-suite bathroom. The backyard has a patio and grassy area, perfect for outdoor gatherings. This is a great opportunity to own a piece of Los Angeles real estate.</p>",
     newPrice: 9000,
-    lastDate: "2023-02-09T17:10:00.466+00:00",
+    lastDate: "2023-01-12T07:42:19.133+00:00",
     sellerInfo: "63bd9331cadfaca08da09886",
     category: "properties",
     coverPhoto:
@@ -273,7 +273,7 @@ export const products = [
     description:
       "<p>This house is located in a quiet neighborhood in Los Angeles. The open floor plan and high ceilings create a spacious feel, and the large windows bring in plenty of natural light. The kitchen is equipped with stainless steel appliances and a breakfast bar, and the master bedroom has a walk-in closet and en-suite bathroom. The backyard has a patio and grassy area, perfect for outdoor gatherings. This is a great opportunity to own a piece of Los Angeles real estate.</p><p><br></p><p>This beautiful 3-bedroom, 2-bathroom house is located in a quiet neighborhood in Los Angeles. The open floor plan and high ceilings create a spacious feel, and the large windows bring in plenty of natural light. The kitchen is equipped with stainless steel appliances and a breakfast bar, and the master bedroom has a walk-in closet and en-suite bathroom. The backyard has a patio and grassy area, perfect for outdoor gatherings. This is a great opportunity to own a piece of Los Angeles real estate.</p>",
     newPrice: 8000,
-    lastDate: "2023-02-09T17:10:00.466+00:00",
+    lastDate: "2023-01-12T07:42:19.133+00:00",
     sellerInfo: "63bd9331cadfaca08da09886",
     category: "properties",
     coverPhoto:

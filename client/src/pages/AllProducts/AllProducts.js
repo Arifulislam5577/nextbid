@@ -80,7 +80,7 @@ const AllProducts = () => {
                         <svg
                           fill="currentColor"
                           viewBox="0 0 512 512"
-                          className="w-4 h-4 dark:text-gray-100"
+                          className="w-4 h-4 text-gray-400"
                         >
                           <path d="M479.6,399.716l-81.084-81.084-62.368-25.767A175.014,175.014,0,0,0,368,192c0-97.047-78.953-176-176-176S16,94.953,16,192,94.953,368,192,368a175.034,175.034,0,0,0,101.619-32.377l25.7,62.2L400.4,478.911a56,56,0,1,0,79.2-79.195ZM48,192c0-79.4,64.6-144,144-144s144,64.6,144,144S271.4,336,192,336,48,271.4,48,192ZM456.971,456.284a24.028,24.028,0,0,1-33.942,0l-76.572-76.572-23.894-57.835L380.4,345.771l76.573,76.572A24.028,24.028,0,0,1,456.971,456.284Z"></path>
                         </svg>
@@ -91,7 +91,7 @@ const AllProducts = () => {
                       placeholder="Search..."
                       value={keyword}
                       onChange={(e) => setKeyword(e.target.value)}
-                      className="py-2 pl-10 text-sm placeholder:text-gray-300 rounded w-full focus:outline-none bg-gray-500 text-gray-300 "
+                      className="py-2.5 pl-10 text-sm placeholder:text-gray-400 rounded-full w-full focus:outline-none bg-gray-200 text-gray-300 "
                     />
                   </form>
                 </fieldset>
@@ -130,7 +130,7 @@ const AllProducts = () => {
                 <h1 className="text-gray-600  text-sm">Sort By</h1>
                 <select
                   onChange={(e) => setSort(e.target.value)}
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm  w-full rounded-none block mt-2 py-1"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm  w-full  block mt-2 py-2 rounded-full text-center px-2 focus:outline-none"
                 >
                   <option defaultValue>Select Options</option>
                   <option value="asc">Higher To Low</option>

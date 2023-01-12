@@ -21,12 +21,10 @@ const productSlice = createSlice({
   initialState,
   reducers: {
     reset(state) {
-      state.bidActive = false;
       state.success = false;
     },
     updateReset(state) {
       state.updateSuccess = false;
-      state.bidActive = true;
     },
   },
   extraReducers: (builder) => {

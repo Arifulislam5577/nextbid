@@ -1,42 +1,27 @@
 import React from "react";
-import Timer from "react-compound-timer";
+import Countdown from "react-countdown";
 
-const CountDown = ({ time }) => {
-  return (
-    <div>
-      <Timer initialTime={new Date(time) - new Date()} direction="backward">
-        {() => (
-          <div className="grid grid-cols-4 gap-3">
-            <p className="col-span-1 bg-orange-600 flex items-center justify-center flex-col rounded py-2 px-5">
-              <span className="text-3xl font-bold text-white">
-                <Timer.Days />
-              </span>
-              <span className="text-sm lowercase text-gray-200">Days</span>
-            </p>
-
-            <p className="col-span-1 bg-orange-600 flex items-center justify-center flex-col rounded py-2 px-5">
-              <span className="text-3xl font-bold text-white">
-                <Timer.Hours />
-              </span>
-              <span className="text-sm lowercase text-gray-200">Hours</span>
-            </p>
-            <p className="col-span-1 bg-orange-600 flex items-center justify-center flex-col rounded py-2 px-5">
-              <span className="text-3xl font-bold text-white">
-                <Timer.Minutes />
-              </span>
-              <span className="text-sm lowercase text-gray-200">Minutes</span>
-            </p>
-            <p className="col-span-1 bg-orange-600 flex items-center justify-center flex-col rounded py-2 px-5">
-              <span className="text-3xl font-bold text-white">
-                <Timer.Seconds />
-              </span>
-              <span className="text-sm lowercase text-gray-200">Seconds</span>
-            </p>
-          </div>
-        )}
-      </Timer>
-    </div>
-  );
+const CountDown = ({ time, handleUpdate }) => {
+  const renderer = ({ days, hours, minutes, seconds, completed }) => {
+    if (completed) {
+      handleUpdate(true);
+      return (
+        <h1 className="text-white text-center font-bold pb-2 border-b uppercase text-xl">
+          Offer End
+        </h1>
+      );
+    } else {
+      return (
+        <div className="flex items-center gap-3  my-3 text-2xl text-center justify-center text-white pb-3 border-b font-bold ">
+          <div>{days}d</div>
+          <div>{hours}h</div>
+          <div>{minutes}m</div>
+          <div>{seconds}s</div>
+        </div>
+      );
+    }
+  };
+  return <Countdown renderer={renderer} date={new Date(time)} />;
 };
 
 export default CountDown;

@@ -11,16 +11,17 @@ import {
   updateProductById,
 } from "../../redux/features/product/productService";
 import { useDispatch, useSelector } from "react-redux";
-import Countdown from "react-countdown";
 import RelatedProduct from "./RelatedProduct";
 import {
   createNewProductBid,
   getProductBid,
 } from "../../redux/features/productBids/productBidService";
 import { resetBids } from "../../redux/features/productBids/productBidSlice";
+import CountDown from "../../components/CountDown";
+import { updateReset } from "../../redux/features/product/productSlice";
 
 const ProductDetails = () => {
-  const [isCompleted, setIsCompleted] = useState(false);
+  const [completed, setCompleted] = useState(false);
   const [amount, setAmount] = useState(0);
   const location = useLocation();
   const navigate = useNavigate();
@@ -56,18 +57,27 @@ const ProductDetails = () => {
     }
   };
 
-  const handleComplete = (completed) => {
-    setIsCompleted(completed);
+  const handleUpdate = (value) => {
+    if (value) {
+      setCompleted(true);
+    }
   };
 
   useEffect(() => {
-    handleComplete(isCompleted);
-  }, [isCompleted]);
-
-  useEffect(() => {
-    if (id || updateSuccess) {
+    if (id) {
       dispatch(getProductById(id));
       dispatch(getProductBid(id));
+    }
+
+    if (productInfo?.product?.isSold) {
+      navigate("/products");
+    }
+  }, [dispatch, id, productInfo?.product?.isSold, navigate]);
+
+  useEffect(() => {
+    if (updateSuccess) {
+      dispatch(getProductById(id));
+      dispatch(updateReset());
     }
   }, [dispatch, id, updateSuccess]);
 
@@ -79,30 +89,10 @@ const ProductDetails = () => {
   }, [dispatch, success, id]);
 
   useEffect(() => {
-    if (isCompleted) {
+    if (completed) {
       dispatch(updateProductById(id));
     }
-  }, [isCompleted, dispatch, bidInfo, id]);
-
-  const renderer = ({ days, hours, minutes, seconds, completed }) => {
-    if (completed) {
-      handleComplete(completed);
-      return (
-        <h1 className="text-white text-center font-bold pb-2 border-b uppercase text-xl">
-          Offer End
-        </h1>
-      );
-    } else {
-      return (
-        <div className="flex items-center gap-3  my-3 text-2xl text-center justify-center text-white pb-3 border-b font-bold ">
-          <div>{days}d</div>
-          <div>{hours}h</div>
-          <div>{minutes}m</div>
-          <div>{seconds}s</div>
-        </div>
-      );
-    }
-  };
+  }, [completed, dispatch, id]);
 
   if (loading) {
     return (
@@ -169,9 +159,9 @@ const ProductDetails = () => {
           </div>
           <div className="lg:col-span-1 w-full">
             <div className="lg:py-6 lg:px-8 p-5 bg-orange-600 rounded shadow ">
-              <Countdown
-                renderer={renderer}
-                date={new Date(productInfo?.product?.lastDate)}
+              <CountDown
+                handleUpdate={handleUpdate}
+                time={productInfo?.product?.lastDate}
               />
 
               <div className="flex items-center justify-between my-3 text-base text-white">

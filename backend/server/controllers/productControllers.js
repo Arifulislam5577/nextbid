@@ -1,5 +1,6 @@
 import expressAsyncHandler from "express-async-handler";
 import Bider from "../model/bidModel.js";
+import Order from "../model/orderModel.js";
 import Product from "../model/productModel.js";
 import ApiService from "../services/ApiServices.js";
 import { addThreeDays, productAllInfo } from "../services/productServices.js";
@@ -71,14 +72,33 @@ export const updateProductDate = expressAsyncHandler(async function (req, res) {
   if (!product) {
     return res.status(404).json({ message: "Product not found" });
   }
-  const productBid = await Bider.find({ productInfo: product._id });
 
-  if (productBid.length) {
+  const productBid = await Bider.find({
+    productInfo: product._id,
+  }).sort({ createdAt: -1, amount: -1 });
+
+  if (productBid.length > 0) {
+    // UPDATE PRODUCT SOLD STATUS
     product.isSold = true;
     const updatedProduct = await product.save();
     if (!updatedProduct) {
       return res.status(500).json({ message: "Product not Updated" });
     }
+
+    // CREATE A NEW ORDER
+
+    const newOrder = new Order({
+      productInfo: product._id,
+      buyerInfo: productBid[0].userInfo,
+      amount: productBid[0].amount,
+    });
+
+    const order = await newOrder.save();
+
+    if (!order) {
+      return res.status(500).json({ message: "Order Not Created" });
+    }
+
     return res.status(200).json({ message: "updated successfull", sold: true });
   }
 
