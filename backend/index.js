@@ -4,12 +4,13 @@ import cors from "cors";
 import { v2 as cloudinary } from "cloudinary";
 import productRouter from "./server/routes/productRoutes.js";
 import userRouter from "./server/routes/userRoutes.js";
+import orderRouter from "./server/routes/orderRoutes.js";
+import bidRouter from "./server/routes/biderRoutes.js";
 import { connectDB } from "./server/utils/connectDB.js";
 import {
   errorHandler,
   notFound,
 } from "./server/middlewares/errorMiddleware.js";
-import bidRouter from "./server/routes/biderRoutes.js";
 
 dotenv.config();
 
@@ -33,6 +34,7 @@ app.get("/", (req, res) => {
 app.use("/api/v1/products", productRouter);
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/bid", bidRouter);
+app.use("/api/v1/order", orderRouter);
 
 //ERROR HANDLEING
 

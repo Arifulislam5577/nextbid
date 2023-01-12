@@ -3,11 +3,12 @@ import {
   createNewProduct,
   getProductById,
   getProducts,
-  updateProductDate,
+  updateProductById,
 } from "../controllers/productControllers.js";
+import { verifyUser } from "../middlewares/verifyUser.js";
 const productRouter = express.Router();
 
 productRouter.route("/").post(createNewProduct).get(getProducts);
-productRouter.route("/:id").get(getProductById).patch(updateProductDate);
+productRouter.route("/:id").get(getProductById).patch(updateProductById);
 
 export default productRouter;

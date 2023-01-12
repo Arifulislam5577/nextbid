@@ -35,15 +35,23 @@ export const createNewProduct = expressAsyncHandler(async (req, res, next) => {
 });
 
 export const getProducts = expressAsyncHandler(async (req, res) => {
-  const totalDocuments = await Product.find({ isSold: false }).countDocuments();
+  let totalDocuments;
+  if (typeof req.query.isSold !== "undefined") {
+    totalDocuments = await Product.find({
+      isSold: req.query.isSold,
+    }).countDocuments();
+  } else {
+    totalDocuments = await Product.find({}).countDocuments();
+  }
+
   const apiServices = new ApiService(
-    Product.find({ isSold: false }).populate("sellerInfo"),
+    Product.find().populate("sellerInfo"),
     req.query
   )
     .search()
     .filter()
     .sort()
-    .paginate(req.query.limit ? req.query.limit : 6);
+    .paginate();
 
   const products = await apiServices.query;
 
@@ -66,7 +74,7 @@ export const getProductById = expressAsyncHandler(async (req, res) => {
   });
 });
 
-export const updateProductDate = expressAsyncHandler(async function (req, res) {
+export const updateProductById = expressAsyncHandler(async function (req, res) {
   const product = await Product.findById(req.params.id);
 
   if (!product) {
@@ -110,3 +118,5 @@ export const updateProductDate = expressAsyncHandler(async function (req, res) {
   }
   return res.status(200).json({ message: "updated successfull" });
 });
+
+export const getSoldProduct = expressAsyncHandler(async (req, res) => {});

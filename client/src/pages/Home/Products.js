@@ -8,13 +8,11 @@ import ProductLoader from "../../components/ProductLoader";
 import { getProducts } from "../../redux/features/product/productService";
 
 const Products = () => {
-  let isFeatured = true;
-  let isSold = false;
   const dispatch = useDispatch();
   const { loading, error, products } = useSelector((state) => state.products);
   useEffect(() => {
-    dispatch(getProducts({ isFeatured, isSold, limit: 3 }));
-  }, [dispatch, isFeatured, isSold]);
+    dispatch(getProducts({ isFeatured: true, isSold: false, limit: 3 }));
+  }, [dispatch]);
   return (
     <>
       <div className="py-10 grid lg:grid-cols-4 grid-cols-1 gap-5">

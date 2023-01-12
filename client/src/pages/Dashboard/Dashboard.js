@@ -5,16 +5,17 @@ import { BiStoreAlt, BiHeart } from "react-icons/bi";
 import { Link, Outlet } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../../redux/features/auth/authService";
+import Doted from "../../components/Doted";
 const Dashboard = () => {
   const { user } = useSelector((state) => state.authReducers);
   const dispatch = useDispatch();
-
   return (
     <section className="py-10">
       <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">
           <div className="lg:col-span-1 w-full">
-            <div className="p-5 bg-white shadow-sm rounded">
+            <div className="p-5 bg-white shadow-sm rounded relative">
+              <Doted color="gray" />
               <div className="mx-auto">
                 <img
                   src={user?.userImg}

@@ -32,7 +32,8 @@ class ApiService {
     return this;
   }
 
-  paginate(resultPerPage) {
+  paginate() {
+    const resultPerPage = this.queryStr.limit * 1 || 6;
     const currentPage = this.queryStr.page * 1 || 1;
     const skip = resultPerPage * (currentPage - 1);
     this.query = this.query.limit(resultPerPage).skip(skip);

@@ -1,11 +1,58 @@
-import React from "react";
-
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import ErrorMsg from "../../components/ErrorMsg";
+import { Link } from "react-router-dom";
+import { getUserOrders } from "../../redux/features/order/orderService";
 const Orders = () => {
+  const { loading, orders, error } = useSelector(
+    (state) => state.orderReducers
+  );
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getUserOrders());
+  }, [dispatch]);
+
+  if (loading) {
+    return (
+      <div className="flex flex-col gap-2">
+        <div className="w-full h-14 bg-gray-300 animate-pulse"></div>
+        <div className="w-full h-14 bg-gray-300 animate-pulse"></div>
+        <div className="w-full h-14 bg-gray-300 animate-pulse"></div>
+        <div className="w-full h-14 bg-gray-300 animate-pulse"></div>
+        <div className="w-full h-14 bg-gray-300 animate-pulse"></div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return <ErrorMsg error={error} />;
+  }
+
+  if (orders?.length <= 0) {
+    return (
+      <div className="py-5">
+        <img src="/images/empty.svg" alt="" className=" w-1/2 mx-auto" />
+        <div className="text-center">
+          <h2 className="mt-2 lg:text-3xl text-xl font-bold uppercase">
+            Couldn't find any order.
+          </h2>
+
+          <p>
+            But dont worry, you can find lot's of products on our{" "}
+            <Link to="/products" className="text-orange-600">
+              product page.
+            </Link>
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <section>
       <div className="overflow-x-auto relative">
-        <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-          <thead className="text-xs text-gray-900 uppercase bg-gray-300">
+        <table className="w-full text-sm text-left text-gray-500 ">
+          <thead className="text-sm text-gray-100 uppercase bg-gray-900">
             <tr>
               <th scope="col" className="py-5 px-6">
                 Product name
@@ -15,32 +62,36 @@ const Orders = () => {
                 Category
               </th>
               <th scope="col" className="py-5 px-6">
-                Bid
+                Amount
               </th>
 
-              <th scope="col" className="py-5 px-6">
-                Status
-              </th>
               <th scope="col" className="py-5 px-6">
                 Paid Status
               </th>
             </tr>
           </thead>
           <tbody>
-            <tr className="bg-gray-100 border-b text-gray-600">
-              <th
-                scope="row"
-                className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap"
-              >
-                Apple MacBook Pro 17
-              </th>
-              <td className="py-4 px-6">Laptop</td>
-              <td className="py-4 px-6">$2999</td>
-              <td className="py-4 px-6">Pending</td>
-              <td className="py-4 px-6 bg-orange-400 text-center text-white capitalize text-sm hover:bg-orange-300">
-                pay now
-              </td>
-            </tr>
+            {orders?.map((order) => {
+              return (
+                <tr key={order._id} className="bg-white border-b text-gray-600">
+                  <th className="py-3 px-6 font-medium text-gray-900 whitespace-nowrap">
+                    {order?.productInfo?.name}
+                  </th>
+                  <td className="py-3 px-6 capitalize">
+                    {order?.productInfo?.category}
+                  </td>
+                  <td className="py-3 px-6">${order?.amount}</td>
+                  <td className="text-center py-3 px-6 text-white capitalize text-sm ">
+                    <button
+                      disabled={order?.isPaid}
+                      className="border text-gray-900 px-5 border-gray-300 block py-2 rounded  capitalize"
+                    >
+                      {order?.isPaid ? "Paid" : "pay now"}
+                    </button>
+                  </td>
+                </tr>
+              );
+            })}{" "}
           </tbody>
         </table>
       </div>
