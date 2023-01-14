@@ -5,6 +5,7 @@ import Bids from "../pages/Dashboard/Bids";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import Orders from "../pages/Dashboard/Orders";
 import AddProduct from "../pages/Dashboard/AddProduct";
+import MyProduct from "../pages/Dashboard/MyProduct";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import NotFound from "../pages/NotFound/NotFound";
@@ -33,6 +34,7 @@ const RootRoutes = createBrowserRouter([
           { index: true, element: <Orders /> },
           { path: "add", element: <AddProduct /> },
           { path: "mybids", element: <Bids /> },
+          { path: "myproducts", element: <MyProduct /> },
         ],
       },
       { path: "*", element: <NotFound /> },

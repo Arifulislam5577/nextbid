@@ -2,7 +2,7 @@ import User from "../model/userModel.js";
 import asyncHandler from "express-async-handler";
 
 export const createUser = asyncHandler(async (req, res) => {
-  const { email, emailVerified, displayName, photoURL } = req.user;
+  const { email, emailVerified, displayName } = req.user;
 
   const user = await User.findOne({ userEmail: email });
   if (Object.keys(user ? user : {}).length) {
@@ -12,7 +12,9 @@ export const createUser = asyncHandler(async (req, res) => {
       userEmail: email,
       isVerify: emailVerified,
       userName: displayName,
-      userImg: photoURL,
+      userImg: `https://randomuser.me/api/portraits/men/${Math.ceil(
+        Math.random() * 50
+      )}.jpg`,
     });
 
     if (!user) {

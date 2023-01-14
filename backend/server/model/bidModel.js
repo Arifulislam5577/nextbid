@@ -15,6 +15,7 @@ const biderSchema = new Schema(
       ref: "product",
     },
     amount: { type: Number, required: true },
+    isWinner: { type: Boolean, default: false },
   },
   { timestamps: true }
 );

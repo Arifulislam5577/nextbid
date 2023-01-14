@@ -86,9 +86,14 @@ export const updateProductById = expressAsyncHandler(async function (req, res) {
   }).sort({ createdAt: -1, amount: -1 });
 
   if (productBid.length > 0) {
+    //UPDATE BID WINNER
+    await Bider.findByIdAndUpdate(productBid[0]._id, {
+      isWinner: true,
+    });
     // UPDATE PRODUCT SOLD STATUS
     product.isSold = true;
     const updatedProduct = await product.save();
+
     if (!updatedProduct) {
       return res.status(500).json({ message: "Product not Updated" });
     }
@@ -118,5 +123,3 @@ export const updateProductById = expressAsyncHandler(async function (req, res) {
   }
   return res.status(200).json({ message: "updated successfull" });
 });
-
-export const getSoldProduct = expressAsyncHandler(async (req, res) => {});

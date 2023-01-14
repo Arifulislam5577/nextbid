@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ErrorMsg from "../../components/ErrorMsg";
-import { Link } from "react-router-dom";
 import { getUserOrders } from "../../redux/features/order/orderService";
+import TableLoader from "../../components/TableLoader";
+import EmptyPage from "../../components/EmptyPage";
 const Orders = () => {
   const { loading, orders, error } = useSelector(
     (state) => state.orderReducers
@@ -13,15 +14,7 @@ const Orders = () => {
   }, [dispatch]);
 
   if (loading) {
-    return (
-      <div className="flex flex-col gap-2">
-        <div className="w-full h-14 bg-gray-300 animate-pulse"></div>
-        <div className="w-full h-14 bg-gray-300 animate-pulse"></div>
-        <div className="w-full h-14 bg-gray-300 animate-pulse"></div>
-        <div className="w-full h-14 bg-gray-300 animate-pulse"></div>
-        <div className="w-full h-14 bg-gray-300 animate-pulse"></div>
-      </div>
-    );
+    return <TableLoader />;
   }
 
   if (error) {
@@ -29,23 +22,7 @@ const Orders = () => {
   }
 
   if (orders?.length <= 0) {
-    return (
-      <div className="py-5">
-        <img src="/images/empty.svg" alt="" className=" w-1/2 mx-auto" />
-        <div className="text-center">
-          <h2 className="mt-2 lg:text-3xl text-xl font-bold uppercase">
-            Couldn't find any order.
-          </h2>
-
-          <p>
-            But dont worry, you can find lot's of products on our{" "}
-            <Link to="/products" className="text-orange-600">
-              product page.
-            </Link>
-          </p>
-        </div>
-      </div>
-    );
+    return <EmptyPage name="order" />;
   }
 
   return (
@@ -91,7 +68,7 @@ const Orders = () => {
                   </td>
                 </tr>
               );
-            })}{" "}
+            })}
           </tbody>
         </table>
       </div>

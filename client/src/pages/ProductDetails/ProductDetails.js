@@ -18,7 +18,6 @@ import {
 } from "../../redux/features/productBids/productBidService";
 import { resetBids } from "../../redux/features/productBids/productBidSlice";
 import CountDown from "../../components/CountDown";
-import { updateReset } from "../../redux/features/product/productSlice";
 
 const ProductDetails = () => {
   const [completed, setCompleted] = useState(false);
@@ -77,7 +76,6 @@ const ProductDetails = () => {
   useEffect(() => {
     if (updateSuccess) {
       dispatch(getProductById(id));
-      dispatch(updateReset());
     }
   }, [dispatch, id, updateSuccess]);
 

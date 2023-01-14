@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import Doted from "../../components/Doted";
 const Hero = () => {
   return (
-    <section className="py-10">
-      <div className="grid items-center grid-cols-1 gap-12 lg:grid-cols-2">
-        <div>
+    <section className="py-10 relative ">
+      <Doted color="black" />
+      <div className="grid items-center grid-cols-1 gap-12 lg:grid-cols-2 ">
+        <div className="relative">
           <h1 className="text-4xl font-bold text-black sm:text-6xl lg:text-5xl">
             Get your products
             <div className="relative inline-flex">
@@ -32,12 +33,8 @@ const Hero = () => {
           </div>
         </div>
 
-        <div>
-          <img
-            className="w-full"
-            src="https://cdn.rareblocks.xyz/collection/celebration/images/hero/2/hero-img.png"
-            alt=""
-          />
+        <div className="relative">
+          <img className="w-full" src="/images/happy.png" alt="" />
         </div>
       </div>
     </section>

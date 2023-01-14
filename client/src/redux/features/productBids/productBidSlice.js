@@ -1,11 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createNewProductBid, getProductBid } from "./productBidService";
+import {
+  createNewProductBid,
+  getProductBid,
+  getUserBid,
+} from "./productBidService";
 
 const initialState = {
   loading: false,
   error: "",
   success: false,
   bidInfo: null,
+  userBid: [],
 };
 
 const ProductBidSlice = createSlice({
@@ -44,6 +49,19 @@ const ProductBidSlice = createSlice({
     });
 
     builder.addCase(getProductBid.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    });
+    builder.addCase(getUserBid.pending, (state) => {
+      state.loading = true;
+    });
+
+    builder.addCase(getUserBid.fulfilled, (state, action) => {
+      state.loading = false;
+      state.userBid = action.payload;
+    });
+
+    builder.addCase(getUserBid.rejected, (state, action) => {
       state.loading = false;
       state.error = action.payload;
     });

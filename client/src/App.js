@@ -13,6 +13,7 @@ function App() {
   useEffect(() => {
     const subscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
+        localStorage.setItem("img", JSON.stringify(user?.photoURL));
         const token = await user.getIdToken();
         if (token) {
           localStorage.setItem("token", JSON.stringify(token));

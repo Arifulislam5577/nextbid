@@ -16,7 +16,7 @@ export const createNewProductBid = createAsyncThunk(
         },
         {
           headers: {
-            "content-type": "application/json",
+            "Content-Type": "application/json",
             authorization: `Bearer ${JSON.parse(
               localStorage.getItem("token")
             )}`,
@@ -48,7 +48,7 @@ export const getProductBid = createAsyncThunk(
         {},
         {
           headers: {
-            "content-type": "application/json",
+            "Content-Type": "application/json",
             authorization: `Bearer ${JSON.parse(
               localStorage.getItem("token")
             )}`,
@@ -56,6 +56,34 @@ export const getProductBid = createAsyncThunk(
         }
       );
 
+      return data;
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+export const getUserBid = createAsyncThunk(
+  "ProductBid/getUserBid",
+  async (_, thunkAPI) => {
+    const userId = thunkAPI.getState().authReducers.user._id;
+    let api = `http://localhost:5000/api/v1/bid/${userId}`;
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
+      },
+    };
+
+    try {
+      const { data } = await axios.get(`${api}`, config);
       return data;
     } catch (error) {
       const message =

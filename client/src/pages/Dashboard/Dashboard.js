@@ -36,6 +36,16 @@ const Dashboard = () => {
                   </li>
                   <li className="flex items-center gap-2 border-b pb-2 pl-5 hover:translate-x-2 transition-all duration-200 cursor-pointer">
                     <Link
+                      to={`/dashboard/myproducts`}
+                      className="flex items-center gap-2  w-full"
+                    >
+                      <BiStoreAlt />
+                      My Products
+                    </Link>
+                  </li>
+
+                  <li className="flex items-center gap-2 border-b pb-2 pl-5 hover:translate-x-2 transition-all duration-200 cursor-pointer">
+                    <Link
                       to={`/dashboard/add`}
                       className="flex items-center gap-2  w-full"
                     >

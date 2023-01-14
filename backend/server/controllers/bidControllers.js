@@ -37,3 +37,13 @@ export const getProductBid = asyncHandler(async (req, res) => {
     highestBid,
   });
 });
+
+// GET USER BID BY USERID
+
+export const getUserBid = asyncHandler(async (req, res) => {
+  const userBid = await Bider.find({ userInfo: req.params.userId }).populate(
+    "productInfo"
+  );
+
+  res.status(200).json(userBid);
+});

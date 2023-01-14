@@ -67,7 +67,7 @@ export const userInDB = createAsyncThunk(
         {},
         {
           headers: {
-            "content-type": "application/json",
+            "Content-Type": "application/json",
             authorization: `Bearer ${token}`,
           },
         }

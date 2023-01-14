@@ -36,7 +36,7 @@ export const getProducts = createAsyncThunk(
         {},
         {
           headers: {
-            "content-type": "application/json",
+            "Content-Type": "application/json",
             authorization: `Bearer ${JSON.parse(
               localStorage.getItem("token")
             )}`,
@@ -84,7 +84,7 @@ export const createNewProduct = createAsyncThunk(
         },
         {
           headers: {
-            "content-type": "application/json",
+            "Content-Type": "application/json",
             authorization: `Bearer ${JSON.parse(
               localStorage.getItem("token")
             )}`,
@@ -116,7 +116,7 @@ export const getProductById = createAsyncThunk(
         {},
         {
           headers: {
-            "content-type": "application/json",
+            "Content-Type": "application/json",
             authorization: `Bearer ${JSON.parse(
               localStorage.getItem("token")
             )}`,
@@ -148,7 +148,7 @@ export const updateProductById = createAsyncThunk(
         {},
         {
           headers: {
-            "content-type": "application/json",
+            "Content-Type": "application/json",
             authorization: `Bearer ${JSON.parse(
               localStorage.getItem("token")
             )}`,

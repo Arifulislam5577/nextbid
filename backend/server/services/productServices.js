@@ -31,9 +31,10 @@ export const productAllInfo = async (product) => {
 
 export const addThreeDays = (date) => {
   const currentDate = new Date();
-  currentDate.setDate(currentDate.getDate() + 3);
-  if (currentDate < new Date(date)) {
-    return date;
+  if (currentDate.toISOString() < new Date(date).toISOString()) {
+    return new Date(date).toISOString();
+  } else {
+    currentDate.setDate(currentDate.getDate() + 3);
+    return new Date(currentDate).toISOString();
   }
-  return currentDate;
 };
