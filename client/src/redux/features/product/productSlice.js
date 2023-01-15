@@ -4,6 +4,7 @@ import {
   getProductById,
   createNewProduct,
   updateProductById,
+  getUserProduct,
 } from "./productService";
 
 const initialState = {
@@ -79,6 +80,22 @@ const productSlice = createSlice({
     });
 
     builder.addCase(updateProductById.rejected, (state, action) => {
+      state.error = action.payload;
+    });
+
+    builder.addCase(getUserProduct.pending, (state) => {
+      state.loading = true;
+      state.error = "";
+    });
+
+    builder.addCase(getUserProduct.fulfilled, (state, action) => {
+      state.products = action.payload;
+      state.loading = false;
+      state.error = "";
+    });
+
+    builder.addCase(getUserProduct.rejected, (state, action) => {
+      state.loading = false;
       state.error = action.payload;
     });
   },

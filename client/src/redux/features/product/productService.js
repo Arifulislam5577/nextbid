@@ -167,3 +167,36 @@ export const updateProductById = createAsyncThunk(
     }
   }
 );
+
+export const getUserProduct = createAsyncThunk(
+  "Products/getUserProduct",
+  async (pageNumber, thunkAPI) => {
+    const sellerId = thunkAPI.getState().authReducers.user._id;
+    let api = `http://localhost:5000/api/v1/products?page=${pageNumber}&sellerInfo=${sellerId}`;
+
+    try {
+      const { data } = await axios.get(
+        `${api}`,
+
+        {
+          headers: {
+            "Content-Type": "application/json",
+            authorization: `Bearer ${JSON.parse(
+              localStorage.getItem("token")
+            )}`,
+          },
+        }
+      );
+
+      return data;
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);

@@ -4,11 +4,15 @@ import {
   getProductById,
   getProducts,
   updateProductById,
+  updateProductInBg,
 } from "../controllers/productControllers.js";
-import { verifyUser } from "../middlewares/verifyUser.js";
 const productRouter = express.Router();
 
-productRouter.route("/").post(createNewProduct).get(getProducts);
+productRouter
+  .route("/")
+  .post(createNewProduct)
+  .get(getProducts)
+  .patch(updateProductInBg);
 productRouter.route("/:id").get(getProductById).patch(updateProductById);
 
 export default productRouter;

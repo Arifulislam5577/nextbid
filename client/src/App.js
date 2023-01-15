@@ -29,6 +29,7 @@ function App() {
 
     return () => subscribe();
   }, [dispatch]);
+
   return (
     <RouterProvider router={RootRoutes} fallbackElement={<MainLoader />} />
   );

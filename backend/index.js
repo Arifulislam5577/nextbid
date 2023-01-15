@@ -11,6 +11,7 @@ import {
   errorHandler,
   notFound,
 } from "./server/middlewares/errorMiddleware.js";
+import { updateProductInBg } from "./server/controllers/productControllers.js";
 
 dotenv.config();
 
@@ -28,9 +29,16 @@ cloudinary.config({
 });
 
 // ALL ROUTES
+
 app.get("/", (req, res) => {
   res.send("Hello World");
 });
+
+app.use((req, res, next) => {
+  updateProductInBg();
+  next();
+});
+
 app.use("/api/v1/products", productRouter);
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/bid", bidRouter);

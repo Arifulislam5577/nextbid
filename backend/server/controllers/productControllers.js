@@ -123,3 +123,43 @@ export const updateProductById = expressAsyncHandler(async function (req, res) {
   }
   return res.status(200).json({ message: "updated successfull" });
 });
+
+export const updateProductInBg = expressAsyncHandler(async (req, res) => {
+  const products = await Product.find({ isSold: false });
+  if (products.length) {
+    products.map(async (product) => {
+      const currentDate = new Date().toISOString();
+      const productLastDate = new Date(product.lastDate).toISOString();
+
+      if (productLastDate < currentDate) {
+        const hasProductBid = await Bider.find({
+          productInfo: product._id,
+        }).sort({ createdAt: -1, amount: -1 });
+        if (hasProductBid.length) {
+          // UPDATE BID AS WINNER
+
+          await Bider.findByIdAndUpdate(hasProductBid[0]._id, {
+            isWinner: true,
+          });
+          // UPDATE PRODUCT AS SOLD
+          await Product.findByIdAndUpdate(hasProductBid[0].productInfo, {
+            isSold: true,
+          });
+          // CREATE A NEW ORDER
+
+          await Order.create({
+            productInfo: hasProductBid[0].productInfo,
+            buyerInfo: hasProductBid[0].userInfo,
+            amount: hasProductBid[0].amount,
+          });
+        } else {
+          // UPDATE PRODUCT LASTDATE
+          const newDate = addThreeDays(product.lastDate);
+          await Product.findByIdAndUpdate(product._id, {
+            lastDate: newDate,
+          });
+        }
+      }
+    });
+  }
+});

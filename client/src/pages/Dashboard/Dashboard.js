@@ -1,7 +1,7 @@
 import React from "react";
 import { ImHammer2 } from "react-icons/im";
 import { VscSignOut } from "react-icons/vsc";
-import { BiStoreAlt, BiHeart } from "react-icons/bi";
+import { BsBox, BsBag, BsBagPlus } from "react-icons/bs";
 import { Link, Outlet } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../../redux/features/auth/authService";
@@ -30,7 +30,7 @@ const Dashboard = () => {
                       to={`/dashboard`}
                       className="flex items-center gap-2  w-full"
                     >
-                      <BiStoreAlt />
+                      <BsBag />
                       Orders
                     </Link>
                   </li>
@@ -39,7 +39,7 @@ const Dashboard = () => {
                       to={`/dashboard/myproducts`}
                       className="flex items-center gap-2  w-full"
                     >
-                      <BiStoreAlt />
+                      <BsBox />
                       My Products
                     </Link>
                   </li>
@@ -49,7 +49,7 @@ const Dashboard = () => {
                       to={`/dashboard/add`}
                       className="flex items-center gap-2  w-full"
                     >
-                      <BiHeart />
+                      <BsBagPlus />
                       Add Product
                     </Link>
                   </li>
