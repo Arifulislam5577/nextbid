@@ -76,7 +76,7 @@ const MyProduct = () => {
         </table>
         <div
           className={`mt-5  items-center justify-end ${
-            totalDocuments < 6 ? "flex" : "hidden"
+            totalDocuments >= 6 ? "flex" : "hidden"
           }`}
         >
           <Pagination pageNum={pageNumber} setPage={setPage} page={page} />

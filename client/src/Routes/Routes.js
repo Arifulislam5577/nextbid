@@ -12,6 +12,7 @@ import NotFound from "../pages/NotFound/NotFound";
 import ProductDetails from "../pages/ProductDetails/ProductDetails";
 import Signin from "../pages/Signin/Signin";
 import PrivateRoute from "./PrivateRoutes";
+import Success from "../pages/Success/Success";
 
 const RootRoutes = createBrowserRouter([
   {
@@ -23,6 +24,7 @@ const RootRoutes = createBrowserRouter([
       { path: "/signin", element: <Signin /> },
       { path: "/products", element: <AllProducts /> },
       { path: "/product/:id", element: <ProductDetails /> },
+      { path: "/success", element: <Success /> },
       {
         path: "/dashboard",
         element: (
