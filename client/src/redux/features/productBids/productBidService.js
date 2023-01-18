@@ -4,7 +4,7 @@ import axios from "axios";
 export const createNewProductBid = createAsyncThunk(
   "ProductBid/createNewBid",
   async (bidInfo, thunkAPI) => {
-    let api = `http://localhost:5000/api/v1/bid`;
+    let api = `https://nextbid.vercel.app/api/v1/bid`;
 
     try {
       const { data } = await axios.post(
@@ -40,7 +40,7 @@ export const createNewProductBid = createAsyncThunk(
 export const getProductBid = createAsyncThunk(
   "ProductBid/getProductBid",
   async (productId, thunkAPI) => {
-    let api = `http://localhost:5000/api/v1/bid?productInfo=${productId}`;
+    let api = `https://nextbid.vercel.app/api/v1/bid?productInfo=${productId}`;
 
     try {
       const { data } = await axios.get(
@@ -73,7 +73,7 @@ export const getUserBid = createAsyncThunk(
   "ProductBid/getUserBid",
   async (_, thunkAPI) => {
     const userId = thunkAPI.getState().authReducers.user._id;
-    let api = `http://localhost:5000/api/v1/bid/${userId}`;
+    let api = `https://nextbid.vercel.app/api/v1/bid/${userId}`;
 
     const config = {
       headers: {

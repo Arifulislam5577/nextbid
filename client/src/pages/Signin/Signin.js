@@ -8,8 +8,9 @@ import useRedirect from "../../hooks/useRedirect";
 import { TbBrandNextjs } from "react-icons/tb";
 import Doted from "../../components/Doted";
 import SocialMedia from "../../components/SocialMedia";
-
+import useTitle from "../../hooks/useTitle";
 const Signin = () => {
+  useTitle("SignIn");
   const redirect = useRedirect();
   const navigate = useNavigate();
   const { loading, error, user } = useSelector((state) => state.authReducers);

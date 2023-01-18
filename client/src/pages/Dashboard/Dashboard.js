@@ -4,9 +4,11 @@ import { VscSignOut } from "react-icons/vsc";
 import { BsBox, BsBag, BsBagPlus } from "react-icons/bs";
 import { Link, Outlet } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import useTitle from "../../hooks/useTitle";
 import { logOut } from "../../redux/features/auth/authService";
 import Doted from "../../components/Doted";
 const Dashboard = () => {
+  useTitle("Dashboard");
   const { user } = useSelector((state) => state.authReducers);
   const dispatch = useDispatch();
   return (

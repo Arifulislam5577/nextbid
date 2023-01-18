@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
+import useTitle from "../../hooks/useTitle";
 import { updatePayment } from "../../redux/features/order/orderService";
 const Success = () => {
+  useTitle("Payment Success");
   const { success } = useSelector((state) => state.orderReducers);
   const { search } = useLocation();
   const navigate = useNavigate();

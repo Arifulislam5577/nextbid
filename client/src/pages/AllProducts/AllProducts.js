@@ -10,7 +10,9 @@ import Pagination from "../../components/Pagination";
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
 import { Alert } from "@mui/material";
+import useTitle from "../../hooks/useTitle";
 const AllProducts = () => {
+  useTitle("All Products");
   const productCategory = [
     "All Products",
     "car",
@@ -91,7 +93,7 @@ const AllProducts = () => {
                       placeholder="Search..."
                       value={keyword}
                       onChange={(e) => setKeyword(e.target.value)}
-                      className="py-2.5 pl-10 text-sm placeholder:text-gray-400 rounded-full w-full focus:outline-none bg-gray-200 text-gray-300 "
+                      className="py-2.5 pl-10 text-sm placeholder:text-gray-400 rounded-full w-full focus:outline-none bg-gray-200 text-gray-600 "
                     />
                   </form>
                 </fieldset>

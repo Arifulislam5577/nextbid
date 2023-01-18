@@ -4,7 +4,9 @@ import Hero from "./Hero";
 import Products from "./Products";
 import { motion } from "framer-motion";
 import Blog from "./Blog";
+import useTitle from "../../hooks/useTitle";
 const Home = () => {
+  useTitle("NextBid || Get your products before sold");
   return (
     <motion.section
       className="py-5"

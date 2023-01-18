@@ -18,6 +18,7 @@ import {
 } from "../../redux/features/productBids/productBidService";
 import { resetBids } from "../../redux/features/productBids/productBidSlice";
 import CountDown from "../../components/CountDown";
+import useTitle from "../../hooks/useTitle";
 
 const ProductDetails = () => {
   const [completed, setCompleted] = useState(false);
@@ -31,6 +32,8 @@ const ProductDetails = () => {
     (state) => state.products
   );
   const { user } = useSelector((state) => state.authReducers);
+
+  useTitle("Product Details");
 
   const {
     loading: bidLoader,
