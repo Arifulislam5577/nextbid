@@ -7,10 +7,6 @@ const Blog = () => {
         <div className="-mx-4 flex flex-wrap justify-center">
           <div className="w-full px-4">
             <div className="mx-auto mb-[60px] max-w-[510px] text-center lg:mb-20">
-              <span className="text-primary mb-2 block text-lg font-semibold">
-                Our Blogs
-              </span>
-
               <h1 className="text-3xl font-bold text-black sm:text-4xl md:text-[40px]">
                 Our Recent{" "}
                 <div className="relative inline-flex">
