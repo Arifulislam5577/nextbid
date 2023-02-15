@@ -1,19 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Doted from "../../components/Doted";
 const Hero = () => {
   return (
-    <section className="py-10 relative ">
-      <Doted color="black" />
+    <section className="py-10">
       <div className="grid items-center grid-cols-1 gap-12 lg:grid-cols-2 ">
         <div className="relative">
           <h1 className="text-4xl font-bold text-black sm:text-6xl lg:text-5xl">
             Get your products
-            <div className="relative inline-flex">
-              <span className="absolute inset-x-0 bottom-0 border-b-[20px] border-orange-600"></span>
-              <h1 className="relative text-4xl font-bold text-black sm:text-6xl lg:text-5xl">
+            <div className="inline-flex mt-2">
+              <span class="bg-gradient-to-r from-slate-900 to-orange-600 text-transparent bg-clip-text">
                 before sold.
-              </h1>
+              </span>
             </div>
           </h1>
 
@@ -26,7 +23,7 @@ const Hero = () => {
           <div className=" sm:flex sm:items-center ">
             <Link
               to="/login"
-              className="inline-flex items-center justify-center px-6 py-3 text-sm rounded text-white transition-all duration-200 bg-orange-600 hover:bg-orange-600 focus:bg-orange-600"
+              className="inline-flex items-center justify-center px-6 py-3 text-sm rounded-full text-white  bg-slate-900 drop-shadow-lg border-2 border-white"
             >
               Start exploring
             </Link>
@@ -34,7 +31,7 @@ const Hero = () => {
         </div>
 
         <div className="relative">
-          <img className="w-full" src="/images/happy.png" alt="" />
+          <img className="w-full h-full" src="/images/1.png" alt="hero" />
         </div>
       </div>
     </section>

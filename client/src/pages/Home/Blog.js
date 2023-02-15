@@ -10,8 +10,7 @@ const Blog = () => {
               <h1 className="text-3xl font-bold text-black sm:text-4xl md:text-[40px]">
                 Our Recent{" "}
                 <div className="relative inline-flex">
-                  <span className="absolute inset-x-0 bottom-0 border-b-[20px] border-orange-600"></span>
-                  <h1 className="relative text-3xl font-bold text-black sm:text-4xl md:text-[40px] ">
+                  <h1 className="relative text-3xl font-bold bg-gradient-to-r from-slate-900 to-orange-600 text-transparent bg-clip-text mb-4 sm:text-4xl md:text-[40px] ">
                     News
                   </h1>
                 </div>
@@ -40,7 +39,7 @@ const Blog = () => {
                 <h3>
                   <a
                     href="/"
-                    className="text-dark hover:text-primary mb-4 inline-block text-xl font-semibold sm:text-2xl lg:text-xl "
+                    className="text-dark hover:text-primary mb-4 inline-block text-xl font-semibold sm:text-2xl lg:text-xl font-serif"
                   >
                     Meet AutoManage, the best AI management tools
                   </a>
@@ -68,7 +67,7 @@ const Blog = () => {
                 <h3>
                   <a
                     href="/"
-                    className="text-dark hover:text-primary mb-4 inline-block text-xl font-semibold sm:text-2xl lg:text-xl "
+                    className="text-dark hover:text-primary mb-4 inline-block text-xl font-semibold sm:text-2xl lg:text-xl font-serif"
                   >
                     How to earn more money as a wellness coach
                   </a>
@@ -96,7 +95,7 @@ const Blog = () => {
                 <h3>
                   <a
                     href="/"
-                    className="text-dark hover:text-primary mb-4 inline-block text-xl font-semibold sm:text-2xl lg:text-xl "
+                    className="text-dark hover:text-primary mb-4 inline-block text-xl font-semibold sm:text-2xl lg:text-xl font-serif"
                   >
                     The no-fuss guide to upselling and cross selling
                   </a>

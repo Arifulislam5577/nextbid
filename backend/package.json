@@ -7,7 +7,9 @@
   "scripts": {
     "start": "node index.js",
     "server": "nodemon index.js",
-    "seedProduct": "node server/utils/seederProduct.js"
+    "client": "cd ../client && npm start",
+    "seedProduct": "node server/utils/seederProduct.js",
+    "dev": "concurrently \"npm run client\" \"npm run server\""
   },
   "keywords": [],
   "author": "",

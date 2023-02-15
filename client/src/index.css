@@ -22,3 +22,11 @@ html,
   flex-direction: column;
   justify-content: space-between;
 }
+
+.line {
+  display: -webkit-box;
+  width: 100%;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

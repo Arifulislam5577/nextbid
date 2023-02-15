@@ -16,13 +16,17 @@ const Products = () => {
   return (
     <>
       <div className="py-10 grid lg:grid-cols-4 grid-cols-1 gap-5">
-        <div className="col-span-1 p-8 hidden bg-gray-900 text-white  lg:flex flex-col items-center justify-center  rounded relative">
-          <h1 className="font-bold text-3xl">Our Latest Products</h1>
+        <div className="col-span-1 p-8 hidden bg-gray-200 text-slate-900  lg:flex flex-col gap-2 items-start justify-center rounded relative">
+          <h1 className="font-bold text-3xl bg-gradient-to-r from-slate-900 to-orange-600 text-transparent bg-clip-text mb-4">
+            Our Latest Products
+          </h1>
           <p className="text-sm">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur,
-            voluptatum quibusdam cumque in dignissimos rerum.
+            A domain name is one of the first steps to establishing your brand.
           </p>
-          <Doted color="#fff" />
+          <p className="text-sm">
+            Secure a consistent brand image with a domain name that matches your
+            business.
+          </p>
         </div>
 
         {loading ? (
@@ -43,7 +47,7 @@ const Products = () => {
             <div className="lg:col-span-3 w-full flex items-center lg:justify-end justify-center">
               <Link
                 to="/products"
-                className="py-3 px-6 text-sm rounded bg-orange-600 text-white "
+                className="inline-flex items-center justify-center px-6 py-3 text-sm rounded-full text-white  bg-slate-900 drop-shadow-lg border-2 border-white"
               >
                 View All
               </Link>
