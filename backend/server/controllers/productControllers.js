@@ -39,9 +39,12 @@ export const getProducts = expressAsyncHandler(async (req, res) => {
   if (typeof req.query.isSold !== "undefined") {
     totalDocuments = await Product.find({
       isSold: req.query.isSold,
+      $or: [{ name: { $regex: req.query.searchBy, $options: "i" } }],
     }).countDocuments();
   } else {
-    totalDocuments = await Product.find({}).countDocuments();
+    totalDocuments = await Product.find({
+      $or: [{ name: { $regex: req.query.searchBy, $options: "i" } }],
+    }).countDocuments();
   }
 
   const apiServices = new ApiService(

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import BiderInfo from "./BiderInfo";
 import { ImPriceTags } from "react-icons/im";
-import { AiFillCarryOut } from "react-icons/ai";
 import { motion } from "framer-motion";
 import ErrorMsg from "../../components/ErrorMsg";
 import ProductLoader from "../../components/ProductLoader";
@@ -19,6 +18,7 @@ import {
 import { resetBids } from "../../redux/features/productBids/productBidSlice";
 import CountDown from "../../components/CountDown";
 import useTitle from "../../hooks/useTitle";
+import ProductDesc from "./ProductDesc";
 
 const ProductDetails = () => {
   const [completed, setCompleted] = useState(false);
@@ -127,7 +127,7 @@ const ProductDetails = () => {
 
   return (
     <motion.section
-      className="py-10"
+      className=""
       initial={{ y: "3%" }}
       animate={{ y: "0%" }}
       transition={{ duration: 0.75, ease: "easeOut" }}
@@ -138,7 +138,7 @@ const ProductDetails = () => {
             <img
               src={productInfo?.product?.coverPhoto}
               alt=""
-              className="rounded"
+              className="rounded-xl"
             />
 
             <h1 className="text-xl font-bold my-3 text-gray-900 flex items-center gap-1">
@@ -158,45 +158,22 @@ const ProductDetails = () => {
               }}
             ></div>
           </div>
-          <div className="lg:col-span-1 w-full">
-            <div className="lg:py-6 lg:px-8 p-5 bg-orange-600 rounded shadow ">
-              <CountDown
-                handleUpdate={handleUpdate}
-                time={productInfo?.product?.lastDate}
-              />
-
-              <div className="flex items-center justify-between my-3 text-base text-white">
-                <h2 className="flex items-center  gap-1">
-                  <ImPriceTags />
-                  Sell Price
-                </h2>
-                <h2>${productInfo?.product?.newPrice}</h2>
-              </div>
-              <div className="flex items-center justify-between my-3 text-base text-white">
-                <h2 className="flex items-center gap-1">
-                  <ImPriceTags />
-                  Highest Bid
-                </h2>
-                <h2>${bidInfo?.highestBid}</h2>
-              </div>
-              <div className="flex items-center justify-between my-3 text-base text-white">
-                <h2 className="flex items-center gap-1">
-                  <AiFillCarryOut />
-                  Total Bid
-                </h2>
-                <h2>{bidInfo?.totalBid}</h2>
-              </div>
+          <div className="lg:col-span-1 w-full flex flex-col gap-5">
+            <CountDown
+              handleUpdate={handleUpdate}
+              time={productInfo?.product?.lastDate}
+            />
+            <ProductDesc price={productInfo?.product?.newPrice} bid={bidInfo} />
+            <div className="p-8 bg-white rounded-xl shadow-lg ">
               <div className="mb-3">
-                <h1 className="text-center text-white font-bold pb-2 border-b">
-                  Lastest Bids
+                <h1 className=" text-slate-900 font-bold pb-2 text-xl">
+                  Bid from here
                 </h1>
                 {bidError && (
-                  <p className="text-center my-2 text-white text-sm">
-                    {bidError}
-                  </p>
+                  <p className="my-2 text-slate-900 text-sm">{bidError}</p>
                 )}
                 {bidInfo?.lastThreeBid?.length <= 0 ? (
-                  <p className="text-center my-2 text-white text-sm">
+                  <p className="my-2 text-slate-900 text-sm">
                     No Bids Available
                   </p>
                 ) : (
@@ -205,31 +182,22 @@ const ProductDetails = () => {
                   ))
                 )}
               </div>
+
               <div className="my-3">
-                <form onSubmit={handleSubmit}>
-                  <div className="grid grid-cols-4 mb-3">
-                    <div className="col-span-1">
-                      <img
-                        src={
-                          user
-                            ? user?.userImg
-                            : "https://www.shareicon.net/data/2016/05/24/770107_man_512x512.png"
-                        }
-                        alt={user ? user?.userName : "user"}
-                        className="h-12 w-12 rounded-full"
-                      />
-                    </div>
-                    <div className="col-span-3">
-                      <input
-                        type="number"
-                        min={productInfo?.product?.newPrice}
-                        value={amount ? amount : ""}
-                        onChange={(e) => setAmount(e.target.value)}
-                        className="w-full  border-b py-2 text-sm text-white focus:outline-none placeholder:text-xs placeholder:text-gray-300 px-3 bg-transparent"
-                        placeholder="$enter your amount"
-                        required
-                      />
-                    </div>
+                <form
+                  onSubmit={handleSubmit}
+                  className="flex flex-col items-end"
+                >
+                  <div className="w-full mb-3">
+                    <input
+                      type="number"
+                      min={productInfo?.product?.newPrice}
+                      value={amount ? amount : ""}
+                      onChange={(e) => setAmount(e.target.value)}
+                      className="w-full bg-gray-50 border border-slate-300 py-3 text-sm text-slate-900 focus:outline-none placeholder:text-xs placeholder:text-gray-300 px-5 rounded-full"
+                      placeholder="$enter your amount"
+                      required
+                    />
                   </div>
 
                   {productInfo?.product?.isSold ? (
@@ -245,7 +213,7 @@ const ProductDetails = () => {
                     <button
                       type="submit"
                       disabled={bidLoader}
-                      className="w-full py-2.5 text-white capitalize text-sm bg-gray-900 rounded"
+                      className="py-2.5 text-white capitalize text-sm bg-gray-900 rounded-full px-6"
                     >
                       {bidLoader ? "Loading..." : "bid now"}
                     </button>

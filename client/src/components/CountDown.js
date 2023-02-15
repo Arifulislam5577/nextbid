@@ -6,17 +6,27 @@ const CountDown = ({ time, handleUpdate }) => {
     if (completed) {
       handleUpdate(true);
       return (
-        <h1 className="text-white text-center font-bold pb-2 border-b uppercase text-xl">
-          Offer End
-        </h1>
+        <div className="bg-white rounded-xl flex p-5 items-center justify-center gap-3 uppercase text-center font-bold text-2xl shadow-xl">
+          <h1 className="text-white text-center font-bold pb-2 border-b uppercase text-xl">
+            Offer End
+          </h1>
+        </div>
       );
     } else {
       return (
-        <div className="flex items-center gap-3  my-3 text-2xl text-center justify-center text-white pb-3 border-b font-bold ">
-          <div>{days}d</div>
-          <div>{hours}h</div>
-          <div>{minutes}m</div>
-          <div>{seconds}s</div>
+        <div className="bg-white rounded-xl flex p-5 items-center justify-center gap-3 uppercase text-center font-bold text-2xl shadow-lg">
+          <div className="bg-gradient-to-r from-slate-900 to-orange-600 text-transparent bg-clip-text">
+            {days}d
+          </div>
+          <div className="bg-gradient-to-r from-slate-900 to-orange-600 text-transparent bg-clip-text">
+            {hours}h
+          </div>
+          <div className="bg-gradient-to-r from-slate-900 to-orange-600 text-transparent bg-clip-text">
+            {minutes}m
+          </div>
+          <div className="bg-gradient-to-r from-slate-900 to-orange-600 text-transparent bg-clip-text">
+            {seconds}s
+          </div>
         </div>
       );
     }

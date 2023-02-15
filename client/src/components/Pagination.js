@@ -2,11 +2,13 @@ import React from "react";
 
 const Pagination = ({ pageNum, setPage, page }) => {
   return (
-    <div className="flex justify-center space-x-1 dark:text-gray-100">
+    <div className="flex justify-center items-center space-x-1 dark:text-gray-100">
       <button
         title="previous"
         type="button"
-        className="inline-flex items-center justify-center w-8 h-8 py-0 border rounded-md shadow-md dark:bg-gray-900 dark:border-gray-800"
+        className="inline-flex items-center justify-center w-8 h-8 py-0 border rounded-full shadow-md dark:bg-gray-900 dark:border-gray-800"
+        disabled={page === 1}
+        onClick={() => setPage(page - 1)}
       >
         <svg
           viewBox="0 0 24 24"
@@ -25,7 +27,7 @@ const Pagination = ({ pageNum, setPage, page }) => {
         [...Array(pageNum).keys()].map((btnNumber) => (
           <button
             type="button"
-            className={`inline-flex items-center justify-center w-8 h-8 text-sm border rounded shadow-md  ${
+            className={`inline-flex items-center justify-center w-8 h-8 text-sm border rounded-full shadow-md  ${
               page === btnNumber + 1 ? "bg-orange-600" : "bg-gray-900"
             }`}
             key={btnNumber}
@@ -38,7 +40,9 @@ const Pagination = ({ pageNum, setPage, page }) => {
       <button
         title="next"
         type="button"
-        className="inline-flex items-center justify-center w-8 h-8 py-0 border rounded-md shadow-md dark:bg-gray-900 dark:border-gray-800"
+        className="inline-flex items-center justify-center w-8 h-8 py-0 border rounded-full shadow-md dark:bg-gray-900 dark:border-gray-800"
+        disabled={page === pageNum}
+        onClick={() => setPage(page + 1)}
       >
         <svg
           viewBox="0 0 24 24"

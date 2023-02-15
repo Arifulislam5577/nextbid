@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import Doted from "../../components/Doted";
 import ErrorMsg from "../../components/ErrorMsg";
 import Product from "../../components/Product";
 import ProductLoader from "../../components/ProductLoader";
