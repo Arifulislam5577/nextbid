@@ -22,7 +22,7 @@ const Success = () => {
   }, [navigate, sessionToken, dispatch, success]);
 
   return (
-    <div className=" lg:py-20 py-5">
+    <div className=" lg:py-10 py-5">
       <div className=" md:mx-auto">
         <svg
           viewBox="0 0 24 24"

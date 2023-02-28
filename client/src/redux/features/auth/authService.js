@@ -63,7 +63,7 @@ export const userInDB = createAsyncThunk(
   async (token, thunkAPI) => {
     try {
       const { data } = await axios.post(
-        `https://nextbid.vercel.app/api/v1/user`,
+        `${process.env.REACT_APP_SERVER_API}/api/v1/user`,
         {},
         {
           headers: {

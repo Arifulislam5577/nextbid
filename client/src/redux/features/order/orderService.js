@@ -5,7 +5,7 @@ export const getUserOrders = createAsyncThunk(
   "Order/getOrder",
   async (orderData, thunkAPI) => {
     const userId = thunkAPI.getState().authReducers.user._id;
-    let api = `https://nextbid.vercel.app/api/v1/order?buyerInfo=${userId}`;
+    let api = `${process.env.REACT_APP_SERVER_API}/api/v1/order?buyerInfo=${userId}`;
     const config = {
       headers: {
         "Content-Type": "application/json",
@@ -30,7 +30,7 @@ export const getUserOrders = createAsyncThunk(
 export const createPayment = createAsyncThunk(
   "Order/createPayment",
   async (orderId, thunkAPI) => {
-    let api = `https://nextbid.vercel.app/api/v1/order/${orderId}`;
+    let api = `${process.env.REACT_APP_SERVER_API}/api/v1/order/${orderId}`;
     const config = {
       headers: {
         "Content-Type": "application/json",
@@ -55,7 +55,7 @@ export const createPayment = createAsyncThunk(
 export const updatePayment = createAsyncThunk(
   "Order/updatePayment",
   async (orderToken, thunkAPI) => {
-    let api = `https://nextbid.vercel.app/api/v1/order/success?token=${orderToken}`;
+    let api = `${process.env.REACT_APP_SERVER_API}/api/v1/order/success?token=${orderToken}`;
     const config = {
       headers: {
         "Content-Type": "application/json",

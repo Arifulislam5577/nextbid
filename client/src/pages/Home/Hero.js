@@ -8,7 +8,7 @@ const Hero = () => {
           <h1 className="text-4xl font-bold text-black sm:text-6xl lg:text-5xl">
             Get your products
             <div className="inline-flex mt-2">
-              <span class="bg-gradient-to-r from-slate-900 to-orange-600 text-transparent bg-clip-text">
+              <span className="bg-gradient-to-r from-slate-900 to-orange-600 text-transparent bg-clip-text">
                 before sold.
               </span>
             </div>

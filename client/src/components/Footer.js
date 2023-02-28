@@ -7,13 +7,16 @@ const Footer = () => {
     <footer className="text-gray-600 body-font">
       <div className="container  py-8 flex items-center sm:flex-row flex-col">
         <div className="logo">
-          <Link to="/" className="text-gray-900 text-xl flex items-center">
-            <TbBrandNextjs size={32} />
-            ext<span className="text-orange-600">Bid</span>
+          <Link
+            to="/"
+            className="flex font-bold items-center justify-end uppercase text-xl"
+          >
+            <TbBrandNextjs size={32} color="orange" />
+            extBID
           </Link>
         </div>
         <p className="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">
-          © 2022 NextBid —
+          © 2023 NextBid —
           <a
             href="https://twitter.com/arifulislam5577"
             className="text-gray-600 ml-1"

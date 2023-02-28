@@ -31,7 +31,7 @@ const Signin = () => {
       animate={{ y: "0%" }}
       transition={{ duration: 0.75, ease: "easeOut" }}
     >
-      <div className="w-full flex items-center justify-between lg:w-2/3 mx-auto  my-10">
+      <div className="w-full flex items-center justify-between lg:w-2/3 mx-auto ">
         <div className="md:w-1/2 w-5/6 bg-white drop-shadow-lg py-10 mx-auto rounded relative">
           <h1 className=" text-2xl  text-center tracking-wider flex items-center justify-center">
             <TbBrandNextjs size={32} />

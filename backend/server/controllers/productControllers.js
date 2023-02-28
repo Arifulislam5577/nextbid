@@ -57,7 +57,6 @@ export const getProducts = expressAsyncHandler(async (req, res) => {
     .paginate();
 
   const products = await apiServices.query;
-
   return res
     .status(200)
     .json({ totalDocuments, result: products.length, products });

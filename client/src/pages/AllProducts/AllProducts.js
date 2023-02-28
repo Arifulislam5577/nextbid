@@ -53,7 +53,6 @@ const AllProducts = () => {
       initial={{ y: "3%" }}
       animate={{ y: "0%" }}
       transition={{ duration: 0.75, ease: "easeOut" }}
-      className="py-10"
     >
       <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-5">

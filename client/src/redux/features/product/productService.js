@@ -15,16 +15,20 @@ export const getProducts = createAsyncThunk(
       sort = "",
     } = productData;
 
-    let api = `https://nextbid.vercel.app/api/v1/products?newPrice[gte]=${
-      value[0]
-    }&newPrice[lte]=${value[1]}&searchBy=${keyword}&page=${page}&sort=${
+    let api = `${
+      process.env.REACT_APP_SERVER_API
+    }/api/v1/products?newPrice[gte]=${value[0]}&newPrice[lte]=${
+      value[1]
+    }&searchBy=${keyword}&page=${page}&sort=${
       sort === "dsc" ? "newPrice" : sort === "asc" ? "-newPrice" : ""
     }&isSold=${isSold}${isFeatured ? "&isFeatured=true" : ""}${
       limit === 3 ? "&limit=3" : "&limit=6"
     }`;
 
     if (category) {
-      api = `https://nextbid.vercel.app/api/v1/products?category=${category}&newPrice[lte]=${
+      api = `${
+        process.env.REACT_APP_SERVER_API
+      }/api/v1/products?category=${category}&newPrice[lte]=${
         value[1]
       }&searchBy=${keyword}&page=${page}&sort=${
         sort === "dsc" ? "newPrice" : sort === "asc" ? "-newPrice" : ""
@@ -60,7 +64,7 @@ export const getProducts = createAsyncThunk(
 export const createNewProduct = createAsyncThunk(
   "Products/createProduct",
   async (productInfo, thunkAPI) => {
-    let api = `https://nextbid.vercel.app/api/v1/products`;
+    let api = `${process.env.REACT_APP_SERVER_API}/api/v1/products`;
     const {
       name,
       description,
@@ -108,7 +112,7 @@ export const createNewProduct = createAsyncThunk(
 export const getProductById = createAsyncThunk(
   "Products/getProductsById",
   async (productId, thunkAPI) => {
-    let api = `https://nextbid.vercel.app/api/v1/products/${productId}`;
+    let api = `${process.env.REACT_APP_SERVER_API}/api/v1/products/${productId}`;
 
     try {
       const { data } = await axios.get(
@@ -140,7 +144,7 @@ export const getProductById = createAsyncThunk(
 export const updateProductById = createAsyncThunk(
   "Products/updateProductsById",
   async (productId, thunkAPI) => {
-    let api = `https://nextbid.vercel.app/api/v1/products/${productId}`;
+    let api = `${process.env.REACT_APP_SERVER_API}/api/v1/products/${productId}`;
 
     try {
       const { data } = await axios.patch(
@@ -172,7 +176,7 @@ export const getUserProduct = createAsyncThunk(
   "Products/getUserProduct",
   async (pageNumber, thunkAPI) => {
     const sellerId = thunkAPI.getState().authReducers.user._id;
-    let api = `https://nextbid.vercel.app/api/v1/products?page=${pageNumber}&sellerInfo=${sellerId}`;
+    let api = `${process.env.REACT_APP_SERVER_API}/api/v1/products?page=${pageNumber}&sellerInfo=${sellerId}&searchBy=""`;
 
     try {
       const { data } = await axios.get(

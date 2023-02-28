@@ -13,6 +13,7 @@ import ProductDetails from "../pages/ProductDetails/ProductDetails";
 import Signin from "../pages/Signin/Signin";
 import PrivateRoute from "./PrivateRoutes";
 import Success from "../pages/Success/Success";
+import Admin from "../pages/Admin/Admin";
 
 const RootRoutes = createBrowserRouter([
   {
@@ -39,8 +40,13 @@ const RootRoutes = createBrowserRouter([
           { path: "myproducts", element: <MyProduct /> },
         ],
       },
+
       { path: "*", element: <NotFound /> },
     ],
+  },
+  {
+    path: "/admin",
+    element: <Admin />,
   },
 ]);
 
